@@ -1,0 +1,27 @@
+Microsoft Visual Studio Solution File, Format Version 10.00
+# Visual Studio 2008
+
+Project("{5D0D9A7A-1060-95BA-93C3-1668A946949F}") = "archery-master2", "Assembly-CSharp-firstpass-vs.csproj", "{23030FB5-71EB-6126-4218-54D391DB592B}"
+EndProject
+Project("{5D0D9A7A-1060-95BA-93C3-1668A946949F}") = "archery-master2", "Assembly-CSharp-vs.csproj", "{387753DA-8329-44E7-9FD2-D742DE80B375}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{23030FB5-71EB-6126-4218-54D391DB592B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{23030FB5-71EB-6126-4218-54D391DB592B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{23030FB5-71EB-6126-4218-54D391DB592B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{23030FB5-71EB-6126-4218-54D391DB592B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{387753DA-8329-44E7-9FD2-D742DE80B375}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{387753DA-8329-44E7-9FD2-D742DE80B375}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{387753DA-8329-44E7-9FD2-D742DE80B375}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{387753DA-8329-44E7-9FD2-D742DE80B375}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	
+EndGlobal
