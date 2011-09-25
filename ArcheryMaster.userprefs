@@ -1,0 +1,19 @@
+﻿<Properties>
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/Scripts/Level/Arrow.cs">
+    <Files>
+      <File FileName="Assets/Scripts/Level/Shoot.cs" Line="46" Column="4" />
+      <File FileName="Assets/Scripts/Level/Arrow.cs" Line="22" Column="4" />
+      <File FileName="Assets/Scripts/Statistic/Statistic.cs" Line="5" Column="1" />
+      <File FileName="Assets/Scripts/Level/GUIControl.cs" Line="22" Column="40" />
+      <File FileName="Assets/Scripts/GameOver/Retry.cs" Line="9" Column="30" />
+      <File FileName="Assets/Scripts/Statistic/Next.cs" Line="9" Column="30" />
+      <File FileName="Assets/Scripts/Level/Move.cs" Line="18" Column="17" />
+      <File FileName="Assets/Scripts/GameOver/GameOver.cs" Line="8" Column="78" />
+    </Files>
+  </MonoDevelop.Ide.Workbench>
+  <MonoDevelop.Ide.DebuggingService.Breakpoints>
+    <BreakpointStore />
+  </MonoDevelop.Ide.DebuggingService.Breakpoints>
+  <MonoDevelop.Ide.DebuggingService.PinnedWatches />
+</Properties>

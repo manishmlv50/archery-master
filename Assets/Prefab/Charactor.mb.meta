@@ -1,0 +1,112 @@
+fileFormatVersion: 1
+guid: bc4d4d273882e449fa370e5e680c1f24
+ModelImporter:
+  importerVersion: 7
+  meshes:
+    scaleFactor: 1
+    useFileUnits: 1
+    meshCompression: 0
+    generateColliders: 0
+    swapUVs: 0
+  tangentSpace:
+    normalImportMode: 0
+    tangentImportMode: 1
+    smoothingAngle: 60
+    splitTangents: 1
+  materials:
+    generation: 1
+  animations:
+    generation: 3
+    bakeAnimations: 0
+    animationCompression: 1
+    animationWrapMode: 0
+    splitAnimations: 1
+  nodeInfo:
+    ankle_R:
+    - 100000
+    - 400000
+    R_Feet_Control:
+    - 100002
+    - 400002
+    ikHandle_R_Foot:
+    - 100004
+    - 400004
+    arm_L:
+    - 100006
+    - 400006
+    feet_L:
+    - 100008
+    - 400008
+    feet_R:
+    - 100010
+    - 400010
+    arm_R:
+    - 100012
+    - 400012
+    spine:
+    - 100014
+    - 400014
+    rib1:
+    - 100016
+    - 400016
+    root:
+    - 100018
+    - 400018
+    //RootNode:
+    - 100020
+    - 400020
+    - 11100000
+    ankle_L:
+    - 100022
+    - 400022
+    ikHandle_L_Foot:
+    - 100024
+    - 400024
+    hand_L:
+    - 100026
+    - 400026
+    knee_R:
+    - 100028
+    - 400028
+    hip_L:
+    - 100030
+    - 400030
+    rib2:
+    - 100032
+    - 400032
+    elbow_R:
+    - 100034
+    - 400034
+    L_Knee_Control:
+    - 100036
+    - 400036
+    elbow_L:
+    - 100038
+    - 400038
+    knee_L:
+    - 100040
+    - 400040
+    head:
+    - 100042
+    - 400042
+    R_Knee_Control:
+    - 100044
+    - 400044
+    L_Feet_Control:
+    - 100046
+    - 400046
+    hand_R:
+    - 100048
+    - 400048
+    low_poly:
+    - 100050
+    - 400050
+    - 3300000
+    - 2300000
+    hip_R:
+    - 100052
+    - 400052
+AssetImporter:
+  importerVersion: 1
+  fileIDToRecycleName:
+    4300000: low_poly

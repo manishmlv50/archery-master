@@ -1,0 +1,21 @@
+Microsoft Visual Studio Solution File, Format Version 10.00
+# Visual Studio 2008
+
+Project("{DBAB1297-F10A-5E78-DA3F-F82539249F41}") = "ArcheryMaster", "Assembly-CSharp-vs.csproj", "{1CAFDA31-B8CC-3E19-9AA3-9263A38E3166}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{1CAFDA31-B8CC-3E19-9AA3-9263A38E3166}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1CAFDA31-B8CC-3E19-9AA3-9263A38E3166}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1CAFDA31-B8CC-3E19-9AA3-9263A38E3166}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1CAFDA31-B8CC-3E19-9AA3-9263A38E3166}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	
+EndGlobal
