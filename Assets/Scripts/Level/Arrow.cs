@@ -26,4 +26,11 @@ public class Arrow : MonoBehaviour, ArrowInterface {
 		
 		ti.DoEffect(this);
 	}	
+	
+	public void DoEffect()
+	{
+		
+	}
+	
+	public int Counter{get;set;}
 }
