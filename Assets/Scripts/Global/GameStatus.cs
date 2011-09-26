@@ -19,9 +19,9 @@ public class GameStatus
 	public float ComboBonus{get;set;}
 	public float MoveSpeed{get;set;}
 	public int Score{get;set;}
-	public float ArrowCount{get;set;}
-	public float TargetScore{get;set;}
-	public float Time{get;set;}
+	public int ArrowCount{get;set;}
+	public int TargetScore{get;set;}
+	public int Time{get;set;}
 	
 	public static GameStatus Inst
 	{	
@@ -30,7 +30,7 @@ public class GameStatus
 		}		
 	}
 	
-	public GameStatus(float time,float targetScore, float arrowCount, float moveSpeed, float scoreBonus, float comboBonus){
+	public GameStatus(int time,int targetScore, int arrowCount, float moveSpeed, float scoreBonus, float comboBonus){
 		_inst = this;
 		Time = time;
 		TargetScore = targetScore;
@@ -42,11 +42,12 @@ public class GameStatus
 		ComboBonus = comboBonus;
 	}
 	
-	public void earnScore(int combo,int targetId)
+	public void EarnScore(int combo,Targets targetId)
 	{
-		Score += (int)(Database.HitTarget(targetId) * 
+		Score += (int)(Database.ScoreOfTarget(targetId) * 
 		                          Mathf.Pow(ComboBonus,combo) *
 		                          ScoreBonus);
 	}
+
 }
 

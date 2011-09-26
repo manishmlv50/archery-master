@@ -1,28 +1,21 @@
 using UnityEngine;
 using System.Collections;
 
-public class NormalTarget  : MonoBehaviour, TargetInterface
+public class NormalTarget  : Target
 {
-	public AudioClip destroySound;
 	public Transform explosion;
-	public static int TARGET_ID = 0;
 
-	public NormalTarget ()
+	public void Start ()
 	{
+		TARGET_ID = Targets.NormalTarget;
 	}
 	
-	public void createSound()
-	{
-		AudioSource.PlayClipAtPoint(destroySound, new Vector3(transform.position.x, transform.position.y, -30),2f);
-	}
-	
-	public int DoEffect(ArrowInterface arrow)
+	override public void DoEffect(Arrow arrow)
 	{
 		Instantiate(explosion, gameObject.transform.position, Quaternion.identity);
 		createSound();
-		GameStatus.Inst.earnScore(arrow.Counter++, TARGET_ID);
-		Destroy(this);
-		return 1;
+		GameStatus.Inst.EarnScore(arrow.Counter++, TARGET_ID);
+		Destroy(this.gameObject);
 	}
 }
 

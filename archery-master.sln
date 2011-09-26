@@ -7,8 +7,6 @@ Project("{0D822B99-48B9-4D00-0554-15D841A442A7}") = "archery-master", "Assembly-
 EndProject
 Project("{0D822B99-48B9-4D00-0554-15D841A442A7}") = "archery-master", "Assembly-UnityScript-firstpass.unityproj", "{DE36132F-DD8C-4981-2017-8A7824C47D17}"
 EndProject
-Project("{0D822B99-48B9-4D00-0554-15D841A442A7}") = "archery-master", "Assembly-UnityScript.unityproj", "{D5585AC5-D1B6-F4D7-9590-E7DD60614A6A}"
-EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -27,10 +25,6 @@ Global
 		{DE36132F-DD8C-4981-2017-8A7824C47D17}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{DE36132F-DD8C-4981-2017-8A7824C47D17}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{DE36132F-DD8C-4981-2017-8A7824C47D17}.Release|Any CPU.Build.0 = Release|Any CPU
-		{D5585AC5-D1B6-F4D7-9590-E7DD60614A6A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{D5585AC5-D1B6-F4D7-9590-E7DD60614A6A}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{D5585AC5-D1B6-F4D7-9590-E7DD60614A6A}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{D5585AC5-D1B6-F4D7-9590-E7DD60614A6A}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
