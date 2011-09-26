@@ -1,2 +1,6 @@
 fileFormatVersion: 1
 guid: 5ba0f691d7766460cbfbd23463ccb121
+MonoImporter:
+  importerVersion: 1
+  defaultReferences:
+    destroySound: {fileID: 8300000, guid: d3e75ea7190144486b199a46ce29b9e5, type: 1}
