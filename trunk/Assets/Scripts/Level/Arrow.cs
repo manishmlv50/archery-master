@@ -7,10 +7,10 @@ using System.Collections;
  * 		Added the following targets: BombTarget, FreezeTarget, TimeTarget
  * */
 
-public class Arrow : MonoBehaviour, ArrowInterface {
+public class Arrow : MonoBehaviour {
 
 	// Use this for initialization
-	
+	public int Counter{get;set;}
 	void Start () {
 		Counter=0;
 	}
@@ -22,15 +22,9 @@ public class Arrow : MonoBehaviour, ArrowInterface {
 	
 	void OnTriggerEnter(Collider c)
 	{
-		TargetInterface ti = c.gameObject.GetComponent(typeof(TargetInterface)) as TargetInterface;
-		
-		ti.DoEffect(this);
-	}	
-	
-	public void DoEffect()
-	{
-		
-	}
-	
-	public int Counter{get;set;}
+		Target ti = c.gameObject.GetComponent<Target>();
+		if(ti != null){
+			ti.DoEffect(this);
+		}
+	}		
 }

@@ -18,7 +18,7 @@
 	<DebugType>full</DebugType>
 	<Optimize>false</Optimize>
 	<OutputPath>Temp\bin\Debug\</OutputPath>
-	<DefineConstants>DEBUG;TRACE;UNITY_3_4_1;UNITY_3_4;UNITY_EDITOR;ENABLE_PROFILER;UNITY_STANDALONE_OSX;ENABLE_GENERICS;ENABLE_DUCK_TYPING;ENABLE_TERRAIN;ENABLE_MOVIES;ENABLE_NETWORK;ENABLE_CLOTH;ENABLE_WWW</DefineConstants>
+	<DefineConstants>DEBUG;TRACE;UNITY_3_4_1;UNITY_3_4;UNITY_EDITOR;ENABLE_PROFILER;UNITY_IOS;UNITY_IPHONE;ENABLE_GENERICS;ENABLE_TERRAIN;ENABLE_NETWORK;ENABLE_WWW</DefineConstants>
 	<ErrorReport>prompt</ErrorReport>
 	<WarningLevel>4</WarningLevel>
 	<NoWarn>0169</NoWarn>
@@ -49,14 +49,12 @@
      <Compile Include="Assets\Scripts\Global\Database.cs" />
      <Compile Include="Assets\Scripts\Global\Debug.cs" />
      <Compile Include="Assets\Scripts\Global\GameStatus.cs" />
-     <Compile Include="Assets\Scripts\Interface\ArrowInterface.cs" />
-     <Compile Include="Assets\Scripts\Interface\CharacterInterface.cs" />
-     <Compile Include="Assets\Scripts\Interface\TargetInterface.cs" />
      <Compile Include="Assets\Scripts\Level\Arrow.cs" />
      <Compile Include="Assets\Scripts\Level\Character.cs" />
      <Compile Include="Assets\Scripts\Level\GUIControl.cs" />
      <Compile Include="Assets\Scripts\Level\Move.cs" />
      <Compile Include="Assets\Scripts\Level\Shoot.cs" />
+     <Compile Include="Assets\Scripts\Level\SmoothFollow.cs" />
      <Compile Include="Assets\Scripts\Level\TargetGeneration.cs" />
      <Compile Include="Assets\Scripts\Level\Wall.cs" />
      <Compile Include="Assets\Scripts\StarMenu\StartMenu.cs" />
@@ -64,6 +62,9 @@
      <Compile Include="Assets\Scripts\Statistic\Statistic.cs" />
      <Compile Include="Assets\Scripts\Target\BombTarget.cs" />
      <Compile Include="Assets\Scripts\Target\FreezeTarget.cs" />
+     <Compile Include="Assets\Scripts\Target\NormalTarget.cs" />
+     <Compile Include="Assets\Scripts\Target\Target.cs" />
+     <Compile Include="Assets\Scripts\Target\Targets.cs" />
      <Compile Include="Assets\Scripts\Target\TimeTarget.cs" />
      <None Include="Assets\Standard Assets\Particles\Sources\Shaders\Particle Alpha Blend (Queue +100).shader" />
      <None Include="Assets\Standard Assets\Detonator\Resources\Detonator\Textures\HeatDistort.shader" />
