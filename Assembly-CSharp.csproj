@@ -45,7 +45,6 @@
   </ItemGroup>
   <ItemGroup>
      <Compile Include="Assets\Scripts\GameOver\GameOver.cs" />
-     <Compile Include="Assets\Scripts\GameOver\Retry.cs" />
      <Compile Include="Assets\Scripts\Global\Database.cs" />
      <Compile Include="Assets\Scripts\Global\Debug.cs" />
      <Compile Include="Assets\Scripts\Global\GameStatus.cs" />
@@ -58,7 +57,6 @@
      <Compile Include="Assets\Scripts\Level\TargetGeneration.cs" />
      <Compile Include="Assets\Scripts\Level\Wall.cs" />
      <Compile Include="Assets\Scripts\StarMenu\StartMenu.cs" />
-     <Compile Include="Assets\Scripts\Statistic\Next.cs" />
      <Compile Include="Assets\Scripts\Statistic\Statistic.cs" />
      <Compile Include="Assets\Scripts\Target\BombTarget.cs" />
      <Compile Include="Assets\Scripts\Target\FreezeTarget.cs" />

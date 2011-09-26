@@ -15,7 +15,6 @@ public class BombTarget : Target {
 	}
 	
 	
-	
 	override public void DoEffect(Arrow arrow)
 	{
 		
