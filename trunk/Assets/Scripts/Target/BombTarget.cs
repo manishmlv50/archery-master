@@ -20,13 +20,13 @@ public class BombTarget : Target {
 	{
 		
 		// Access Detonator script attached to "BombTarget"
-		Detonator d = gameObject.GetComponent(typeof(Detonator)) as Detonator; 
-		d.Explode(); // start destroy animation
+		//Detonator d = gameObject.GetComponent(typeof(Detonator)) as Detonator; 
+		//d.Explode(); // start destroy animation
 		
 		// Access Bomb Target script attached to "BombTarget"
 		createSound();	// create destroy sound
 		
-		d.renderer.enabled = false; // hide bomb target object
+		//d.renderer.enabled = false; // hide bomb target object
 		
 		// Earn Score for destroying the Bomb Target
 		GameStatus.Inst.EarnScore(arrow.Counter++, TARGET_ID);
@@ -37,7 +37,7 @@ public class BombTarget : Target {
 		{
 			NormalTarget t = go as NormalTarget;
 			// Check if the distance of the "BombTarget" and this "Target" is less than 25
-			if(t != null && Vector3.Distance(gameObject.transform.position,
+			if(t!=null&&Vector3.Distance(gameObject.transform.position,
 			                     t.transform.position) < 25)
 			{
 				// Destroy this object because it is within the distance threshold

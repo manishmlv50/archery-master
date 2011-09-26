@@ -39,15 +39,49 @@ public class Database
 	}
 	
 	public static Targets GetTarget(int level, int time, int pointID){
-		if(time % (pointID+2) == 0)
+		if(pointID == 0)
 		{
-			if(time % (pointID+4)==0)
+			if(time % 17==0)
 				return Targets.TimeTarget;
-			if(time % (pointID+5)==0)
+			if(time % 12==0)
 				return Targets.FreezeTarget;
-			if(time % (pointID+6)==0)
+			if(time % 15==0)
 				return Targets.BombTarget;
-			return Targets.NormalTarget;
+			if(time % 5==0)
+				return Targets.NormalTarget;
+		}
+		if(pointID == 1)
+		{
+			if(time % 13==0)
+				return Targets.TimeTarget;
+			if(time % 20==0)
+				return Targets.FreezeTarget;
+			if(time % 23==0)
+				return Targets.BombTarget;
+			if(time % 6==0)
+				return Targets.NormalTarget;
+		}
+		if(pointID == 2)
+		{
+			if(time % 11==0)
+				return Targets.TimeTarget;
+			if(time % 16==0)
+				return Targets.FreezeTarget;
+			if(time % 22==0)
+				return Targets.BombTarget;
+			if(time % 7==0)
+				return Targets.NormalTarget;
+		}
+		if(pointID == 3)
+		{
+			if(time % 23==0)
+				return Targets.TimeTarget;
+			if(time % 21==0)
+				return Targets.FreezeTarget;
+			if(time % 19==0)
+				return Targets.BombTarget;
+			if(time % 8==0)
+				return Targets.NormalTarget;
 		}
 		return Targets.Null;
 	}
