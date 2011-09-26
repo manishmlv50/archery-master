@@ -21,7 +21,7 @@ public class Shoot : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
 		if(!run)
-			return ;
+			return;
 		foreach(Touch currentTouch in Input.touches){
 			if(currentTouch.phase == TouchPhase.Began && guiTexture.HitTest(currentTouch.position)){
 				guiTexture.texture = downButton;
@@ -54,6 +54,7 @@ public class Shoot : MonoBehaviour {
 	}
 	
 	IEnumerator delay1() {
+		run = false;
 		yield return new WaitForSeconds(1f);
 		if(GameStatus.Inst.Score >= GameStatus.Inst.TargetScore){
 				Application.LoadLevel("Statistic");
