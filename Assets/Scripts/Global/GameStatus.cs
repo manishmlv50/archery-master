@@ -29,7 +29,6 @@ public class GameStatus
 		}		
 	}
 	
-	
 	public GameStatus(float time,float targetScore, float arrowCount, float moveSpeed, float scoreBonus, float comboBonus){
 		_inst = this;
 		Time = time;
@@ -40,6 +39,13 @@ public class GameStatus
 		MoveSpeed = moveSpeed;
 		ScoreBonus = scoreBonus;
 		ComboBonus = comboBonus;
+	}
+	
+	public void earnScore(int combo,int targetId)
+	{
+		Score += (int)(Database.HitTarget(targetId) * 
+		                          Mathf.Pow(ComboBonus,combo) *
+		                          ScoreBonus);
 	}
 }
 

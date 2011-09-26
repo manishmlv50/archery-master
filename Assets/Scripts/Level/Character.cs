@@ -1,7 +1,7 @@
 using UnityEngine;
 using System.Collections;
 
-public class Character : MonoBehaviour , CharacterInterface{
+public class Character : MonoBehaviour{
     	
 	public Transform left;
 	public Transform right;

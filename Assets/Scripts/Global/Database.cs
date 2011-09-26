@@ -35,5 +35,9 @@ public class Database
 	public static float GetComboBonus(){
 		return 1.8f;
 	}
+	
+	public static int GetTarget(int level, int time, int pointID){
+		return 1;
+	}
 }
 
