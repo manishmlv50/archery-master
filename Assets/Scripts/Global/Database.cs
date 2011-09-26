@@ -36,7 +36,7 @@ public class Database
 		return 1.8f;
 	}
 	
-	public static int GetTarget(int level, int time, int pointID){
+	public static int GetTarget(int level, float time, int pointID){
 		return 1;
 	}
 }
