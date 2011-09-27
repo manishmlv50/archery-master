@@ -28,40 +28,48 @@ public class GUIControl : MonoBehaviour {
 	private Rect levelRect;
 	private Rect targetRect;
 	private Rect arrowRect;
+	private Rect powerRect;
 	
 	void Start () {
 		
 		float screenWidth = Screen.width;
 		float screenHeight = Screen.height;
 		
-		moveButton.pixelInset = new Rect(0.11f*screenWidth,
-		                                 0.04f*screenWidth,
-		                                 0.18f*screenWidth,
-		                                 0.18f*screenWidth
-		                                 );
+		if(Shoot.ctrl) {
+			moveButton.pixelInset = new Rect(0.11f*screenWidth,
+		    	                             0.04f*screenWidth,
+		        	                         0.18f*screenWidth,
+		            	                     0.18f*screenWidth
+		                	                 );
 		
-		moveStick.pixelInset = new Rect (0.15f*screenWidth,
-		                                 0.04f*screenWidth+ (0.18f*screenWidth-0.03f*screenHeight)/2,
-		                                 0.1f*screenWidth,
-		                                 0.03f*screenHeight
-		                                 );
+			moveStick.pixelInset = new Rect (0.15f*screenWidth,
+		    	                             0.04f*screenWidth+ (0.18f*screenWidth-0.03f*screenHeight)/2,
+		        	                         0.1f*screenWidth,
+		            	                     0.03f*screenHeight
+		                	                 );
 		
-		shootButton.pixelInset = new Rect(screenWidth - 0.18f*screenWidth - 0.04f*screenWidth,
-		                                 0.04f*screenWidth,
-		                                 0.18f*screenWidth,
-		                                 0.18f*screenWidth
-		                                 );	
-		
+			shootButton.pixelInset = new Rect(screenWidth - 0.18f*screenWidth - 0.04f*screenWidth,
+		    	                             0.04f*screenWidth,
+		        	                         0.18f*screenWidth,
+		            	                     0.18f*screenWidth
+		                	                 );
+		}
+		else {
+			moveStick.enabled = false;
+			moveButton.enabled = false;
+			shootButton.enabled = false;
+		}
+				
 		scoreStyle_Small = new GUIStyle();
-		scoreStyle_Small.normal.textColor = Color.green;
+		scoreStyle_Small.normal.textColor = Color.cyan;
 		scoreStyle_Small.font = scorefont_Small;
 		
 		scoreStyle_Mid = new GUIStyle();
-		scoreStyle_Mid.normal.textColor = Color.green;
+		scoreStyle_Mid.normal.textColor = Color.cyan;
 		scoreStyle_Mid.font = scorefont_Mid;
 		
 		scoreStyle_Large = new GUIStyle();
-		scoreStyle_Large.normal.textColor = Color.green;
+		scoreStyle_Large.normal.textColor = Color.cyan;
 		scoreStyle_Large.font = scorefont_Large;
 		
 		timeStyle_Small = new GUIStyle();
@@ -81,6 +89,7 @@ public class GUIControl : MonoBehaviour {
 		arrowRect = new Rect(0.7f*screenWidth,0.12f*screenWidth,0.3f*screenWidth,0.05f*screenWidth);
 		timeRect = new Rect(screenWidth/2-0.06f*screenWidth,0.01f*screenWidth,0.15f*screenWidth,0.15f*screenWidth);
 		levelRect = new Rect(0.03f*screenWidth,0.04f*screenWidth,0.2f*screenWidth,0.05f*screenWidth);
+		powerRect = new Rect(0.03f*screenWidth,0.09f*screenWidth,0.2f*screenWidth,0.05f*screenWidth);
 	}
 	
 	void OnGUI(){
@@ -92,22 +101,25 @@ public class GUIControl : MonoBehaviour {
 			
 			GUI.Label(timeRect,GameStatus.Inst.Time.ToString(),timeStyle_Large);
 			GUI.Label(levelRect,"Level:"+(GameStatus.Level+1),scoreStyle_Large);
+			GUI.Label(powerRect,"Power:"+Shoot.dragRange,scoreStyle_Large);
 		}
 		else if(Screen.width < 600) {
-			GUI.Label(scoreRect," Score:"+GameStatus.Inst.Score,scoreStyle_Mid);
-			GUI.Label(targetRect,"Target:"+GameStatus.Inst.TargetScore,scoreStyle_Mid);
-			GUI.Label(arrowRect," Arrow:"+GameStatus.Inst.ArrowCount,scoreStyle_Mid);
-			
-			GUI.Label(timeRect,GameStatus.Inst.Time.ToString(),timeStyle_Mid);
-			GUI.Label(levelRect,"Level:"+(GameStatus.Level+1),scoreStyle_Mid);
-		}
-		else {
 			GUI.Label(scoreRect," Score:"+GameStatus.Inst.Score,scoreStyle_Small);
 			GUI.Label(targetRect,"Target:"+GameStatus.Inst.TargetScore,scoreStyle_Small);
 			GUI.Label(arrowRect," Arrow:"+GameStatus.Inst.ArrowCount,scoreStyle_Small);
 			
 			GUI.Label(timeRect,GameStatus.Inst.Time.ToString(),timeStyle_Small);
 			GUI.Label(levelRect,"Level:"+(GameStatus.Level+1),scoreStyle_Small);
+			GUI.Label(powerRect,"Power:"+Shoot.dragRange,scoreStyle_Small);
+		}
+		else {
+			GUI.Label(scoreRect," Score:"+GameStatus.Inst.Score,scoreStyle_Mid);
+			GUI.Label(targetRect,"Target:"+GameStatus.Inst.TargetScore,scoreStyle_Mid);
+			GUI.Label(arrowRect," Arrow:"+GameStatus.Inst.ArrowCount,scoreStyle_Mid);
+			
+			GUI.Label(timeRect,GameStatus.Inst.Time.ToString(),timeStyle_Mid);
+			GUI.Label(levelRect,"Level:"+(GameStatus.Level+1),scoreStyle_Mid);
+			GUI.Label(powerRect,"Power:"+Shoot.dragRange,scoreStyle_Mid);
 		}
 	}	
 }
