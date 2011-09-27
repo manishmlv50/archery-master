@@ -24,40 +24,54 @@ public class Move : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-		foreach(Touch currentTouch in Input.touches){
-			if(currentTouch.phase == TouchPhase.Began && guiTexture.HitTest(currentTouch.position)){
-				guiTexture.texture = downButton;
-				movefingerId = currentTouch.fingerId;
-			}
-			
-			else if(currentTouch.phase == TouchPhase.Ended && currentTouch.fingerId == movefingerId){
-				guiTexture.texture = upButton;
-				guiTexture.pixelInset = new Rect(center,guiTexture.pixelInset.y,guiTexture.pixelInset.width,guiTexture.pixelInset.height);
-				movefingerId = -1;
-				moveDirection = 0;
-			}
-			
-			else if(currentTouch.phase == TouchPhase.Moved && currentTouch.fingerId == movefingerId){
-				float x = 0;
-				float touchX = currentTouch.position.x - guiTexture.pixelInset.width/2;
-				if(touchX > center){
-					x = Mathf.Min(touchX,right);
-					if(x - center > guiTexture.pixelInset.width/5)
-						moveDirection = 1;
-					else
-						moveDirection = 0;
-				}
-				else{
-					x = Mathf.Max(left,touchX);
-					if(center - x > guiTexture.pixelInset.width/5)
-						moveDirection = -1;
-					else
-						moveDirection = 0;
-				}
-				guiTexture.pixelInset = new Rect(x,guiTexture.pixelInset.y,guiTexture.pixelInset.width,guiTexture.pixelInset.height);
-			}
+		
+		if(!Shoot.run) {
+			moveDirection = 0;
+			return;
 		}
 		
+		if(Shoot.ctrl) {
+			// Virtual stick control
+			foreach(Touch currentTouch in Input.touches){
+				if(currentTouch.phase == TouchPhase.Began && guiTexture.HitTest(currentTouch.position)){
+					guiTexture.texture = downButton;
+					movefingerId = currentTouch.fingerId;
+				}
+			
+				else if(currentTouch.phase == TouchPhase.Ended && currentTouch.fingerId == movefingerId){
+					guiTexture.texture = upButton;
+					guiTexture.pixelInset = new Rect(center,guiTexture.pixelInset.y,guiTexture.pixelInset.width,guiTexture.pixelInset.height);
+					movefingerId = -1;
+					moveDirection = 0;
+				}
+			
+				else if(currentTouch.phase == TouchPhase.Moved && currentTouch.fingerId == movefingerId){
+					float x = 0;
+					float touchX = currentTouch.position.x - guiTexture.pixelInset.width/2;
+					if(touchX > center){
+						x = Mathf.Min(touchX,right);
+						if(x - center > guiTexture.pixelInset.width/5)
+							moveDirection = 1;
+						else
+							moveDirection = 0;
+					}
+					else{
+						x = Mathf.Max(left,touchX);
+						if(center - x > guiTexture.pixelInset.width/5)
+							moveDirection = -1;
+						else
+							moveDirection = 0;
+					}
+					guiTexture.pixelInset = new Rect(x,guiTexture.pixelInset.y,guiTexture.pixelInset.width,guiTexture.pixelInset.height);
+				}
+			}
+		}
+		// Tilting
+		else{
+			moveDirection = -Input.acceleration.y * 4f;
+		}
+		
+		// Keyboard Control
 		if(Input.GetButton("Horizontal")) {
 			if(Input.GetAxis("Horizontal") > 0 ) {
 				moveDirection = 1;
@@ -68,10 +82,6 @@ public class Move : MonoBehaviour {
 		}
 		else if(Input.GetButtonUp("Horizontal")){
 			moveDirection = 0;
-		}
-		
-		else{
-			moveDirection = - Input.acceleration.y*4f;
 		}
 	}
 }
