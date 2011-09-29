@@ -6,6 +6,7 @@ public class GameStatus
 {
 	private static GameStatus _inst;
 	private static int _currentLevel = 0;
+	
 	public static int Level {
 		get{
 			return _currentLevel;
@@ -22,6 +23,10 @@ public class GameStatus
 	public int ArrowCount{get;set;}
 	public int TargetScore{get;set;}
 	public int Time{get;set;}
+	
+	public static float soundVol = 0.6f;
+	public static float BGM = 0.6f;
+	public static bool ctrl = true;
 	
 	public static GameStatus Inst
 	{	

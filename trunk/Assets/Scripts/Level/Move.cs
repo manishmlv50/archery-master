@@ -30,7 +30,7 @@ public class Move : MonoBehaviour {
 			return;
 		}
 		
-		if(Shoot.ctrl) {
+		if(GameStatus.ctrl) {
 			// Virtual stick control
 			foreach(Touch currentTouch in Input.touches){
 				if(currentTouch.phase == TouchPhase.Began && guiTexture.HitTest(currentTouch.position)){
