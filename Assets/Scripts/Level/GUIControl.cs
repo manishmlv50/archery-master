@@ -35,7 +35,7 @@ public class GUIControl : MonoBehaviour {
 		float screenWidth = Screen.width;
 		float screenHeight = Screen.height;
 		
-		if(Shoot.ctrl) {
+		if(GameStatus.ctrl) {
 			moveButton.pixelInset = new Rect(0.11f*screenWidth,
 		    	                             0.04f*screenWidth,
 		        	                         0.18f*screenWidth,

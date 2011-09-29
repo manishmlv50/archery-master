@@ -12,7 +12,6 @@ public class Shoot : MonoBehaviour {
 	public int fireSpeed = 1000;
 	
 	public static bool run;
-	public static bool ctrl = false;
 	public static float dragRange = 0;
 	
 	private float preY = 0;
@@ -29,7 +28,7 @@ public class Shoot : MonoBehaviour {
 		
 		foreach(Touch currentTouch in Input.touches){
 			// Virtual fire button
-			if(ctrl) {
+			if(GameStatus.ctrl) {
 				if(currentTouch.phase == TouchPhase.Began && guiTexture.HitTest(currentTouch.position)){
 					guiTexture.texture = downButton;
 					movefingerId = currentTouch.fingerId;
