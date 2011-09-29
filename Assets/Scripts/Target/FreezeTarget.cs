@@ -7,6 +7,8 @@ public class FreezeTarget : Target {
 	public static float FREEZETIME = 5.0f; // 10 seconds
 	public static float lastTime = 0.0f;
 	
+	private bool dead = false;
+	
 	// Use this for initialization
 	void Start () {
 		TARGET_ID = Targets.FreezeTarget;
@@ -19,6 +21,11 @@ public class FreezeTarget : Target {
 	
 	override public void DoEffect(Arrow arrow)
 	{
+		if(dead == true)
+			return;
+		
+		dead = true;
+		
 		// Access Detonator script attached to "BombTarget"
 		Detonator d = gameObject.GetComponent(typeof(Detonator)) as Detonator; 
 		d.Explode(); // start destroy animation
@@ -29,6 +36,6 @@ public class FreezeTarget : Target {
 		
 		FreezeTarget.lastTime = Time.time;
 		FreezeTarget.isFrozen = true;
-		Destroy(this.gameObject);
+		//Destroy(this.gameObject);
 	}
 }

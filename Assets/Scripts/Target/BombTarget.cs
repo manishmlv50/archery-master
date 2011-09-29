@@ -2,7 +2,7 @@ using UnityEngine;
 using System.Collections;
 
 public class BombTarget : Target {
-	
+	private bool dead = false;
 	// Use this for initialization
 	void Start () {
 		TARGET_ID = Targets.BombTarget;
@@ -17,15 +17,20 @@ public class BombTarget : Target {
 	
 	override public void DoEffect(Arrow arrow)
 	{
+		if(dead == true)
+			return;
+		
+		// This object is now dead.
+		dead = true;
 		
 		// Access Detonator script attached to "BombTarget"
-		//Detonator d = gameObject.GetComponent(typeof(Detonator)) as Detonator; 
-		//d.Explode(); // start destroy animation
+		Detonator d = gameObject.GetComponent(typeof(Detonator)) as Detonator; 
+		d.Explode(); // start destroy animation
 		
 		// Access Bomb Target script attached to "BombTarget"
 		createSound();	// create destroy sound
 		
-		//d.renderer.enabled = false; // hide bomb target object
+		d.renderer.enabled = false; // hide bomb target object
 		
 		// Earn Score for destroying the Bomb Target
 		GameStatus.Inst.EarnScore(arrow.Counter++, TARGET_ID);
@@ -44,6 +49,6 @@ public class BombTarget : Target {
 			}
 		}
 		
-		Destroy(this.gameObject);
+		// Destroy(this);
 	}
 }
