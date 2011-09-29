@@ -5,6 +5,8 @@ public class TimeTarget : Target{
 	
 	public static int EXTRA_TIME = 10;
 	
+	private bool dead = false;
+	
 	// Use this for initialization
 	void Start () {
 		TARGET_ID = Targets.TimeTarget;
@@ -17,6 +19,11 @@ public class TimeTarget : Target{
 	
 	override public void DoEffect(Arrow arrow)
 	{
+		if(dead == true)
+			return;
+		
+		dead = true;
+		
 		// Access Detonator script attached to "TimeTarget"
 		Detonator d = gameObject.GetComponent(typeof(Detonator)) as Detonator; 
 		d.Explode(); // start destroy animation
@@ -31,6 +38,6 @@ public class TimeTarget : Target{
 		
 		// Add 10 seconds to level time
 		GameStatus.Inst.Time += EXTRA_TIME;
-		Destroy(this.gameObject);
+		//Destroy(this.gameObject);
 	}
 }
