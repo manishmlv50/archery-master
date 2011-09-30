@@ -7,9 +7,7 @@ public class GameOver : MonoBehaviour {
 	public Texture2D background; 
 	public Font headerFont;
 	public Font scoreFont;
-	public Texture2D button;
-	public Font buttonFont;
-	
+	public GUIStyle buttonStyle;
 	
 	private Rect header;
 	private GUIStyle headerStyle;
@@ -18,7 +16,6 @@ public class GameOver : MonoBehaviour {
 	private	GUIStyle scoreStyle;
 	
 	private Rect buttonPosition;
-	private GUIStyle buttonStyle;
 	
 	void Start(){
 		header = new Rect(0,Screen.height*0.1f,Screen.width,Screen.height*0.2f);
@@ -27,17 +24,13 @@ public class GameOver : MonoBehaviour {
 		headerStyle.normal.textColor = Color.red;
 		headerStyle.alignment = TextAnchor.MiddleCenter;
 		
-		score = new Rect(0,Screen.height*0.35f,Screen.width,Screen.height*0.2f);
+		score = new Rect(0,Screen.height*0.35f,Screen.width,Screen.height*0.3f);
 		scoreStyle = new GUIStyle();
 		scoreStyle.font = scoreFont;
 		scoreStyle.normal.textColor = Color.white;
 		scoreStyle.alignment = TextAnchor.MiddleCenter;
 		
-		buttonPosition = new Rect(Screen.width*0.8f,Screen.height*0.75f,Screen.height*0.2f,Screen.height*0.2f);
-		buttonStyle = new GUIStyle();
-		buttonStyle.normal.background = button;
-		buttonStyle.alignment = TextAnchor.MiddleCenter;
-		buttonStyle.font = buttonFont;
+		buttonPosition = new Rect(Screen.width*0.8f,Screen.height*0.75f,Screen.width*0.2f,Screen.height*0.2f);
 	}
 	
 	void OnGUI(){
