@@ -7,9 +7,7 @@ public class Statistic : MonoBehaviour {
 	public Texture2D background; 
 	public Font headerFont;
 	public Font scoreFont;
-	public Texture2D button;
-	public Font buttonFont;
-	
+	public GUIStyle buttonStyle;
 	
 	private Rect header;
 	private GUIStyle headerStyle;
@@ -18,7 +16,6 @@ public class Statistic : MonoBehaviour {
 	private	GUIStyle scoreStyle;
 	
 	private Rect buttonPosition;
-	private GUIStyle buttonStyle;
 	
 	void Start(){
 		header = new Rect(0,Screen.height*0.1f,Screen.width,Screen.height*0.2f);
@@ -34,10 +31,6 @@ public class Statistic : MonoBehaviour {
 		scoreStyle.alignment = TextAnchor.MiddleCenter;
 		
 		buttonPosition = new Rect(Screen.width*0.8f,Screen.height*0.75f,Screen.height*0.2f,Screen.height*0.2f);
-		buttonStyle = new GUIStyle();
-		buttonStyle.normal.background = button;
-		buttonStyle.alignment = TextAnchor.MiddleCenter;
-		buttonStyle.font = buttonFont;
 	}
 	
 	void OnGUI(){
