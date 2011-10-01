@@ -1,8 +1,10 @@
 using System;
 using UnityEngine;
 
-public class Debug: MonoBehaviour
+public class Control: MonoBehaviour
 {
+	public static bool DEBUG = true;
+	
 	void Start(){
 		new GameStatus(Database.GetTime(GameStatus.Level),
 			                       Database.GetTargetScore(GameStatus.Level),
@@ -14,14 +16,18 @@ public class Debug: MonoBehaviour
 	}
 	
 	private bool show = false;
+	
 	void OnGUI () {
-		if (GUI.Button (new Rect (0,0,50,20), "Debug")) {
+		if(!DEBUG)
+			return;
+		
+		if (GUI.Button (new Rect (0,0,Screen.width/10,Screen.height/20), "Debug")) {
 			show = !show;
 		}
 		
 		if(show){
-			GUI.Box(new Rect(Screen.width/2-150, Screen.height/2-160,300,320),"Debug");
-			Rect rect =new Rect(Screen.width/2-120, Screen.height/2-120,80,20);
+			GUI.Box(new Rect(Screen.width*0.25f, Screen.height*0.2f,Screen.width*0.5f,Screen.height*0.6f),"Debug");
+			Rect rect =new Rect(Screen.width*0.3f, Screen.height*0.36f,Screen.width*0.15f,Screen.height*0.06f);
 			GameStatus.Inst.MoveSpeed = LabelSlider (rect, GameStatus.Inst.MoveSpeed, 10,30, "Move Speed:");
 			rect.y+=rect.height*2;
 			GameStatus.Inst.ScoreBonus = LabelSlider (rect, GameStatus.Inst.ScoreBonus, 1,3f, "Score Bonus:");
@@ -56,7 +62,7 @@ public class Debug: MonoBehaviour
 			}
 		}
 		else{
-			GameStatus.Inst.Time--;
+			GameStatus.Inst.Tick();
 		}
 	}
 }

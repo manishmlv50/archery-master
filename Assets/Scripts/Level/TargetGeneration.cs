@@ -19,7 +19,7 @@ public class TargetGeneration : MonoBehaviour {
 	
 	void targetMethod(){
 		
-		Targets targetID = Database.GetTarget(GameStatus.Level,GameStatus.Inst.Time,ID);
+		Targets targetID = Database.GetTarget(GameStatus.Level,GameStatus.Inst.TimeSpend,ID);
 		if(targetID == Targets.Null)
 			return;
 		Transform t = null;

@@ -3,8 +3,6 @@ using System.Collections;
 
 public class NormalTarget  : Target
 {
-	public Transform explosion;
-
 	public void Start ()
 	{
 		TARGET_ID = Targets.NormalTarget;
@@ -12,9 +10,8 @@ public class NormalTarget  : Target
 	
 	override public void DoEffect(Arrow arrow)
 	{
-		Instantiate(explosion, gameObject.transform.position, Quaternion.identity);
 		createSound();
-		GameStatus.Inst.EarnScore(arrow.Counter++, TARGET_ID);
+		GameStatus.Inst.EarnScore(arrow.Combo++, TARGET_ID);
 		Destroy(this.gameObject);
 	}
 }

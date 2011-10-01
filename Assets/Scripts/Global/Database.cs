@@ -3,47 +3,53 @@ using UnityEngine;
 
 public class Database
 {
-	
-	
-	private static int [] _time = {60,60,64};
-	private static int [] _targetScore = {800,1000,1500};
-	private static int [] _arrow = {20,22,30};
-	
+
+
+	private static int[] _time = { 60, 60, 60 };
+	private static int[] _targetScore = { 2000, 3500, 5000 };
+	private static int[] _arrow = { 20, 25, 30 };
+
 	// 1:normalTarget; 2:timeTarget; 3:bombTarget; 4:freezeTarget
 	// rows of the array are seconds,column of the array are pointID
-	 private static int [,] _targetsSeq1 = 
-	 {{1,0,0,0},{0,1,0,0},{0,1,0,0},{0,0,1,0},{0,0,0,0}};
-	
-	
-	
-	public static int GetTime(int level){
+	//private static int[,] _targetsSeq1 = { { 1, 0, 0, 0 }, { 0, 1, 0, 0 }, { 0, 1, 0, 0 }, { 0, 0, 1, 0 }, { 0, 0, 0, 0 } };
+
+
+
+	public static int GetTime (int level)
+	{
 		return _time[level];
 	}
-	
-	public static int ScoreOfTarget(Targets target){
+
+	public static int ScoreOfTarget (Targets target)
+	{
 		return 10;
 	}
-	
-	public static int GetTargetScore(int level){
+
+	public static int GetTargetScore (int level)
+	{
 		return _targetScore[level];
 	}
-	
-	public static int GetArrowCount(int level){
+
+	public static int GetArrowCount (int level)
+	{
 		return _arrow[level];
 	}
-	
-	public static float GetMoveSpeed(){
+
+	public static float GetMoveSpeed ()
+	{
 		return 20;
 	}
-	
-	public static float GetScoreBonus(){
+
+	public static float GetScoreBonus ()
+	{
 		return 1;
 	}
-	
-	public static float GetComboBonus(){
+
+	public static float GetComboBonus ()
+	{
 		return 1.8f;
 	}
-	
+
 	/*public static Targets GetTarget(int level, int time, int pointID){
 		Debug.print(time+" "+pointID);
 		
@@ -100,55 +106,60 @@ public class Database
 //				return Targets.Null;
 //			}
 //	}*/
+
+	public static Targets GetTarget (int level, int timeSpend, int pointID)
+	{
+		if (pointID == 0) {
+			if (timeSpend % 5 == 0)
+				return Targets.NormalTarget;
+			if (timeSpend % 12 == 0)
+				return Targets.FreezeTarget;
+			if (timeSpend % 13 == 0)
+				return Targets.BombTarget;
+			if (timeSpend % 29 == 0)
+				return Targets.TimeTarget;
+			
+			
+		}
+		if (pointID == 1) {
+			if (timeSpend % 6 == 0)
+				return Targets.NormalTarget;
+			if (timeSpend % 13 == 0)
+				return Targets.FreezeTarget;
+			if (timeSpend % 23 == 0)
+				return Targets.BombTarget;
+			//if (timeSpend % 42 == 0)
+			//	return Targets.TimeTarget;
+			
+			
+		}
+		if (pointID == 2) {
+			if (timeSpend % 3 == 0)
+				return Targets.NormalTarget;
+			if (timeSpend % 13 == 0)
+				return Targets.FreezeTarget;
+			if (timeSpend % 22 == 0)
+				return Targets.BombTarget;
+			if (timeSpend % 37 == 0)
+				return Targets.TimeTarget;
+			
+			
+		}
+		if (pointID == 3) {
+			if (timeSpend % 4 == 0)
+				return Targets.NormalTarget;
+			if (timeSpend % 21 == 0)
+				return Targets.FreezeTarget;
+			if (timeSpend % 19 == 0)
+				return Targets.BombTarget;
+			if (timeSpend % 51 == 0)
+				return Targets.TimeTarget;
+			
+			
+		}
+		return Targets.Null;
+	}
 	
-	public static Targets GetTarget(int level, int time, int pointID){
-        if(pointID == 0)
-        {
-                if(time % 17==0)
-                        return Targets.TimeTarget;
-                if(time % 12==0)
-                        return Targets.FreezeTarget;
-                if(time % 15==0)
-                        return Targets.BombTarget;
-                if(time % 5==0)
-                        return Targets.NormalTarget;
-        }
-        if(pointID == 1)
-        {
-                if(time % 13==0)
-                        return Targets.TimeTarget;
-                if(time % 20==0)
-                        return Targets.FreezeTarget;
-                if(time % 23==0)
-                        return Targets.BombTarget;
-                if(time % 6==0)
-                        return Targets.NormalTarget;
-        }
-        if(pointID == 2)
-        {
-                if(time % 11==0)
-                        return Targets.TimeTarget;
-                if(time % 16==0)
-                        return Targets.FreezeTarget;
-                if(time % 22==0)
-                        return Targets.BombTarget;
-                if(time % 7==0)
-                        return Targets.NormalTarget;
-        }
-        if(pointID == 3)
-        {
-                if(time % 23==0)
-                        return Targets.TimeTarget;
-                if(time % 21==0)
-                        return Targets.FreezeTarget;
-                if(time % 19==0)
-                        return Targets.BombTarget;
-                        if(time % 8==0)
-                                return Targets.NormalTarget;
-                }
-                return Targets.Null;
-        }
-		
 	
 }
 
