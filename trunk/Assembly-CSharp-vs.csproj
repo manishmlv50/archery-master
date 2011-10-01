@@ -46,10 +46,11 @@
   <ItemGroup>
      <Compile Include="Assets\Scripts\GameOver\GameOver.cs" />
      <Compile Include="Assets\Scripts\Global\Database.cs" />
-     <Compile Include="Assets\Scripts\Global\Debug.cs" />
      <Compile Include="Assets\Scripts\Global\GameStatus.cs" />
      <Compile Include="Assets\Scripts\Level\Arrow.cs" />
      <Compile Include="Assets\Scripts\Level\Character.cs" />
+     <Compile Include="Assets\Scripts\Level\Combo.cs" />
+     <Compile Include="Assets\Scripts\Level\Control.cs" />
      <Compile Include="Assets\Scripts\Level\GUIControl.cs" />
      <Compile Include="Assets\Scripts\Level\Move.cs" />
      <Compile Include="Assets\Scripts\Level\Shoot.cs" />
@@ -64,7 +65,6 @@
      <Compile Include="Assets\Scripts\Target\Target.cs" />
      <Compile Include="Assets\Scripts\Target\Targets.cs" />
      <Compile Include="Assets\Scripts\Target\TimeTarget.cs" />
-     <None Include="Assets\Standard Assets\Particles\Sources\Shaders\Particle Alpha Blend (Queue +100).shader" />
      <None Include="Assets\Standard Assets\Detonator\Resources\Detonator\Textures\HeatDistort.shader" />
  <Reference Include="Library\ScriptAssemblies\Assembly-UnityScript-firstpass">
  <HintPath>Library\ScriptAssemblies\Assembly-UnityScript-firstpass.dll</HintPath>

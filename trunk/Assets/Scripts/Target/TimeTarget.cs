@@ -3,9 +3,7 @@ using System.Collections;
 
 public class TimeTarget : Target{
 	
-	public static int EXTRA_TIME = 10;
-	
-	private bool dead = false;
+	public static int EXTRA_TIME = 5;
 	
 	// Use this for initialization
 	void Start () {
@@ -19,25 +17,17 @@ public class TimeTarget : Target{
 	
 	override public void DoEffect(Arrow arrow)
 	{
-		if(dead == true)
-			return;
-		
-		dead = true;
-		
-		// Access Detonator script attached to "TimeTarget"
-		Detonator d = gameObject.GetComponent(typeof(Detonator)) as Detonator; 
-		d.Explode(); // start destroy animation
+		createExplosion();
 		
 		// Earn Score
-		GameStatus.Inst.EarnScore(arrow.Counter++, TARGET_ID);
+		GameStatus.Inst.EarnScore(arrow.Combo++, TARGET_ID);
 		
 		// Access Time Target script attached to "TimeTarget"
 		TimeTarget tt = gameObject.GetComponent(typeof(TimeTarget)) as TimeTarget;
 		tt.createSound();	// create destroy sound
-		d.renderer.enabled = false; // hide time target object
 		
 		// Add 10 seconds to level time
-		GameStatus.Inst.Time += EXTRA_TIME;
-		//Destroy(this.gameObject);
+		GameStatus.Inst.IncreaseTime(EXTRA_TIME);
+		Destroy(gameObject);
 	}
 }
