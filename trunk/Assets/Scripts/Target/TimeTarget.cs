@@ -19,14 +19,11 @@ public class TimeTarget : Target{
 	{
 		createExplosion();
 		
-		// Earn Score
 		GameStatus.Inst.EarnScore(arrow.Combo++, TARGET_ID);
 		
-		// Access Time Target script attached to "TimeTarget"
 		TimeTarget tt = gameObject.GetComponent(typeof(TimeTarget)) as TimeTarget;
-		tt.createSound();	// create destroy sound
+		tt.createSound();
 		
-		// Add 10 seconds to level time
 		GameStatus.Inst.IncreaseTime(EXTRA_TIME);
 		Destroy(gameObject);
 	}
