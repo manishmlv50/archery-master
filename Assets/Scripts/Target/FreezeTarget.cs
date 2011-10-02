@@ -4,7 +4,7 @@ using System.Collections;
 public class FreezeTarget : Target {
 	
 	public static bool isFrozen = false;
-	public static float FREEZETIME = 5.0f; // 10 seconds
+	public static float FREEZETIME = 5.0f;
 	public static float lastTime = 0.0f;
 	
 	// Use this for initialization
@@ -19,11 +19,8 @@ public class FreezeTarget : Target {
 	
 	override public void DoEffect(Arrow arrow)
 	{
-		
-		
-		this.createExplosion();
-		// Access Freeze Target script attached to "FreezeTarget"
-		createSound();	// create destroy sound
+		createExplosion();
+		createSound();
 		
 		FreezeTarget.lastTime = Time.time;
 		FreezeTarget.isFrozen = true;
