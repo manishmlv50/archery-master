@@ -25,6 +25,8 @@ public class Shoot : MonoBehaviour {
 	void Update () {
 		if(!run)
 			return;
+		if(GameStatus.Inst.ArrowCount == 0)
+			return;
 		
 		foreach(Touch currentTouch in Input.touches){
 			// Virtual fire button
@@ -93,7 +95,6 @@ public class Shoot : MonoBehaviour {
 	}
 	
 	IEnumerator delay1() {
-		run = false;
 		yield return new WaitForSeconds(1f);
 		if(GameStatus.Inst.Score >= GameStatus.Inst.TargetScore){
 				Application.LoadLevel("Statistic");
@@ -107,8 +108,8 @@ public class Shoot : MonoBehaviour {
 		GameStatus.Inst.ArrowCount -- ;
 		if(GameStatus.Inst.ArrowCount == 0)
 		{
+			run = false;
 			StartCoroutine("delay1");
-			
 		}
 	}
 }
