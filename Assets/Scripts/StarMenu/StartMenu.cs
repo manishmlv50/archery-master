@@ -31,10 +31,10 @@ public class StartMenu : MonoBehaviour {
 		
 		// set each button position
 		titleRect = new Rect(0.2f*screenWidth,0.1f*screenHeight,0.8f*screenWidth,0.25f*screenHeight);
-		newGameRect = new Rect(0.65f*screenWidth,0.4f*screenHeight,0.28f*screenWidth,0.065f*screenHeight);
-		continueRect = new Rect(0.65f*screenWidth,0.55f*screenHeight,0.28f*screenWidth,0.065f*screenHeight);
-		settingRect = new Rect(0.65f*screenWidth,0.7f*screenHeight,0.28f*screenWidth,0.065f*screenHeight);
-		tutorialRect = new Rect(0.65f*screenWidth,0.85f*screenHeight,0.28f*screenWidth,0.065f*screenHeight);
+		newGameRect = new Rect(0.62f*screenWidth,0.4f*screenHeight,0.34f*screenWidth,0.065f*screenHeight);
+		continueRect = new Rect(0.62f*screenWidth,0.55f*screenHeight,0.34f*screenWidth,0.065f*screenHeight);
+		settingRect = new Rect(0.62f*screenWidth,0.7f*screenHeight,0.34f*screenWidth,0.065f*screenHeight);
+		tutorialRect = new Rect(0.62f*screenWidth,0.85f*screenHeight,0.34f*screenWidth,0.065f*screenHeight);
 	}
 		
 	void OnGUI(){

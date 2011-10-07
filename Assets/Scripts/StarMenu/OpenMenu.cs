@@ -25,26 +25,32 @@ public class OpenMenu : MonoBehaviour {
 	
 	// Update is called once per frame
 	void OnGUI () {
+		
+		if(Loading.LOAD) {
+			GUI.skin.box.fontSize = 32 * Screen.height/640;
+		}
+		else {
+			GUI.skin.box.fontSize = 56 * Screen.height/640;
+			GUI.skin.button.fontSize = 28 * Screen.height/640;
+		}
+		
 		GUI.depth = guiDepth;
 		
 		// Open the menu when press "New Game"
 		if(showNewGame) {
 			switch(newGameIdx) {
 			case 1:
-				GUI.skin.box.fontSize = 24 * Screen.height/640;
-				DoLevel( new Rect(0.25f*Screen.width, 0.3f*Screen.height, 0.5f*Screen.width, 0.3f*Screen.height),
+				DoLevel( new Rect(0.1f*Screen.width, 0.25f*Screen.height, 0.8f*Screen.width, 0.5f*Screen.height),
 				        "Level Mode" );
 				break;
 				
 			case 2:
-				GUI.skin.box.fontSize = 24 * Screen.height/640;
-				DoChallenge(new Rect(0.25f*Screen.width, 0.3f*Screen.height, 0.5f*Screen.width, 0.3f*Screen.height),
+				DoChallenge(new Rect(0.1f*Screen.width, 0.25f*Screen.height, 0.8f*Screen.width, 0.5f*Screen.height),
 				            "Challenge");
 				break;
 
 			default:
-				GUI.skin.box.fontSize = 24 * Screen.height/640;
-				DoNewGame(new Rect(0.35f*Screen.width, 0.3f*Screen.height, 0.3f*Screen.width, 0.4f*Screen.height),
+				DoNewGame(new Rect(0.3f*Screen.width, 0.2f*Screen.height, 0.4f*Screen.width, 0.6f*Screen.height),
 				          "New Game");
 				break;
 			}
@@ -54,26 +60,22 @@ public class OpenMenu : MonoBehaviour {
 		else if(showContinue) {
 			switch(continuteIdx) {
 			case 1:
-				GUI.skin.box.fontSize = 24 * Screen.height/640;
-				DoNewGame(new Rect(0.35f*Screen.width, 0.3f*Screen.height, 0.3f*Screen.width, 0.4f*Screen.height),
+				DoNewGame(new Rect(0.3f*Screen.width, 0.2f*Screen.height, 0.4f*Screen.width, 0.6f*Screen.height),
 				          "Profile 1");
 				break;
 				
 			case 2:
-				GUI.skin.box.fontSize = 24 * Screen.height/640;
-				DoNewGame(new Rect(0.35f*Screen.width, 0.3f*Screen.height, 0.3f*Screen.width, 0.4f*Screen.height),
+				DoNewGame(new Rect(0.3f*Screen.width, 0.2f*Screen.height, 0.4f*Screen.width, 0.6f*Screen.height),
 				          "Profile 2");
 				break;
 				
 			case 3:
-				GUI.skin.box.fontSize = 24 * Screen.height/640;
-				DoNewGame(new Rect(0.35f*Screen.width, 0.3f*Screen.height, 0.3f*Screen.width, 0.4f*Screen.height),
+				DoNewGame(new Rect(0.3f*Screen.width, 0.2f*Screen.height, 0.4f*Screen.width, 0.6f*Screen.height),
 				          "Profile 3");
 				break;
 
 			default:
-				GUI.skin.box.fontSize = 24 * Screen.height/640;
-				DoContinue(new Rect(0.4f*Screen.width, 0.3f*Screen.height, 0.2f*Screen.width, 0.5f*Screen.height),
+				DoContinue(new Rect(0.3f*Screen.width, 0.1f*Screen.height, 0.4f*Screen.width, 0.8f*Screen.height),
 				          "Continue");
 				break;
 			}
@@ -83,26 +85,22 @@ public class OpenMenu : MonoBehaviour {
 		if(showSetting) {
 			switch(settingIdx) {
 			case 1:
-				GUI.skin.box.fontSize = 24 * Screen.height/640;
-				DoSound(new Rect(0.25f*Screen.width, 0.3f*Screen.height, 0.5f*Screen.width, 0.4f*Screen.height),
+				DoSound(new Rect(0.1f*Screen.width, 0.2f*Screen.height, 0.8f*Screen.width, 0.6f*Screen.height),
 			    	    "Sound");
 				break;
 				
 			case 2:
-				GUI.skin.box.fontSize = 24 * Screen.height/640;
-				DoCtrl(new Rect(0.35f*Screen.width, 0.3f*Screen.height, 0.3f*Screen.width, 0.4f*Screen.height),
+				DoCtrl(new Rect(0.3f*Screen.width, 0.2f*Screen.height, 0.4f*Screen.width, 0.6f*Screen.height),
 				       "Control");
 				break;
 				
 			case 3:
-				GUI.skin.box.fontSize = 24 * Screen.height/640;
-				DoLang(new Rect(0.4f*Screen.width, 0.3f*Screen.height, 0.2f*Screen.width, 0.3f*Screen.height),
+				DoLang(new Rect(0.3f*Screen.width, 0.25f*Screen.height, 0.4f*Screen.width, 0.5f*Screen.height),
 				       "Language");
 				break;
 
 			default:
-				GUI.skin.box.fontSize = 24 * Screen.height/640;
-				DoSetting(new Rect(0.4f*Screen.width, 0.3f*Screen.height, 0.2f*Screen.width, 0.5f*Screen.height),
+				DoSetting(new Rect(0.3f*Screen.width, 0.1f*Screen.height, 0.4f*Screen.width, 0.8f*Screen.height),
 				          "Setting");
 				break;
 			}
@@ -374,7 +372,7 @@ public class OpenMenu : MonoBehaviour {
 	float LabelSlider (Rect screenRect, float sliderValue, float sliderMinValue,float sliderMaxValue, string labelText)
 	{
 		GUIStyle mystyle = new GUIStyle();
-		mystyle.fontSize = 20 * Screen.height/640;
+		mystyle.fontSize = 32 * Screen.height/640;
 		mystyle.normal.textColor = Color.white;
 		GUI.Label (screenRect, labelText, mystyle);
 		screenRect.x += 0.2f*screenRect.width; 
