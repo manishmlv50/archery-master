@@ -7,9 +7,14 @@ public class GameOver : MonoBehaviour {
 	public AudioClip confirmSound;
 	
 	public Texture2D background; 
-	public Font headerFont;
-	public Font scoreFont;
+	public Font headerFont_Large;
+	public Font headerFont_Small;
+	public Font scoreFont_Large;
+	public Font scoreFont_Small;
+	
 	public GUIStyle buttonStyle;
+	public Font buttonFont_Large;
+	public Font buttonFont_Small;
 	
 	private Rect header;
 	private GUIStyle headerStyle;
@@ -21,19 +26,31 @@ public class GameOver : MonoBehaviour {
 	public static int guiDepth = 1;
 	
 	void Start(){
+		
 		header = new Rect(0,Screen.height*0.1f,Screen.width,Screen.height*0.2f);
 		headerStyle = new GUIStyle();
-		headerStyle.font = headerFont;
-		headerStyle.normal.textColor = Color.red;
-		headerStyle.alignment = TextAnchor.MiddleCenter;
 		
 		score = new Rect(0,Screen.height*0.35f,Screen.width,Screen.height*0.3f);
 		scoreStyle = new GUIStyle();
-		scoreStyle.font = scoreFont;
+		
+		if(Screen.height > 500) {
+			headerStyle.font = headerFont_Large;
+			scoreStyle.font = scoreFont_Large;
+			buttonStyle.font = buttonFont_Large;
+		}
+		else {
+			headerStyle.font = headerFont_Small;
+			scoreStyle.font = scoreFont_Small;
+			buttonStyle.font = buttonFont_Small;
+		}
+		
+		headerStyle.normal.textColor = Color.red;
+		headerStyle.alignment = TextAnchor.MiddleCenter;
+		
 		scoreStyle.normal.textColor = Color.white;
 		scoreStyle.alignment = TextAnchor.MiddleCenter;
 		
-		buttonPosition = new Rect(Screen.width*0.8f,Screen.height*0.75f,Screen.width*0.2f,Screen.height*0.2f);
+		buttonPosition = new Rect(Screen.width*0.75f,Screen.height*0.75f,Screen.width*0.25f,Screen.height*0.2f);
 	}
 	
 	void OnGUI(){

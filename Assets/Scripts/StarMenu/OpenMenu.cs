@@ -32,6 +32,7 @@ public class OpenMenu : MonoBehaviour {
 		else {
 			GUI.skin.box.fontSize = 56 * Screen.height/640;
 			GUI.skin.button.fontSize = 28 * Screen.height/640;
+			GUI.skin.box.alignment = TextAnchor.UpperCenter;
 		}
 		
 		GUI.depth = guiDepth;
