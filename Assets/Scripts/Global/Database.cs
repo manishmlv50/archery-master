@@ -124,6 +124,8 @@ public class Database
 				return Targets.WallTarget;
 			if (timeSpend % 11 == 0)
 				return Targets.StrongTarget;
+			if (timeSpend % 37 == 0)
+				return Targets.DarknessTarget;
 			
 		}
 		if (pointID == 1) {
