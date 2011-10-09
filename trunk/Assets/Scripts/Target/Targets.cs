@@ -1,5 +1,5 @@
 using System;
 public enum Targets{
-	NormalTarget, BombTarget, FreezeTarget,TimeTarget,Null
+	NormalTarget, BombTarget, FreezeTarget,TimeTarget, ProjectileTarget, Null
 }
 
