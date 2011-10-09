@@ -10,7 +10,7 @@ public class Loading : MonoBehaviour {
 	
 	// Use this for initialization
 	void Start () {
-	
+		LOAD = false;	
 	}
 	
 	void OnGUI() {
