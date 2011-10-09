@@ -120,6 +120,8 @@ public class Database
 				return Targets.TimeTarget;
 			if (timeSpend % 7 == 0)
 				return Targets.ProjectileTarget;
+			if (timeSpend % 19 == 0)
+				return Targets.WallTarget;
 			
 		}
 		if (pointID == 1) {
