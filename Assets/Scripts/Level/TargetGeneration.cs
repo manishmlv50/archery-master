@@ -9,6 +9,7 @@ public class TargetGeneration : MonoBehaviour {
 	public Transform bombTarget;
 	public Transform freezeTarget;
 	public Transform projectileTarget;
+	public Transform wallTarget;
 	
 	public int targetSpeed = 500;
 	public bool left;
@@ -34,6 +35,8 @@ public class TargetGeneration : MonoBehaviour {
 			t = freezeTarget;
 		else if(targetID == Targets.ProjectileTarget)
 			t = projectileTarget;
+		else if(targetID == Targets.WallTarget)
+			t = wallTarget;
 		
 		if(t != null){
 			Transform targetInst = (Transform)Instantiate(t,transform.position,Quaternion.LookRotation(new Vector3(0,90,0)));
