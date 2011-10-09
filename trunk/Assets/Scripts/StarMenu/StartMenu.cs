@@ -15,6 +15,8 @@ public class StartMenu : MonoBehaviour {
 	public AudioClip menuOpenSound;
 	public AudioClip menuCloseSound;
 	
+	public Texture2D background;
+	
 	private Rect titleRect;
 	private Rect newGameRect;
 	private Rect continueRect;
@@ -30,7 +32,7 @@ public class StartMenu : MonoBehaviour {
 		float screenHeight = Screen.height;
 		
 		// set each button position
-		titleRect = new Rect(0.2f*screenWidth,0.1f*screenHeight,0.8f*screenWidth,0.25f*screenHeight);
+		titleRect = new Rect(0.5f*screenWidth,0.05f*screenHeight,0.45f*screenWidth,0.5f*screenHeight);
 		newGameRect = new Rect(0.62f*screenWidth,0.4f*screenHeight,0.34f*screenWidth,0.065f*screenHeight);
 		continueRect = new Rect(0.62f*screenWidth,0.55f*screenHeight,0.34f*screenWidth,0.065f*screenHeight);
 		settingRect = new Rect(0.62f*screenWidth,0.7f*screenHeight,0.34f*screenWidth,0.065f*screenHeight);
@@ -39,6 +41,7 @@ public class StartMenu : MonoBehaviour {
 		
 	void OnGUI(){
 		GUI.depth = guiDepth;
+		GUI.DrawTexture(new Rect (0,0,Screen.width,Screen.height),background, ScaleMode.StretchToFill);
 		// if working, that means other buttons except the current ones couldn't work
 		// ex: if we open setting window, then the button on the beginning start menu
 		// like New Game, Continue... can't work
@@ -48,7 +51,7 @@ public class StartMenu : MonoBehaviour {
 		// Adjust the arrangement according to diff resolutions
 		if(Screen.width > 900) {
 			
-			GUI.Label(titleRect,"Archery Master",titleStyle_Large);
+			GUI.Label(titleRect,"Archery\n        Master",titleStyle_Large);
 			
 			
 			if( GUI.Button(newGameRect,"New Game",menuStyle_Large) && !working) {
@@ -73,7 +76,7 @@ public class StartMenu : MonoBehaviour {
 		}
 		else if(Screen.width < 600) {
 			
-			GUI.Label(titleRect,"Archery Master",titleStyle_Small);
+			GUI.Label(titleRect,"Archery\n        Master",titleStyle_Small);
 				
 			if( GUI.Button(newGameRect,"New Game",menuStyle_Small) && !working) {
 				OpenMenu.showNewGame = true;
@@ -97,7 +100,7 @@ public class StartMenu : MonoBehaviour {
 		}
 		else {
 			
-			GUI.Label(titleRect,"Archery Master",titleStyle_Mid);
+			GUI.Label(titleRect,"Archery\n        Master",titleStyle_Mid);
 				
 			if( GUI.Button(newGameRect,"New Game",menuStyle_Mid) && !working ) {
 				OpenMenu.showNewGame = true;
