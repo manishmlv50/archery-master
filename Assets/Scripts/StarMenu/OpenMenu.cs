@@ -20,7 +20,14 @@ public class OpenMenu : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
-	
+		showNewGame = false;
+		showContinue = false;
+		showSetting = false;
+		tutorMode = false;
+		settingIdx = 0;
+		newGameIdx = 0;
+		continuteIdx = 0;
+		guiDepth = 1;
 	}
 	
 	// Update is called once per frame

@@ -26,6 +26,7 @@ public class GameOver : MonoBehaviour {
 	public static int guiDepth = 1;
 	
 	void Start(){
+		guiDepth = 1;
 		
 		header = new Rect(0,Screen.height*0.1f,Screen.width,Screen.height*0.2f);
 		headerStyle = new GUIStyle();

@@ -12,10 +12,16 @@ public class Energy : MonoBehaviour {
 	public AudioClip max_energy_sound;
 	private static bool super_mode = false;
 	
+	private int tempNum = 0;
+	
 	// Use this for initialization
 	void Start () {
 		//float screenWidth = Screen.width;
 		//float screenHeight = Screen.height;
+		
+		curr_power = 0.0f;
+		tempNum = 0;
+		super_mode = false;
 		
 		energy_bar = gameObject.GetComponent<GUITexture>();
 		Rect temp = new Rect((Screen.width - energy_bar.pixelInset.width)/2,
@@ -33,8 +39,14 @@ public class Energy : MonoBehaviour {
 			curr_power -= Time.deltaTime * 10.0f; // During this time, the player will be superman.
 			curr_power = Mathf.Clamp(curr_power, 0, energy_bar_width);
 			
-			if(Mathf.Approximately(curr_power, 0))
+			GameStatus.Inst.MoveSpeed = 30;
+			GameStatus.Inst.ArrowCount = 999;
+			
+			if(Mathf.Approximately(curr_power, 0)) {
 				super_mode = false;	
+				GameStatus.Inst.MoveSpeed = 20;
+				GameStatus.Inst.ArrowCount = tempNum;
+			}
 		}
  
 		/* Due to floating point imprecision it is not recommended to compare floats using the equal operator. 
@@ -42,6 +54,7 @@ public class Energy : MonoBehaviour {
 		if(Mathf.Approximately(curr_power, energy_bar_width) && super_mode == false)
 		{
 			super_mode = true;
+			tempNum = GameStatus.Inst.ArrowCount;
 			AudioSource.PlayClipAtPoint(max_energy_sound, 
 			                            new Vector3(transform.position.x, transform.position.y, transform.position.z), 
 			                            1f);
