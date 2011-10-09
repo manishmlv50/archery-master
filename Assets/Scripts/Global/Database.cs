@@ -118,7 +118,8 @@ public class Database
 				return Targets.BombTarget;
 			if (timeSpend % 29 == 0)
 				return Targets.TimeTarget;
-			
+			if (timeSpend % 33 == 0)
+				return Targets.ProjectileTarget;
 			
 		}
 		if (pointID == 1) {
