@@ -20,6 +20,6 @@ public class WallTarget : Target {
 		createSound();
 		
 		/* Don't Destroy the Wall Target, destroy the arrow */
-		Destroy(arrow);
+		Destroy(arrow.gameObject);
 	}
 }

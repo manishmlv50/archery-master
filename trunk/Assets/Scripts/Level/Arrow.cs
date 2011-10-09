@@ -9,10 +9,11 @@ using System.Collections;
 
 public class Arrow : MonoBehaviour
 {
-
 	// Use this for initialization
 	public Transform comboPrefab;
 	private int _combo;
+	public static int DMG_AMOUNT = 25;
+	
 	public int Combo {
 		get {
 			return _combo;

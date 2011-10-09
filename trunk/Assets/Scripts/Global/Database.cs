@@ -122,6 +122,8 @@ public class Database
 				return Targets.ProjectileTarget;
 			if (timeSpend % 19 == 0)
 				return Targets.WallTarget;
+			if (timeSpend % 11 == 0)
+				return Targets.StrongTarget;
 			
 		}
 		if (pointID == 1) {
