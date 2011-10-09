@@ -10,7 +10,9 @@ public class Loading : MonoBehaviour {
 	
 	// Use this for initialization
 	void Start () {
-		LOAD = false;	
+		LOAD = false;
+		guiDepth = 0;
+		percentageLoaded = 0;
 	}
 	
 	void OnGUI() {
@@ -20,7 +22,6 @@ public class Loading : MonoBehaviour {
 		if(LOAD) {
 			GUIStyle loadStyle = new GUIStyle(GUI.skin.box);
 			GUI.skin.box.fontSize = 32 * Screen.height/640;
-			GUI.skin.box.alignment = TextAnchor.MiddleCenter;
 			percentageLoaded = Application.GetStreamProgressForLevel("Level") * 100;
 			GUI.Box(new Rect(0.3f*Screen.width, 0.33f*Screen.height, 0.4f*Screen.width, 0.09f*Screen.height),
 		    	    "Loading..." + percentageLoaded.ToString() + "%", loadStyle);

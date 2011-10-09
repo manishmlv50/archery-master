@@ -31,6 +31,9 @@ public class StartMenu : MonoBehaviour {
 		float screenWidth = Screen.width;
 		float screenHeight = Screen.height;
 		
+		working = false;
+		guiDepth = 2;
+		
 		// set each button position
 		titleRect = new Rect(0.5f*screenWidth,0.05f*screenHeight,0.45f*screenWidth,0.5f*screenHeight);
 		newGameRect = new Rect(0.62f*screenWidth,0.4f*screenHeight,0.34f*screenWidth,0.065f*screenHeight);
