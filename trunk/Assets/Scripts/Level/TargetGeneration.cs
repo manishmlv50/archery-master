@@ -11,6 +11,7 @@ public class TargetGeneration : MonoBehaviour {
 	public Transform projectileTarget;
 	public Transform wallTarget;
 	public Transform strongTarget;
+	public Transform darknessTarget;
 	
 	public int targetSpeed = 500;
 	public bool left;
@@ -40,6 +41,8 @@ public class TargetGeneration : MonoBehaviour {
 			t = wallTarget;
 		else if(targetID == Targets.StrongTarget)
 			t = strongTarget;
+		else if(targetID == Targets.DarknessTarget)
+			t = darknessTarget;
 		
 		if(t != null){
 			Transform targetInst = (Transform)Instantiate(t,transform.position,Quaternion.LookRotation(new Vector3(0,90,0)));
