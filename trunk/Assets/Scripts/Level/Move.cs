@@ -56,17 +56,29 @@ public class Move : MonoBehaviour {
 					float touchX = currentTouch.position.x - guiTexture.pixelInset.width/2;
 					if(touchX > center){
 						x = Mathf.Min(touchX,right);
-						if(x - center > guiTexture.pixelInset.width/5)
+						if(x - center > guiTexture.pixelInset.width/5) {
+							character.animation["idle"].layer = 0;
+							character.animation.CrossFade("walkright");
 							moveDirection = 1;
-						else
+						}
+						else {
+							character.animation["idle"].layer = 1;
+							character.animation.CrossFade("idle");
 							moveDirection = 0;
+						}
 					}
 					else{
 						x = Mathf.Max(left,touchX);
-						if(center - x > guiTexture.pixelInset.width/5)
+						if(center - x > guiTexture.pixelInset.width/5) {
+							character.animation["idle"].layer = 0;
+							character.animation.CrossFade("walkleft");
 							moveDirection = -1;
-						else
+						}
+						else {
+							character.animation["idle"].layer = 1;
+							character.animation.CrossFade("idle");
 							moveDirection = 0;
+						}
 					}
 					guiTexture.pixelInset = new Rect(x,guiTexture.pixelInset.y,guiTexture.pixelInset.width,guiTexture.pixelInset.height);
 				}
@@ -75,6 +87,18 @@ public class Move : MonoBehaviour {
 		// Tilting
 		else{
 			moveDirection = -Input.acceleration.y * 4f;
+			if(moveDirection > 0) {
+				character.animation["idle"].layer = 0;
+				character.animation.CrossFade("walkright");
+			}
+			else if(moveDirection < 0) {
+				character.animation["idle"].layer = 0;
+				character.animation.CrossFade("walkleft");
+			}
+			else {
+				character.animation["idle"].layer = 1;
+				character.animation.CrossFade("idle");
+			}
 		}
 		
 		// Keyboard Control
