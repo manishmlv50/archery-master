@@ -46,7 +46,7 @@ public class Database
 
 	public static Targets GetTarget (int level, int timeSpend, int pointID)
 	{
-			switch(levels._targetsLevel[level,timeSpend,pointID]) {
+			switch(Levels._targetsLevel[level,timeSpend,pointID]) {
 				case 1: return Targets.NormalTarget; 
 				case 2: return Targets.BombTarget;
 				case 3: return Targets.FreezeTarget;
