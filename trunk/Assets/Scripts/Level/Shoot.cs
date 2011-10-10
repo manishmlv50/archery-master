@@ -9,15 +9,13 @@ public class Shoot : MonoBehaviour {
 	public Texture2D upButton;
 	public Transform shotPoint;
 	public Transform fireBall;
-	public int fireSpeed = 1000;
+	public int fireSpeed = 5000;
 	
 	public static bool run;
-	public static float dragRange = 0;
-	
-	private float preY = 0;
 	
 	// Use this for initialization
 	void Start () {
+		fireSpeed = 5000;
 		run = true;
 	}
 	
@@ -48,25 +46,9 @@ public class Shoot : MonoBehaviour {
 				}
 			}
 			
-			// Drag
-			else {
-				if(currentTouch.phase == TouchPhase.Began) {
-					preY = currentTouch.position.y;
-				}
-			
-				if(currentTouch.phase == TouchPhase.Moved) {
-					float y = currentTouch.position.y;
-					dragRange = Mathf.Abs(y - preY);
-				
-					if(dragRange >= 0.5*Screen.height) dragRange = 5;
-					else if(dragRange >= 0.4*Screen.height) dragRange = 4;
-					else if(dragRange >= 0.3*Screen.height) dragRange = 3;
-					else if(dragRange >= 0.2*Screen.height) dragRange = 2;
-					else dragRange = 1;
-				}
-			
+			// click to shoot
+			else {			
 				if(currentTouch.phase == TouchPhase.Ended) {			
-					fireSpeed = (int) dragRange * 1500;
 					Transform bullet = (Transform)Instantiate(fireBall,
 					                                          shotPoint.transform.position,
 					                                          Quaternion.LookRotation(Vector3.forward));
