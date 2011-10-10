@@ -18,7 +18,7 @@ public class TargetGeneration : MonoBehaviour {
 	public int ID;
 	
 	void Start () {
-		InvokeRepeating("targetMethod",1,1);   //3 times a secs?
+		InvokeRepeating("targetMethod",0.1f,1);   //3 times a secs?
 	}
 	
 	void targetMethod(){

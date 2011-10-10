@@ -5,7 +5,7 @@
 	<Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
 	<ProductVersion>9.0.21022</ProductVersion>
 	<SchemaVersion>2.0</SchemaVersion>
-	<ProjectGuid>{7BBA3686-C3A4-1C7D-98AB-D28B4A620E75}</ProjectGuid>
+	<ProjectGuid>{C9C5ACED-AF37-B251-9AC8-2374AADD4A08}</ProjectGuid>
 	<OutputType>Library</OutputType>
 	<AppDesignerFolder>Properties</AppDesignerFolder>
 	<RootNamespace></RootNamespace>
@@ -18,7 +18,7 @@
 	<DebugType>full</DebugType>
 	<Optimize>false</Optimize>
 	<OutputPath>Temp\bin\Debug\</OutputPath>
-	<DefineConstants>DEBUG;TRACE;UNITY_3_4_1;UNITY_3_4;UNITY_EDITOR;ENABLE_PROFILER;UNITY_IOS;UNITY_IPHONE;ENABLE_GENERICS;ENABLE_TERRAIN;ENABLE_NETWORK;ENABLE_WWW</DefineConstants>
+	<DefineConstants>DEBUG;TRACE;UNITY_3_4_0;UNITY_3_4;UNITY_EDITOR;ENABLE_PROFILER;UNITY_STANDALONE_WIN;ENABLE_GENERICS;ENABLE_DUCK_TYPING;ENABLE_TERRAIN;ENABLE_MOVIES;ENABLE_NETWORK;ENABLE_CLOTH;ENABLE_WWW</DefineConstants>
 	<ErrorReport>prompt</ErrorReport>
 	<WarningLevel>4</WarningLevel>
 	<NoWarn>0169</NoWarn>
@@ -37,10 +37,10 @@
     <Reference Include="System.XML" />
 	<Reference Include="System.Core" />
 	<Reference Include="UnityEngine">
-	  <HintPath>/Applications/Unity/Unity.app/Contents/Frameworks/Managed/UnityEngine.dll</HintPath>
+	  <HintPath>D:/Program Files/Unity/Editor/Data/Managed/UnityEngine.dll</HintPath>
 	</Reference>
 	<Reference Include="UnityEditor">
-	  <HintPath>/Applications/Unity/Unity.app/Contents/Frameworks/Managed/UnityEditor.dll</HintPath>
+	  <HintPath>D:/Program Files/Unity/Editor/Data/Managed/UnityEditor.dll</HintPath>
 	</Reference>
   </ItemGroup>
   <ItemGroup>
@@ -48,6 +48,7 @@
      <Compile Include="Assets\Scripts\Global\Database.cs" />
      <Compile Include="Assets\Scripts\Global\GameStatus.cs" />
      <Compile Include="Assets\Scripts\Global\Loading.cs" />
+     <Compile Include="Assets\Scripts\Global\levels.cs" />
      <Compile Include="Assets\Scripts\Level\Arrow.cs" />
      <Compile Include="Assets\Scripts\Level\Character.cs" />
      <Compile Include="Assets\Scripts\Level\Combo.cs" />
@@ -63,20 +64,24 @@
      <Compile Include="Assets\Scripts\StarMenu\StartMenu.cs" />
      <Compile Include="Assets\Scripts\Statistic\Statistic.cs" />
      <Compile Include="Assets\Scripts\Target\BombTarget.cs" />
+     <Compile Include="Assets\Scripts\Target\DarknessTarget.cs" />
      <Compile Include="Assets\Scripts\Target\FreezeTarget.cs" />
      <Compile Include="Assets\Scripts\Target\NormalTarget.cs" />
+     <Compile Include="Assets\Scripts\Target\ProjectileTarget.cs" />
+     <Compile Include="Assets\Scripts\Target\StrongTarget.cs" />
      <Compile Include="Assets\Scripts\Target\Target.cs" />
      <Compile Include="Assets\Scripts\Target\Targets.cs" />
      <Compile Include="Assets\Scripts\Target\TimeTarget.cs" />
+     <Compile Include="Assets\Scripts\Target\WallTarget.cs" />
      <None Include="Assets\Standard Assets\Detonator\Resources\Detonator\Textures\HeatDistort.shader" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="Assembly-CSharp-firstpass.csproj">
-      <Project>{1F57B4B3-1404-172C-98F9-5F745298DD31}</Project>
+      <Project>{1ECCC056-403F-DE82-16EC-800D8F942A9F}</Project>
       <Name>Assembly-CSharp-firstpass</Name>
     </ProjectReference>
     <ProjectReference Include="Assembly-UnityScript-firstpass.unityproj">
-      <Project>{DE36132F-DD8C-4981-2017-8A7824C47D17}</Project>
+      <Project>{86B659CC-1081-2BE2-8A2F-2F1FD391F4DA}</Project>
       <Name>Assembly-UnityScript-firstpass</Name>
     </ProjectReference>
   </ItemGroup>
