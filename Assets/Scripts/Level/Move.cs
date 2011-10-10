@@ -7,6 +7,7 @@ public class Move : MonoBehaviour {
 	public Texture2D downButton;
 	public Texture2D upButton;
 	public GUITexture moveStick;
+	public Transform character;
 	
 	private int movefingerId = -1;
 	private float center = 1;
@@ -20,6 +21,11 @@ public class Move : MonoBehaviour {
 		center = guiTexture.pixelInset.x;
 		left = moveStick.pixelInset.x - guiTexture.pixelInset.width/2;
 		right = moveStick.pixelInset.x + moveStick.pixelInset.width - guiTexture.pixelInset.width/2;
+		
+		character.animation.wrapMode = WrapMode.Loop;
+		character.animation["idle"].layer = 0;
+		character.animation["walkleft"].layer = 1;
+		character.animation["walkright"].layer = 1;
 	}
 	
 	// Update is called once per frame
@@ -73,14 +79,19 @@ public class Move : MonoBehaviour {
 		
 		// Keyboard Control
 		if(Input.GetButton("Horizontal")) {
+			character.animation["idle"].layer = 0;
 			if(Input.GetAxis("Horizontal") > 0 ) {
+				character.animation.CrossFade("walkright");
 				moveDirection = 1;
 			}
 			else if(Input.GetAxis("Horizontal") < 0) {
+				character.animation.CrossFade("walkleft");
 				moveDirection = -1;
 			}
 		}
 		else if(Input.GetButtonUp("Horizontal")){
+			character.animation["idle"].layer = 1;
+			character.animation.CrossFade("idle");
 			moveDirection = 0;
 		}
 	}

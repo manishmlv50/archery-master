@@ -6,6 +6,10 @@ using System.Collections;
 
 public class Energy : MonoBehaviour {
 	
+	public Transform super_wave;
+	public Transform super_condition;
+	public Transform emitPoint;	
+	
 	public static float energy_bar_width = 200.0f;
 	public static float curr_power = 0.0f;
 	public GUITexture energy_bar;
@@ -13,6 +17,7 @@ public class Energy : MonoBehaviour {
 	private static bool super_mode = false;
 	
 	private int tempNum = 0;
+	private Transform condition;
 	
 	// Use this for initialization
 	void Start () {
@@ -36,6 +41,7 @@ public class Energy : MonoBehaviour {
 	void Update () {	
 		if(super_mode)
 		{
+			condition.position = emitPoint.transform.position;
 			curr_power -= Time.deltaTime * 10.0f; // During this time, the player will be superman.
 			curr_power = Mathf.Clamp(curr_power, 0, energy_bar_width);
 			
@@ -46,6 +52,7 @@ public class Energy : MonoBehaviour {
 				super_mode = false;	
 				GameStatus.Inst.MoveSpeed = 20;
 				GameStatus.Inst.ArrowCount = tempNum;
+				Destroy(condition.gameObject);
 			}
 		}
  
@@ -55,9 +62,14 @@ public class Energy : MonoBehaviour {
 		{
 			super_mode = true;
 			tempNum = GameStatus.Inst.ArrowCount;
+			
 			AudioSource.PlayClipAtPoint(max_energy_sound, 
-			                            new Vector3(transform.position.x, transform.position.y, transform.position.z), 
-			                            1f);
+			                            new Vector3(transform.position.x, 17.9f, -34), 
+			                            GameStatus.soundVol);
+			
+			condition = (Transform)Instantiate(super_condition,emitPoint.transform.position,Quaternion.identity);
+			
+			StartCoroutine("delay");
 		}
 		
 	    /* Set the width of the GUI Texture equal to the energy value */
@@ -73,6 +85,12 @@ public class Energy : MonoBehaviour {
 		
 		curr_power = curr_power + e;	
 		curr_power = Mathf.Clamp(curr_power, 0, energy_bar_width);
+	}
+	
+	IEnumerator delay() {
+		Transform wave = (Transform) Instantiate(super_wave, emitPoint.transform.position,Quaternion.identity);
+		yield return new WaitForSeconds(1f);
+		Destroy(wave.gameObject);
 	}
 }
 
