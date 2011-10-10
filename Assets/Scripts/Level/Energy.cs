@@ -10,32 +10,23 @@ public class Energy : MonoBehaviour {
 	public Transform super_condition;
 	public Transform emitPoint;	
 	
-	public static float energy_bar_width = 200.0f;
-	public static float curr_power = 0.0f;
-	public GUITexture energy_bar;
 	public AudioClip max_energy_sound;
-	private static bool super_mode = false;
+	private bool super_mode = false;
 	
-	private int tempNum = 0;
+	
 	private Transform condition;
+	
+	public Texture texture;
+	
+	public int barWidth = 400;
+	public int barHeight = 10;
+	public float curr_power = 0;
 	private float moveSpeed = 0;
+	private int arrowNumber = 0;
 	
 	// Use this for initialization
 	void Start () {
-		//float screenWidth = Screen.width;
-		//float screenHeight = Screen.height;
-		
-		curr_power = 0.0f;
-		tempNum = 0;
-		super_mode = false;
-		
-		energy_bar = gameObject.GetComponent<GUITexture>();
-		Rect temp = new Rect((Screen.width - energy_bar.pixelInset.width)/2,
-		                     (Screen.height - energy_bar.pixelInset.height)/2,
-		                     energy_bar.pixelInset.width,
-		                     energy_bar.pixelInset.height); //(100, -30, 200, 20);
-		temp.width = 0.0f;
-		energy_bar.pixelInset = temp;
+		curr_power = 0;
 	}
 	
 	// Update is called once per frame
@@ -43,26 +34,26 @@ public class Energy : MonoBehaviour {
 		if(super_mode)
 		{
 			condition.position = emitPoint.transform.position;
-			curr_power -= Time.deltaTime * 10.0f; // During this time, the player will be superman.
-			curr_power = Mathf.Clamp(curr_power, 0, energy_bar_width);
+			curr_power -= Time.deltaTime * 30; // During this time, the player will be superman.
+			curr_power = Mathf.Clamp(curr_power, 0, barWidth);
 			
 			GameStatus.Inst.MoveSpeed = 30;
 			GameStatus.Inst.ArrowCount = 10000;
 			
-			if(Mathf.Approximately(curr_power, 0)) {
+			if(Mathf.Approximately(curr_power,0)) {
 				super_mode = false;	
 				GameStatus.Inst.MoveSpeed = moveSpeed;
-				GameStatus.Inst.ArrowCount = tempNum;
+				GameStatus.Inst.ArrowCount = arrowNumber;
 				Destroy(condition.gameObject);
 			}
 		}
  
 		/* Due to floating point imprecision it is not recommended to compare floats using the equal operator. 
 		 * Ex: 1.0 == 10.0 / 10.0 might not return true. */
-		if(Mathf.Approximately(curr_power, energy_bar_width) && super_mode == false)
+		if(Mathf.Approximately(curr_power , barWidth) && super_mode == false)
 		{
 			super_mode = true;
-			tempNum = GameStatus.Inst.ArrowCount;
+			arrowNumber = GameStatus.Inst.ArrowCount;
 			moveSpeed = GameStatus.Inst.MoveSpeed;
 			
 			AudioSource.PlayClipAtPoint(max_energy_sound, 
@@ -73,20 +64,22 @@ public class Energy : MonoBehaviour {
 			
 			StartCoroutine("delay");
 		}
-		
-	    /* Set the width of the GUI Texture equal to the energy value */
-	    Rect temp2 = energy_bar.pixelInset;
-		temp2.width = curr_power;
-		energy_bar.pixelInset = temp2;
 	}
 	
-	public static void addEnergy(float e)
+	void OnGUI()
+	{
+		GUI.BeginGroup(new Rect(Screen.width/2-barWidth/2,barHeight,curr_power,barHeight));
+    	GUI.DrawTexture(new Rect( 0,0,barWidth,barHeight), texture );
+    	GUI.EndGroup();
+	}
+	
+	public void addEnergy(int e)
 	{
 		if(super_mode)	// don't add energy during super mode
 			return;	
 		
-		curr_power = curr_power + e;	
-		curr_power = Mathf.Clamp(curr_power, 0, energy_bar_width);
+		curr_power = curr_power + e;
+		curr_power = Mathf.Clamp(curr_power, 0, barWidth);
 	}
 	
 	IEnumerator delay() {
