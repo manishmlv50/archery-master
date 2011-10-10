@@ -1,0 +1,197 @@
+fileFormatVersion: 1
+guid: 1dd4bc263b697412b859e695f8b8ee8a
+ModelImporter:
+  importerVersion: 7
+  meshes:
+    scaleFactor: 1
+    useFileUnits: 1
+    meshCompression: 0
+    generateColliders: 0
+    swapUVs: 0
+  tangentSpace:
+    normalImportMode: 0
+    tangentImportMode: 1
+    smoothingAngle: 60
+    splitTangents: 1
+  materials:
+    generation: 1
+  animations:
+    generation: 3
+    bakeAnimations: 0
+    animationCompression: 1
+    animationWrapMode: 0
+    splitAnimations: 1
+    clips:
+      idle:
+        firstFrame: -10
+        lastFrame: -9
+        loop: 0
+        wrapMode: 2
+      walkleft:
+        firstFrame: 0
+        lastFrame: 40
+        loop: 0
+        wrapMode: 2
+      walkright:
+        firstFrame: 41
+        lastFrame: 80
+        loop: 0
+        wrapMode: 0
+  nodeInfo:
+    CONTROL_ALL:
+    - 100000
+    - 400000
+    Finger1_R:
+    - 100002
+    - 400002
+    Finger2_R:
+    - 100004
+    - 400004
+    Finger2_L:
+    - 100006
+    - 400006
+    neck:
+    - 100008
+    - 400008
+    root:
+    - 100010
+    - 400010
+    - 13700000
+    arm_R:
+    - 100012
+    - 400012
+    elbow_L:
+    - 100014
+    - 400014
+    Finger1_L:
+    - 100016
+    - 400016
+    Wrist_Control_L:
+    - 100018
+    - 400018
+    Spine2_Control:
+    - 100020
+    - 400020
+    ikHandle2:
+    - 100022
+    - 400022
+    ancle_R:
+    - 100024
+    - 400024
+    ikHandle1:
+    - 100026
+    - 400026
+    hip_R:
+    - 100028
+    - 400028
+    //RootNode:
+    - 100030
+    - 400030
+    - 11100000
+    Elbow_Control_L:
+    - 100032
+    - 400032
+    spine2:
+    - 100034
+    - 400034
+    spine1:
+    - 100036
+    - 400036
+    Wrist_L:
+    - 100038
+    - 400038
+    hip_L:
+    - 100040
+    - 400040
+    Parm_Control_L:
+    - 100042
+    - 400042
+    knee_R:
+    - 100044
+    - 400044
+    elbow_R:
+    - 100046
+    - 400046
+    Arm_Control_R:
+    - 100048
+    - 400048
+    Finger_Control1_L:
+    - 100050
+    - 400050
+    Neck_Control:
+    - 100052
+    - 400052
+    Knee_Control_L:
+    - 100054
+    - 400054
+    Finger_Control1_R:
+    - 100056
+    - 400056
+    Spine1_Control:
+    - 100058
+    - 400058
+    ikHandle_Feet_R:
+    - 100060
+    - 400060
+    Finger_Control_R:
+    - 100062
+    - 400062
+    Palm_Control_R:
+    - 100064
+    - 400064
+    Knee_Control_R:
+    - 100066
+    - 400066
+    ikHandle_Feet_L:
+    - 100068
+    - 400068
+    polySurface8:
+    - 100070
+    - 400070
+    Wrist_Control_R:
+    - 100072
+    - 400072
+    Elbow_Control_R:
+    - 100074
+    - 400074
+    Finger_Control_L:
+    - 100076
+    - 400076
+    Head_Contol:
+    - 100078
+    - 400078
+    Arm_Control_L:
+    - 100080
+    - 400080
+    Hip_Control:
+    - 100082
+    - 400082
+    ancle_L:
+    - 100084
+    - 400084
+    arm_L:
+    - 100086
+    - 400086
+    knee_L:
+    - 100088
+    - 400088
+    head:
+    - 100090
+    - 400090
+    Palm_R:
+    - 100092
+    - 400092
+    Palm_L:
+    - 100094
+    - 400094
+    Wrist_R:
+    - 100096
+    - 400096
+AssetImporter:
+  importerVersion: 1
+  fileIDToRecycleName:
+    4300000: polySurface8
+    7400000: Take 001 //// Archer Charactor V0.6
+    7400002: idle //// Archer Charactor V0.6
+    7400004: walkleft //// Archer Charactor V0.6
+    7400006: walkright //// Archer Charactor V0.6
