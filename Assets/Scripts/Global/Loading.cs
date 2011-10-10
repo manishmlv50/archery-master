@@ -23,7 +23,7 @@ public class Loading : MonoBehaviour {
 			GUIStyle loadStyle = new GUIStyle(GUI.skin.box);
 			GUI.skin.box.fontSize = 32 * Screen.height/640;
 			percentageLoaded = Application.GetStreamProgressForLevel("Level") * 100;
-			GUI.Box(new Rect(0.3f*Screen.width, 0.33f*Screen.height, 0.4f*Screen.width, 0.09f*Screen.height),
+			GUI.Box(new Rect(0.3f*Screen.width, 0.45f*Screen.height, 0.4f*Screen.width, 0.09f*Screen.height),
 		    	    "Loading..." + percentageLoaded.ToString() + "%", loadStyle);
 		}
 	}

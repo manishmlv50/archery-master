@@ -31,7 +31,6 @@ public class GUIControl : MonoBehaviour {
 	private Rect levelRect;
 	private Rect targetRect;
 	private Rect arrowRect;
-	private Rect powerRect;
 	
 	void Start () {
 		
@@ -92,7 +91,6 @@ public class GUIControl : MonoBehaviour {
 		arrowRect = new Rect(0.7f*screenWidth,0.12f*screenWidth,0.3f*screenWidth,0.05f*screenWidth);
 		timeRect = new Rect(screenWidth/2-0.06f*screenWidth,0.01f*screenWidth,0.15f*screenWidth,0.15f*screenWidth);
 		levelRect = new Rect(0.03f*screenWidth,0.04f*screenWidth,0.2f*screenWidth,0.05f*screenWidth);
-		powerRect = new Rect(0.03f*screenWidth,0.09f*screenWidth,0.2f*screenWidth,0.05f*screenWidth);
 	}
 	
 	void OnGUI(){
@@ -107,7 +105,6 @@ public class GUIControl : MonoBehaviour {
 			
 			GUI.Label(timeRect,GameStatus.Inst.Time.ToString(),timeStyle_Large);
 			GUI.Label(levelRect,"Level:"+(GameStatus.Level+1),scoreStyle_Large);
-			GUI.Label(powerRect,"Power:"+Shoot.dragRange,scoreStyle_Large);
 			
 			//if(GUI.Button(new Rect(850,300,50,50),changeWeapon,changeWeaponStyle)){
 			//	
@@ -123,7 +120,6 @@ public class GUIControl : MonoBehaviour {
 				GUI.Label(arrowRect," Arrow:"+GameStatus.Inst.ArrowCount,scoreStyle_Small);
 			GUI.Label(timeRect,GameStatus.Inst.Time.ToString(),timeStyle_Small);
 			GUI.Label(levelRect,"Level:"+(GameStatus.Level+1),scoreStyle_Small);
-			GUI.Label(powerRect,"Power:"+Shoot.dragRange,scoreStyle_Small);
 		}
 		else {
 			GUI.Label(scoreRect," Score:"+GameStatus.Inst.Score,scoreStyle_Mid);
@@ -134,7 +130,6 @@ public class GUIControl : MonoBehaviour {
 				GUI.Label(arrowRect," Arrow:"+GameStatus.Inst.ArrowCount,scoreStyle_Mid);
 			GUI.Label(timeRect,GameStatus.Inst.Time.ToString(),timeStyle_Mid);
 			GUI.Label(levelRect,"Level:"+(GameStatus.Level+1),scoreStyle_Mid);
-			GUI.Label(powerRect,"Power:"+Shoot.dragRange,scoreStyle_Mid);
 		}
 	}	
 }

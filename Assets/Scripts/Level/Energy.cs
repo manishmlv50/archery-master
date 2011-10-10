@@ -13,12 +13,11 @@ public class Energy : MonoBehaviour {
 	public AudioClip max_energy_sound;
 	private bool super_mode = false;
 	
-	
 	private Transform condition;
 	
 	public Texture texture;
 	
-	public int barWidth = 400;
+	public int barWidth = 390;
 	public int barHeight = 10;
 	public float curr_power = 0;
 	private float moveSpeed = 0;
@@ -27,6 +26,7 @@ public class Energy : MonoBehaviour {
 	// Use this for initialization
 	void Start () {
 		curr_power = 0;
+		super_mode = false;
 	}
 	
 	// Update is called once per frame

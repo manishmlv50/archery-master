@@ -7,6 +7,11 @@ public class OpenMenu : MonoBehaviour {
 	public AudioClip menuOpenSound;
 	public AudioClip menuCloseSound;
 	
+	public Font buttonFont_Large;
+	public Font buttonFont_Small;
+	public Font boxFont_Large;
+	public Font boxFont_Small;
+	
 	public static bool showNewGame = false;
 	public static bool showContinue = false;
 	public static bool showSetting = false;
@@ -34,11 +39,20 @@ public class OpenMenu : MonoBehaviour {
 	void OnGUI () {
 		
 		if(Loading.LOAD) {
-			GUI.skin.box.fontSize = 32 * Screen.height/640;
+			if(Screen.width > 900)
+				GUI.skin.box.font = boxFont_Large;
+			else
+				GUI.skin.box.font = boxFont_Small;
 		}
 		else {
-			GUI.skin.box.fontSize = 56 * Screen.height/640;
-			GUI.skin.button.fontSize = 28 * Screen.height/640;
+			if(Screen.width > 900) {
+				GUI.skin.box.font = boxFont_Large;
+				GUI.skin.button.font = buttonFont_Large;
+			}
+			else {
+				GUI.skin.box.font = boxFont_Small;
+				GUI.skin.button.font = buttonFont_Small;
+			}
 			GUI.skin.box.alignment = TextAnchor.UpperCenter;
 		}
 		
@@ -264,7 +278,7 @@ public class OpenMenu : MonoBehaviour {
 			myStyle2.active.textColor = Color.magenta;
 		}
 		
-		if( GUI.Button(new Rect(x, 1f*y+rect.y, width, height), "Virtual Joystick", myStyle1) ) {
+		if( GUI.Button(new Rect(x, 1f*y+rect.y, width, height), "Virtual Joypad", myStyle1) ) {
 			GameStatus.ctrl = true;
 			AudioSource.PlayClipAtPoint(confirmSound, new Vector3(0,1,-10), GameStatus.soundVol);
 		}
@@ -337,6 +351,7 @@ public class OpenMenu : MonoBehaviour {
 		
 		if( GUI.Button(new Rect(x+0.6f*width, 2f*y+rect.y, 0.4f*width, height), "OK") ) {
 			Loading.LOAD = true;
+			Start();
 			AudioSource.PlayClipAtPoint(confirmSound, new Vector3(0,1,-10), GameStatus.soundVol);
 			Application.LoadLevel("Level");
 		}
@@ -379,6 +394,7 @@ public class OpenMenu : MonoBehaviour {
 		
 		if( GUI.Button(new Rect(x+0.6f*width, 2f*y+rect.y, 0.4f*width, height), "OK") ) {
 			Loading.LOAD = true;
+			Start();
 			AudioSource.PlayClipAtPoint(confirmSound, new Vector3(0,1,-10), GameStatus.soundVol);
 			Application.LoadLevel("Level");
 		}
