@@ -5,7 +5,7 @@
 	<Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
 	<ProductVersion>9.0.21022</ProductVersion>
 	<SchemaVersion>2.0</SchemaVersion>
-	<ProjectGuid>{C9C5ACED-AF37-B251-9AC8-2374AADD4A08}</ProjectGuid>
+	<ProjectGuid>{7BBA3686-C3A4-1C7D-98AB-D28B4A620E75}</ProjectGuid>
 	<OutputType>Library</OutputType>
 	<AppDesignerFolder>Properties</AppDesignerFolder>
 	<RootNamespace></RootNamespace>
@@ -18,7 +18,7 @@
 	<DebugType>full</DebugType>
 	<Optimize>false</Optimize>
 	<OutputPath>Temp\bin\Debug\</OutputPath>
-	<DefineConstants>DEBUG;TRACE;UNITY_3_4_0;UNITY_3_4;UNITY_EDITOR;ENABLE_PROFILER;UNITY_STANDALONE_WIN;ENABLE_GENERICS;ENABLE_DUCK_TYPING;ENABLE_TERRAIN;ENABLE_MOVIES;ENABLE_NETWORK;ENABLE_CLOTH;ENABLE_WWW</DefineConstants>
+	<DefineConstants>DEBUG;TRACE;UNITY_3_4_1;UNITY_3_4;UNITY_EDITOR;ENABLE_PROFILER;UNITY_IOS;UNITY_IPHONE;ENABLE_GENERICS;ENABLE_TERRAIN;ENABLE_NETWORK;ENABLE_WWW</DefineConstants>
 	<ErrorReport>prompt</ErrorReport>
 	<WarningLevel>4</WarningLevel>
 	<NoWarn>0169</NoWarn>
@@ -37,24 +37,25 @@
     <Reference Include="System.XML" />
 	<Reference Include="System.Core" />
 	<Reference Include="UnityEngine">
-	  <HintPath>D:/Program Files/Unity/Editor/Data/Managed/UnityEngine.dll</HintPath>
+	  <HintPath>/Applications/Unity/Unity.app/Contents/Frameworks/Managed/UnityEngine.dll</HintPath>
 	</Reference>
 	<Reference Include="UnityEditor">
-	  <HintPath>D:/Program Files/Unity/Editor/Data/Managed/UnityEditor.dll</HintPath>
+	  <HintPath>/Applications/Unity/Unity.app/Contents/Frameworks/Managed/UnityEditor.dll</HintPath>
 	</Reference>
   </ItemGroup>
   <ItemGroup>
+     <Compile Include="Assets\Scripts\Arrow\Arrow.cs" />
      <Compile Include="Assets\Scripts\GameOver\GameOver.cs" />
      <Compile Include="Assets\Scripts\Global\Database.cs" />
      <Compile Include="Assets\Scripts\Global\GameStatus.cs" />
+     <Compile Include="Assets\Scripts\Global\Levels.cs" />
      <Compile Include="Assets\Scripts\Global\Loading.cs" />
-     <Compile Include="Assets\Scripts\Global\levels.cs" />
-     <Compile Include="Assets\Scripts\Level\Arrow.cs" />
      <Compile Include="Assets\Scripts\Level\Character.cs" />
      <Compile Include="Assets\Scripts\Level\Combo.cs" />
      <Compile Include="Assets\Scripts\Level\Control.cs" />
      <Compile Include="Assets\Scripts\Level\Energy.cs" />
      <Compile Include="Assets\Scripts\Level\GUIControl.cs" />
+     <Compile Include="Assets\Scripts\Level\LightGroup.cs" />
      <Compile Include="Assets\Scripts\Level\Move.cs" />
      <Compile Include="Assets\Scripts\Level\Shoot.cs" />
      <Compile Include="Assets\Scripts\Level\SmoothFollow.cs" />
@@ -77,11 +78,11 @@
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="Assembly-CSharp-firstpass.csproj">
-      <Project>{1ECCC056-403F-DE82-16EC-800D8F942A9F}</Project>
+      <Project>{1F57B4B3-1404-172C-98F9-5F745298DD31}</Project>
       <Name>Assembly-CSharp-firstpass</Name>
     </ProjectReference>
     <ProjectReference Include="Assembly-UnityScript-firstpass.unityproj">
-      <Project>{86B659CC-1081-2BE2-8A2F-2F1FD391F4DA}</Project>
+      <Project>{DE36132F-DD8C-4981-2017-8A7824C47D17}</Project>
       <Name>Assembly-UnityScript-firstpass</Name>
     </ProjectReference>
   </ItemGroup>

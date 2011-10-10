@@ -12,6 +12,7 @@ public class Arrow : MonoBehaviour
 	// Use this for initialization
 	public Transform comboPrefab;
 	private int _combo;
+	
 	public static int DMG_AMOUNT = 25;
 	
 	public int Combo {
@@ -32,12 +33,6 @@ public class Arrow : MonoBehaviour
 	void Start ()
 	{
 		_combo = 0;
-	}
-
-	// Update is called once per frame
-	void Update ()
-	{
-		
 	}
 
 	void OnTriggerEnter (Collider c)
