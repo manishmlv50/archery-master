@@ -249,11 +249,19 @@ public class OpenMenu : MonoBehaviour {
 				
 		if(GameStatus.ctrl) {
 			myStyle1.normal.textColor = Color.magenta;
+			myStyle1.hover.textColor = Color.magenta;
+			myStyle1.active.textColor = Color.magenta;
 			myStyle2.normal.textColor = Color.white;
+			myStyle2.hover.textColor = Color.white;
+			myStyle2.active.textColor = Color.white;
 		}
 		else {
 			myStyle1.normal.textColor = Color.white;
+			myStyle1.hover.textColor = Color.white;
+			myStyle1.active.textColor = Color.white;
 			myStyle2.normal.textColor = Color.magenta;
+			myStyle2.hover.textColor = Color.magenta;
+			myStyle2.active.textColor = Color.magenta;
 		}
 		
 		if( GUI.Button(new Rect(x, 1f*y+rect.y, width, height), "Virtual Joystick", myStyle1) ) {
