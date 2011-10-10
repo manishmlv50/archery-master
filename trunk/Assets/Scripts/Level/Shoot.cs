@@ -42,7 +42,7 @@ public class Shoot : MonoBehaviour {
 					movefingerId = -1;
 					Transform bullet = (Transform)Instantiate(fireBall,
 				    	                                      shotPoint.transform.position,
-				        	                                  Quaternion.LookRotation(new Vector3(0,270,90)));
+				        	                                  Quaternion.LookRotation(Vector3.forward));
 					bullet.rigidbody.AddForce(transform.forward*fireSpeed);
 					ShootArrow();
 				}
@@ -69,7 +69,7 @@ public class Shoot : MonoBehaviour {
 					fireSpeed = (int) dragRange * 1500;
 					Transform bullet = (Transform)Instantiate(fireBall,
 					                                          shotPoint.transform.position,
-					                                          Quaternion.LookRotation(new Vector3(0,270,90)));
+					                                          Quaternion.LookRotation(Vector3.forward));
 					bullet.rigidbody.AddForce(transform.forward*fireSpeed);
 					ShootArrow();
 					StartCoroutine("delay");
@@ -80,7 +80,7 @@ public class Shoot : MonoBehaviour {
 		if(Input.GetButtonDown("Jump")){
 			Transform bullet = (Transform)Instantiate(fireBall,
 			                                          shotPoint.transform.position,
-			                                          Quaternion.LookRotation(new Vector3(0,270,90)));
+			                                          Quaternion.LookRotation(Vector3.forward));
 			bullet.rigidbody.AddForce(transform.forward*fireSpeed);
 			ShootArrow();
 			StartCoroutine("delay");

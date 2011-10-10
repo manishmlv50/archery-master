@@ -18,6 +18,7 @@ public class Energy : MonoBehaviour {
 	
 	private int tempNum = 0;
 	private Transform condition;
+	private float moveSpeed = 0;
 	
 	// Use this for initialization
 	void Start () {
@@ -46,11 +47,11 @@ public class Energy : MonoBehaviour {
 			curr_power = Mathf.Clamp(curr_power, 0, energy_bar_width);
 			
 			GameStatus.Inst.MoveSpeed = 30;
-			GameStatus.Inst.ArrowCount = 999;
+			GameStatus.Inst.ArrowCount = 10000;
 			
 			if(Mathf.Approximately(curr_power, 0)) {
 				super_mode = false;	
-				GameStatus.Inst.MoveSpeed = 20;
+				GameStatus.Inst.MoveSpeed = moveSpeed;
 				GameStatus.Inst.ArrowCount = tempNum;
 				Destroy(condition.gameObject);
 			}
@@ -62,6 +63,7 @@ public class Energy : MonoBehaviour {
 		{
 			super_mode = true;
 			tempNum = GameStatus.Inst.ArrowCount;
+			moveSpeed = GameStatus.Inst.MoveSpeed;
 			
 			AudioSource.PlayClipAtPoint(max_energy_sound, 
 			                            new Vector3(transform.position.x, 17.9f, -34), 

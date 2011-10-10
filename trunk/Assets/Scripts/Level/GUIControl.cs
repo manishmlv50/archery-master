@@ -19,6 +19,9 @@ public class GUIControl : MonoBehaviour {
 	private GUIStyle scoreStyle_Mid;
 	private GUIStyle scoreStyle_Large;
 	
+	public Texture changeWeaponTexture;
+	public GUIStyle changeWeaponStyle;
+	
 	private GUIStyle timeStyle_Small;
 	private GUIStyle timeStyle_Mid;
 	private GUIStyle timeStyle_Large;
@@ -97,17 +100,27 @@ public class GUIControl : MonoBehaviour {
 		if(Screen.width > 900) {
 			GUI.Label(scoreRect," Score:"+GameStatus.Inst.Score,scoreStyle_Large);
 			GUI.Label(targetRect,"Target:"+GameStatus.Inst.TargetScore,scoreStyle_Large);
-			GUI.Label(arrowRect," Arrow:"+GameStatus.Inst.ArrowCount,scoreStyle_Large);
+			if(GameStatus.Inst.ArrowCount>999)
+				GUI.Label(arrowRect," Arrow:Max",scoreStyle_Large);
+			else
+				GUI.Label(arrowRect," Arrow:"+GameStatus.Inst.ArrowCount,scoreStyle_Large);
 			
 			GUI.Label(timeRect,GameStatus.Inst.Time.ToString(),timeStyle_Large);
 			GUI.Label(levelRect,"Level:"+(GameStatus.Level+1),scoreStyle_Large);
 			GUI.Label(powerRect,"Power:"+Shoot.dragRange,scoreStyle_Large);
+			
+			//if(GUI.Button(new Rect(850,300,50,50),changeWeapon,changeWeaponStyle)){
+			//	
+			//}
+			   
 		}
 		else if(Screen.width < 600) {
 			GUI.Label(scoreRect," Score:"+GameStatus.Inst.Score,scoreStyle_Small);
 			GUI.Label(targetRect,"Target:"+GameStatus.Inst.TargetScore,scoreStyle_Small);
-			GUI.Label(arrowRect," Arrow:"+GameStatus.Inst.ArrowCount,scoreStyle_Small);
-			
+			if(GameStatus.Inst.ArrowCount>999)
+				GUI.Label(arrowRect," Arrow:Max",scoreStyle_Small);
+			else
+				GUI.Label(arrowRect," Arrow:"+GameStatus.Inst.ArrowCount,scoreStyle_Small);
 			GUI.Label(timeRect,GameStatus.Inst.Time.ToString(),timeStyle_Small);
 			GUI.Label(levelRect,"Level:"+(GameStatus.Level+1),scoreStyle_Small);
 			GUI.Label(powerRect,"Power:"+Shoot.dragRange,scoreStyle_Small);
@@ -115,8 +128,10 @@ public class GUIControl : MonoBehaviour {
 		else {
 			GUI.Label(scoreRect," Score:"+GameStatus.Inst.Score,scoreStyle_Mid);
 			GUI.Label(targetRect,"Target:"+GameStatus.Inst.TargetScore,scoreStyle_Mid);
-			GUI.Label(arrowRect," Arrow:"+GameStatus.Inst.ArrowCount,scoreStyle_Mid);
-			
+			if(GameStatus.Inst.ArrowCount>999)
+				GUI.Label(arrowRect," Arrow:Max",scoreStyle_Mid);
+			else
+				GUI.Label(arrowRect," Arrow:"+GameStatus.Inst.ArrowCount,scoreStyle_Mid);
 			GUI.Label(timeRect,GameStatus.Inst.Time.ToString(),timeStyle_Mid);
 			GUI.Label(levelRect,"Level:"+(GameStatus.Level+1),scoreStyle_Mid);
 			GUI.Label(powerRect,"Power:"+Shoot.dragRange,scoreStyle_Mid);

@@ -23,6 +23,8 @@ public class Statistic : MonoBehaviour {
 	private	GUIStyle scoreStyle;
 	private Rect buttonPosition;
 	
+	private Rect storePosition;
+	
 	public static int guiDepth = 1;
 	
 	void Start(){
@@ -50,6 +52,7 @@ public class Statistic : MonoBehaviour {
 		scoreStyle.alignment = TextAnchor.MiddleCenter;
 		
 		buttonPosition = new Rect(Screen.width*0.75f,Screen.height*0.75f,Screen.width*0.25f,Screen.height*0.2f);
+		storePosition = new Rect(Screen.width*0.49f,Screen.height*0.75f,Screen.width*0.25f,Screen.height*0.2f);
 	}
 	
 	void OnGUI(){
@@ -71,5 +74,10 @@ public class Statistic : MonoBehaviour {
 			Application.LoadLevel("Level");
 		}
 		
+		if(GUI.Button(storePosition,"Store",buttonStyle))
+		{
+			GameStatus.Level++;
+			Application.LoadLevel("Store");
+		}
 	}
 }
