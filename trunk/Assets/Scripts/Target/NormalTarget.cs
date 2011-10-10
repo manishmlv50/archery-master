@@ -12,7 +12,9 @@ public class NormalTarget  : Target
 	{
 		createSound();
 		GameStatus.Inst.EarnScore(arrow.Combo++, TARGET_ID);
-		Energy.addEnergy(10.0f);
+		Energy e = GameObject.FindObjectOfType(typeof(Energy)) as Energy;
+		if(e != null)
+			e.addEnergy(20);
 		Destroy(this.gameObject);
 	}
 }
