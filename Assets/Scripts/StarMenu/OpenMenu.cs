@@ -53,7 +53,6 @@ public class OpenMenu : MonoBehaviour {
 				GUI.skin.box.font = boxFont_Small;
 				GUI.skin.button.font = buttonFont_Small;
 			}
-			GUI.skin.box.alignment = TextAnchor.UpperCenter;
 		}
 		
 		GUI.depth = guiDepth;
