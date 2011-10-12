@@ -5,9 +5,9 @@ public class Database
 {
 
 
-	private static int[] _time = { 60, 60, 60 };
-	private static int[] _targetScore = { 2000, 3500, 5000 };
-	private static int[] _arrow = { 20, 25, 30 };
+	private static int[] _time = { 40, 50, 60 };
+	private static int[] _targetScore = { 500, 700, 2500 };
+	private static int[] _arrow = { 20, 25, 20 };
 
 	public static int GetTime (int level)
 	{
@@ -46,17 +46,18 @@ public class Database
 
 	public static Targets GetTarget (int level, int timeSpend, int pointID)
 	{
-			switch(Levels._targetsLevel[level,timeSpend,pointID]) {
-				case 1: return Targets.NormalTarget; 
-				case 2: return Targets.BombTarget;
-				case 3: return Targets.FreezeTarget;
-				case 4: return Targets.TimeTarget;
-				case 5 : return Targets.ProjectileTarget;
-				case 6 : return Targets.WallTarget;
-				case 7 : return Targets.StrongTarget;
-				case 8 : return Targets.DarknessTarget;
-				default : return Targets.Null;
-			}
+		TargetGeneration.targetSpeed = LevelsSpeed._targetsSpeed[level,timeSpend,pointID];
+		switch(Levels._targetsLevel[level,timeSpend,pointID]) {
+			case 1: return Targets.NormalTarget; 
+			case 2: return Targets.BombTarget;
+			case 3: return Targets.FreezeTarget;
+			case 4: return Targets.TimeTarget;
+			case 5 : return Targets.ProjectileTarget;
+			case 6 : return Targets.WallTarget;
+			case 7 : return Targets.StrongTarget;
+			case 8 : return Targets.DarknessTarget;
+			default : return Targets.Null;
+		}
 	}
 	
 	

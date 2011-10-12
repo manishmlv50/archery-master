@@ -13,11 +13,12 @@ public class TargetGeneration : MonoBehaviour {
 	public Transform strongTarget;
 	public Transform darknessTarget;
 	
-	public int targetSpeed = 500;
+	public static int targetSpeed = 500;
 	public bool left;
 	public int ID;
 	
 	void Start () {
+		targetSpeed = 500;
 		InvokeRepeating("targetMethod",0.1f,1);   //3 times a secs?
 	}
 	
