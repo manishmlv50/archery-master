@@ -17,7 +17,7 @@ public class Energy : MonoBehaviour {
 	
 	public Texture texture;
 	
-	public int barWidth = 390;
+	public int barWidth = 300;
 	public int barHeight = 10;
 	public float curr_power = 0;
 	private float moveSpeed = 0;
@@ -34,13 +34,13 @@ public class Energy : MonoBehaviour {
 		if(super_mode)
 		{
 			condition.position = emitPoint.transform.position;
-			curr_power -= Time.deltaTime * 30; // During this time, the player will be superman.
+			curr_power -= Time.deltaTime * 30f; // During this time, the player will be superman.
 			curr_power = Mathf.Clamp(curr_power, 0, barWidth);
 			
 			GameStatus.Inst.MoveSpeed = 30;
 			GameStatus.Inst.ArrowCount = 10000;
 			
-			if(Mathf.Approximately(curr_power,0)) {
+			if(curr_power == 0) {
 				super_mode = false;	
 				GameStatus.Inst.MoveSpeed = moveSpeed;
 				GameStatus.Inst.ArrowCount = arrowNumber;

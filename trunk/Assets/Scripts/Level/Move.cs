@@ -67,7 +67,8 @@ public class Move : MonoBehaviour {
 		}
 		// Tilting
 		else{
-			character.MoveDirection = -Input.acceleration.y * 4f;
+			character.MoveDirection = -Input.acceleration.y * 6f;
+			character.MoveDirection = Mathf.Clamp(character.MoveDirection, -1, 1);
 		}
 		
 		// Keyboard Control
