@@ -38,22 +38,8 @@ public class Character : MonoBehaviour{
 		animation["walkleft"].layer = 1;
 		animation["walkright"].layer = 1;
 	}
+	
 	void Update () {
-		
-		if(FreezeTarget.isFrozen)
-		{
-			if((Time.time - FreezeTarget.lastTime) > FreezeTarget.FREEZETIME)
-			{
-				// No longer frozen
-				FreezeTarget.isFrozen = false;
-			}
-			else
-			{
-				// Still frozen - don't allow movement.
-				return;	
-			}
-		}
-		
 		
         float moveInput = MoveDirection * Time.deltaTime * GameStatus.Inst.MoveSpeed; 
         transform.position += new Vector3(moveInput, 0, 0);

@@ -43,21 +43,32 @@ public class Database
 	{
 		return 1.8f;
 	}
+	
+	public static int GetTargetSpeed(Targets t,int level)
+	{
+		argetGeneration.targetSpeed = LevelsSpeed._targetsSpeed;
+	}
 
 	public static Targets GetTarget (int level, int timeSpend, int pointID)
 	{
-		TargetGeneration.targetSpeed = LevelsSpeed._targetsSpeed[level,timeSpend,pointID];
+		
+		if(level >= Levels._targetsLevel.GetLength(0))
+			return Targets.Null;
+		
+		if(timeSpend >= Levels._targetsLevel.GetLength(1))
+			return Targets.Null;
+		
 		switch(Levels._targetsLevel[level,timeSpend,pointID]) {
-			case 1: return Targets.NormalTarget; 
-			case 2: return Targets.BombTarget;
-			case 3: return Targets.FreezeTarget;
-			case 4: return Targets.TimeTarget;
-			case 5 : return Targets.ProjectileTarget;
-			case 6 : return Targets.WallTarget;
-			case 7 : return Targets.StrongTarget;
-			case 8 : return Targets.DarknessTarget;
-			default : return Targets.Null;
-		}
+				case 1: return Targets.NormalTarget; 
+				case 2: return Targets.BombTarget;
+				case 3: return Targets.FreezeTarget;
+				case 4: return Targets.TimeTarget;
+				case 5 : return Targets.ProjectileTarget;
+				case 6 : return Targets.WallTarget;
+				case 7 : return Targets.StrongTarget;
+				case 8 : return Targets.DarknessTarget;
+				default : return Targets.Null;
+			}
 	}
 	
 	

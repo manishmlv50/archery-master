@@ -13,7 +13,6 @@ public class TargetGeneration : MonoBehaviour {
 	public Transform strongTarget;
 	public Transform darknessTarget;
 	
-	public static int targetSpeed = 500;
 	public bool left;
 	public int ID;
 	
@@ -47,10 +46,11 @@ public class TargetGeneration : MonoBehaviour {
 		
 		if(t != null){
 			Transform targetInst = (Transform)Instantiate(t,transform.position,Quaternion.LookRotation(new Vector3(0,90,0)));
+			
 			if(left)
-				targetInst.rigidbody.AddForce(Vector3.left*targetSpeed);	
+				targetInst.rigidbody.AddForce(Vector3.left*Database.GetTargetSpeed(targetID,GameStatus.Level));	
 			else
-				targetInst.rigidbody.AddForce(Vector3.right*targetSpeed);
+				targetInst.rigidbody.AddForce(Vector3.right*Database.GetTargetSpeed(targetID,GameStatus.Level));
 		}
 	}
 }

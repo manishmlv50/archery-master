@@ -3,7 +3,7 @@ using System.Collections;
 
 public abstract class Target: MonoBehaviour
 {	
-	public static Targets TARGET_ID;
+	public Targets TARGET_ID;
 	public Transform explosion;
 	public AudioClip destroySound;
 	

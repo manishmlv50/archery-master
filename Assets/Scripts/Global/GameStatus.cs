@@ -41,7 +41,7 @@ public class GameStatus
 	
 	public static float soundVol = 0.6f;
 	public static float BGM = 0.6f;
-	public static bool ctrl = true;
+	public static bool tilting = false;
 	
 	public static GameStatus Inst
 	{	

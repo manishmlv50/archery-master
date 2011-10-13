@@ -260,7 +260,7 @@ public class OpenMenu : MonoBehaviour {
 		GUIStyle myStyle1 = new GUIStyle(GUI.skin.button);
 		GUIStyle myStyle2 = new GUIStyle(GUI.skin.button);
 				
-		if(GameStatus.ctrl) {
+		if(GameStatus.tilting) {
 			myStyle1.normal.textColor = Color.magenta;
 			myStyle1.hover.textColor = Color.magenta;
 			myStyle1.active.textColor = Color.magenta;
@@ -277,13 +277,13 @@ public class OpenMenu : MonoBehaviour {
 			myStyle2.active.textColor = Color.magenta;
 		}
 		
-		if( GUI.Button(new Rect(x, 1f*y+rect.y, width, height), "Virtual Joypad", myStyle1) ) {
-			GameStatus.ctrl = true;
+		if( GUI.Button(new Rect(x, 1f*y+rect.y, width, height), "Tilting On", myStyle1) ) {
+			GameStatus.tilting = true;
 			AudioSource.PlayClipAtPoint(confirmSound, new Vector3(0,1,-10), GameStatus.soundVol);
 		}
 		
-		if( GUI.Button(new Rect(x, 2f*y+rect.y, width, height), "Tilting", myStyle2) ) {
-			GameStatus.ctrl = false;
+		if( GUI.Button(new Rect(x, 2f*y+rect.y, width, height), "Tilting off", myStyle2) ) {
+			GameStatus.tilting = false;
 			AudioSource.PlayClipAtPoint(confirmSound, new Vector3(0,1,-10), GameStatus.soundVol);
 		}
 		

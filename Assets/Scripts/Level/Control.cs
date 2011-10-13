@@ -1,70 +1,138 @@
-using System;
 using UnityEngine;
+using System.Collections;
 
-public class Control: MonoBehaviour
+public class Control : MonoBehaviour
 {
-	public static bool DEBUG = true;
+
+	private Character character;
+
+	private Vector2 position;
+	private int finger;
+	private bool run;
+
+	public int fireSpeed = 5000;
+	public Transform shotPoint;
+	public Transform fireBall;
 	
-	void Start(){
-		new GameStatus(Database.GetTime(GameStatus.Level),
-			                       Database.GetTargetScore(GameStatus.Level),
-			                       Database.GetArrowCount(GameStatus.Level),
-			                       Database.GetMoveSpeed(),
-			                       Database.GetScoreBonus(),
-			                       Database.GetComboBonus());
-		InvokeRepeating("countDown",1,1);
-	}
-	
-	private bool show = false;
-	
-	void OnGUI () {
-		if(!DEBUG)
-			return;
-		
-		if (GUI.Button (new Rect (0,0,Screen.width/10,Screen.height/20), "Debug")) {
-			show = !show;
-		}
-		
-		if(show){
-			GUI.Box(new Rect(Screen.width*0.25f, Screen.height*0.2f,Screen.width*0.5f,Screen.height*0.6f),"Debug");
-			Rect rect =new Rect(Screen.width*0.3f, Screen.height*0.36f,Screen.width*0.15f,Screen.height*0.06f);
-			GameStatus.Inst.MoveSpeed = LabelSlider (rect, GameStatus.Inst.MoveSpeed, 10,30, "Move Speed:");
-			rect.y+=rect.height*2;
-			GameStatus.Inst.ScoreBonus = LabelSlider (rect, GameStatus.Inst.ScoreBonus, 1,3f, "Score Bonus:");
-			rect.y+=rect.height*2;
-			GameStatus.Inst.ComboBonus = LabelSlider (rect, GameStatus.Inst.ComboBonus, 1.5f,2, "Combo Bonus:");
-			rect.y+=rect.height*2;
-		}
-			
-	}
-	
-	float LabelSlider (Rect screenRect, float sliderValue, float sliderMinValue,float sliderMaxValue,String labelText)
+	private bool canShoot;
+	private bool canMove;
+
+	void Start ()
 	{
-		GUI.Label (screenRect, labelText);
-		screenRect.x += screenRect.width; 
-		screenRect.y += 5;
-		screenRect.width *=1.5f;
-		sliderValue = GUI.HorizontalSlider(screenRect, sliderValue,sliderMinValue, sliderMaxValue);
-		screenRect.x += screenRect.width+10;
-		screenRect.y -= 5;
-		screenRect.width /=1.5f;
-		GUI.Label (screenRect, sliderValue.ToString());
-		return sliderValue;
+		position = Vector2.zero;
+		canShoot = true;
+		canMove = true;
+		finger = int.MinValue;
+		character = GameObject.FindObjectOfType (typeof(Character)) as Character;
+		new GameStatus (Database.GetTime (GameStatus.Level), Database.GetTargetScore (GameStatus.Level), Database.GetArrowCount (GameStatus.Level), Database.GetMoveSpeed (), Database.GetScoreBonus (), Database.GetComboBonus ());
+		InvokeRepeating ("countDown", 1, 1);
+	}
+
+	// Update is called once per frame
+	void Update ()
+	{	
+		if (GameStatus.tilting) {
+			character.MoveDirection = -Input.acceleration.y * 6f;
+			character.MoveDirection = Mathf.Clamp (character.MoveDirection, -1, 1);
+		}
+		
+		foreach (Touch currentTouch in Input.touches) {
+			if (currentTouch.phase == TouchPhase.Ended || currentTouch.phase == TouchPhase.Canceled) {
+				if (currentTouch.fingerId != finger && canShoot){
+					ShootArrow ();
+				}
+				else{
+					character.MoveDirection = 0;
+					finger = int.MinValue;
+				}
+			}
+			
+			else if (currentTouch.phase == TouchPhase.Moved) {
+				if(finger == int.MinValue)
+				{
+					position = currentTouch.position - currentTouch.deltaPosition;
+					finger = currentTouch.fingerId;
+				}
+				if(canMove){
+					if (currentTouch.position.x > position.x)
+						character.MoveDirection = 1;
+					else
+						character.MoveDirection = -1;
+				}
+			}
+		}
+		
+		
+		
+		#if UNITY_EDITOR
+		if (Input.GetButton ("Horizontal")) {
+			if (Input.GetAxis ("Horizontal") > 0) {
+				character.MoveDirection = 1;
+			} else if (Input.GetAxis ("Horizontal") < 0) {
+				character.MoveDirection = -1;
+			}
+		} else if (Input.GetButtonUp ("Horizontal")) {
+			character.MoveDirection = 0;
+		}
+		
+		if (Input.GetButtonDown ("Jump")) {
+			ShootArrow ();
+		}
+		#endif
 	}
 	
-	private void countDown(){
-		if(GameStatus.Inst.Time == 0){
-			if(GameStatus.Inst.Score >= GameStatus.Inst.TargetScore){
-				Application.LoadLevel("Statistic");
+	public void Freeze(float time)
+	{
+		canMove = false;
+		Invoke("enableMove",time);
+	}
+		
+	void enableMove()
+	{
+		canMove = true;
+	}
+
+	public void ShootArrow ()
+	{
+		canShoot = false;
+		Transform bullet = (Transform)Instantiate (fireBall, shotPoint.transform.position, Quaternion.LookRotation (Vector3.forward));
+		bullet.rigidbody.AddForce (transform.forward * fireSpeed);
+		GameStatus.Inst.ArrowCount--;
+		if (GameStatus.Inst.ArrowCount == 0)
+			Invoke ("endLevel", 0.5f);
+		else
+			Invoke ("enableShoot", 0.3f);
+	}
+
+	void endLevel ()
+	{
+		if (GameStatus.Inst.ArrowCount > 0) {
+			canShoot = true;
+		} else {
+			if (GameStatus.Inst.Score >= GameStatus.Inst.TargetScore) {
+				Application.LoadLevel ("Statistic");
+			} else {
+				Application.LoadLevel ("GameOver");
 			}
-			else{
-				Application.LoadLevel("GameOver");
-			}
-		}
-		else{
-			GameStatus.Inst.Tick();
 		}
 	}
+
+	void enableShoot ()
+	{
+		canShoot = true;
+	}
+
+	void countDown ()
+	{
+		if (GameStatus.Inst.Time == 0) {
+			if (GameStatus.Inst.Score >= GameStatus.Inst.TargetScore) {
+				Application.LoadLevel ("Statistic");
+			} else {
+				Application.LoadLevel ("GameOver");
+			}
+		} else {
+			GameStatus.Inst.Tick ();
+		}
+	}
+	
 }
-
-
