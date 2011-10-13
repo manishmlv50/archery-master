@@ -44,14 +44,13 @@ public class Database
 		return 1.8f;
 	}
 	
-	public static int GetTargetSpeed(Targets t,int level)
+	public static int GetTargetSpeed(int level, int timeSpend, int pointID)
 	{
-		argetGeneration.targetSpeed = LevelsSpeed._targetsSpeed;
+		return LevelsSpeed._targetsSpeed[level,timeSpend,pointID];
 	}
 
 	public static Targets GetTarget (int level, int timeSpend, int pointID)
 	{
-		
 		if(level >= Levels._targetsLevel.GetLength(0))
 			return Targets.Null;
 		

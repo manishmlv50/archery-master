@@ -17,7 +17,6 @@ public class TargetGeneration : MonoBehaviour {
 	public int ID;
 	
 	void Start () {
-		targetSpeed = 500;
 		InvokeRepeating("targetMethod",0.1f,1);   //3 times a secs?
 	}
 	
@@ -48,9 +47,9 @@ public class TargetGeneration : MonoBehaviour {
 			Transform targetInst = (Transform)Instantiate(t,transform.position,Quaternion.LookRotation(new Vector3(0,90,0)));
 			
 			if(left)
-				targetInst.rigidbody.AddForce(Vector3.left*Database.GetTargetSpeed(targetID,GameStatus.Level));	
+				targetInst.rigidbody.AddForce(Vector3.left*Database.GetTargetSpeed(GameStatus.Level,GameStatus.Inst.TimeSpend,ID));	
 			else
-				targetInst.rigidbody.AddForce(Vector3.right*Database.GetTargetSpeed(targetID,GameStatus.Level));
+				targetInst.rigidbody.AddForce(Vector3.right*Database.GetTargetSpeed(GameStatus.Level,GameStatus.Inst.TimeSpend,ID));
 		}
 	}
 }
