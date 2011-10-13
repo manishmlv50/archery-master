@@ -65,7 +65,7 @@ public class Control : MonoBehaviour
 		
 		
 		#if UNITY_EDITOR
-		if (Input.GetButton ("Horizontal")) {
+		if (Input.GetButton ("Horizontal") && canMove) {
 			if (Input.GetAxis ("Horizontal") > 0) {
 				character.MoveDirection = 1;
 			} else if (Input.GetAxis ("Horizontal") < 0) {
@@ -75,7 +75,7 @@ public class Control : MonoBehaviour
 			character.MoveDirection = 0;
 		}
 		
-		if (Input.GetButtonDown ("Jump")) {
+		if (Input.GetButtonDown ("Jump") && canShoot) {
 			ShootArrow ();
 		}
 		#endif
@@ -83,6 +83,7 @@ public class Control : MonoBehaviour
 	
 	public void Freeze(float time)
 	{
+		character.MoveDirection = 0;
 		canMove = false;
 		Invoke("enableMove",time);
 	}

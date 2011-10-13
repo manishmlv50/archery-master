@@ -15,6 +15,7 @@ public class TargetGeneration : MonoBehaviour {
 	
 	public bool left;
 	public int ID;
+	private int defaultSpeed = 500;
 	
 	void Start () {
 		InvokeRepeating("targetMethod",0.1f,1);   //3 times a secs?
@@ -45,11 +46,15 @@ public class TargetGeneration : MonoBehaviour {
 		
 		if(t != null){
 			Transform targetInst = (Transform)Instantiate(t,transform.position,Quaternion.LookRotation(new Vector3(0,90,0)));
-			
+			int speed = Database.GetTargetSpeed(GameStatus.Level,GameStatus.Inst.TimeSpend,ID);
+			if(speed == 0){
+				Debug.print("Warning! Please check the LevelsSpeed File. Level:"+GameStatus.Level+" Time:"+GameStatus.Inst.TimeSpend+" Id:"+ID);
+				speed = defaultSpeed;
+			}
 			if(left)
-				targetInst.rigidbody.AddForce(Vector3.left*Database.GetTargetSpeed(GameStatus.Level,GameStatus.Inst.TimeSpend,ID));	
+				targetInst.rigidbody.AddForce(Vector3.left*speed);	
 			else
-				targetInst.rigidbody.AddForce(Vector3.right*Database.GetTargetSpeed(GameStatus.Level,GameStatus.Inst.TimeSpend,ID));
+				targetInst.rigidbody.AddForce(Vector3.right*speed);
 		}
 	}
 }

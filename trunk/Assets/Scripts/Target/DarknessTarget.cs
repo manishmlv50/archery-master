@@ -4,7 +4,7 @@ using System.Collections;
 public class DarknessTarget : Target {
 	
 	// Use this for initialization
-	public static int DARK_TIME = 3;
+	public static int DARK_TIME = 5;
 	void Start () {
 		TARGET_ID = Targets.DarknessTarget;
 	}
