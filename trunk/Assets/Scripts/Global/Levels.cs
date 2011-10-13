@@ -15,14 +15,14 @@ public class Levels : MonoBehaviour {
 	public static int[,,] _targetsLevel = {
 		{// Level 1
 		 // {1st row (left), 2nd row (right), 3rd row (left), 4th row (right)}
-			{ 0, 0, 0, 0 }, 			// 0 sec
-			{ 1, 0, 0, 0 },             // 1 sec
-			{ 0, 0, 0, 0 }, 
+			{ 2, 0, 0, 0 }, 			// 0 sec
+			{ 1, 3, 0, 0 },             // 1 sec
+			{ 0, 0, 4, 0 }, 
 			{ 0, 1, 0, 0 }, 
-			{ 0, 0, 0, 0 }, 
-			{ 0, 0, 1, 0 },
-			{ 0, 0, 0, 0 }, 
-			{ 0, 0, 0, 1 }, 
+			{ 5, 0, 0, 0 }, 
+			{ 0, 6, 1, 0 },
+			{ 0, 0, 0, 7 }, 
+			{ 0, 0, 8, 1 }, 
 			{ 0, 0, 0, 0 }, 
 			{ 0, 0, 0, 0 }, 
 			{ 1, 0, 1, 0 },	            // 10 sec
