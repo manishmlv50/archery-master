@@ -9,8 +9,11 @@ public class LightGroup : MonoBehaviour {
 			Object[] os = GameObject.FindObjectsOfType(typeof(Light));
 			foreach(Object o in os){
 				Light light = (Light) o;
-				intensity = light.intensity;
-				light.intensity = value;
+				if(light.name.Equals("backgroudLight"))
+				{	
+					intensity = light.intensity;
+					light.intensity = value;
+				}
 			}
 			Invoke("back",DarknessTarget.DARK_TIME);
 		}
@@ -20,7 +23,8 @@ public class LightGroup : MonoBehaviour {
 		Object[] os = GameObject.FindObjectsOfType(typeof(Light));
 		foreach(Object o in os){
 			Light light = (Light) o;
-			light.intensity = intensity;
+			if(light.name.Equals("backgroudLight"))
+				light.intensity = intensity;
 		}
 	}
 }

@@ -16,7 +16,8 @@ public abstract class Target: MonoBehaviour
 	
 	public void createExplosion()
 	{
-		Instantiate(explosion, gameObject.transform.position, Quaternion.identity);
+		if(explosion != null)
+			Instantiate(explosion, gameObject.transform.position, Quaternion.identity);
 		
 	}
 	
