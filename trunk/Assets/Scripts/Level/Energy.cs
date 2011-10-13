@@ -41,6 +41,7 @@ public class Energy : MonoBehaviour {
 			GameStatus.Inst.ArrowCount = 10000;
 			
 			if(curr_power < 1) {
+				curr_power = 0;
 				super_mode = false;	
 				GameStatus.Inst.MoveSpeed = moveSpeed;
 				GameStatus.Inst.ArrowCount = arrowNumber;

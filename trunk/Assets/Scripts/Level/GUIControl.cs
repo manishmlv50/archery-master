@@ -11,10 +11,6 @@ public class GUIControl : MonoBehaviour {
 	public Font timefont_Mid;
 	public Font timefont_Small;
 	
-	public GUITexture moveButton;
-	public GUITexture shootButton;
-	public GUITexture moveStick;
-	
 	private GUIStyle scoreStyle_Small;
 	private GUIStyle scoreStyle_Mid;
 	private GUIStyle scoreStyle_Large;
@@ -26,7 +22,7 @@ public class GUIControl : MonoBehaviour {
 	private GUIStyle timeStyle_Mid;
 	private GUIStyle timeStyle_Large;
 	
-	private Rect scoreRect;
+	public Rect scoreRect;
 	private Rect timeRect;
 	private Rect levelRect;
 	private Rect targetRect;
@@ -36,31 +32,6 @@ public class GUIControl : MonoBehaviour {
 		
 		float screenWidth = Screen.width;
 		float screenHeight = Screen.height;
-		
-		if(GameStatus.ctrl) {
-			moveButton.pixelInset = new Rect(0.11f*screenWidth,
-		    	                             0.04f*screenWidth,
-		        	                         0.18f*screenWidth,
-		            	                     0.18f*screenWidth
-		                	                 );
-		
-			moveStick.pixelInset = new Rect (0.15f*screenWidth,
-		    	                             0.04f*screenWidth+ (0.18f*screenWidth-0.03f*screenHeight)/2,
-		        	                         0.1f*screenWidth,
-		            	                     0.03f*screenHeight
-		                	                 );
-		
-			shootButton.pixelInset = new Rect(screenWidth - 0.18f*screenWidth - 0.04f*screenWidth,
-		    	                             0.04f*screenWidth,
-		        	                         0.18f*screenWidth,
-		            	                     0.18f*screenWidth
-		                	                 );
-		}
-		else {
-			moveStick.enabled = false;
-			moveButton.enabled = false;
-			shootButton.enabled = false;
-		}
 				
 		scoreStyle_Small = new GUIStyle();
 		scoreStyle_Small.normal.textColor = Color.cyan;
