@@ -11,7 +11,7 @@ public class Energy : MonoBehaviour {
 	public Transform emitPoint;	
 	
 	public AudioClip max_energy_sound;
-	private bool super_mode = false;
+	public bool super_mode = false;
 	
 	private Transform condition;
 	
@@ -21,7 +21,6 @@ public class Energy : MonoBehaviour {
 	public int barHeight = 10;
 	public float curr_power = 0;
 	private float moveSpeed = 0;
-	private int arrowNumber = 0;
 	
 	// Use this for initialization
 	void Start () {
@@ -38,13 +37,11 @@ public class Energy : MonoBehaviour {
 			curr_power = Mathf.Clamp(curr_power, 0, barWidth);
 			
 			GameStatus.Inst.MoveSpeed = 30;
-			GameStatus.Inst.ArrowCount = 10000;
 			
 			if(curr_power < 1) {
 				curr_power = 0;
 				super_mode = false;	
 				GameStatus.Inst.MoveSpeed = moveSpeed;
-				GameStatus.Inst.ArrowCount = arrowNumber;
 				Destroy(condition.gameObject);
 			}
 		}
@@ -54,7 +51,6 @@ public class Energy : MonoBehaviour {
 		if(Mathf.Approximately(curr_power , barWidth) && super_mode == false)
 		{
 			super_mode = true;
-			arrowNumber = GameStatus.Inst.ArrowCount;
 			moveSpeed = GameStatus.Inst.MoveSpeed;
 			
 			AudioSource.PlayClipAtPoint(max_energy_sound, 

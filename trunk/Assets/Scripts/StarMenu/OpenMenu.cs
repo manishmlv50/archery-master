@@ -21,6 +21,7 @@ public class OpenMenu : MonoBehaviour {
 	private int newGameIdx = 0;
 	private int continuteIdx = 0;
 	
+	public GUISkin defaultSkin;
 	public static int guiDepth = 1;
 
 	// Use this for initialization
@@ -37,7 +38,7 @@ public class OpenMenu : MonoBehaviour {
 	
 	// Update is called once per frame
 	void OnGUI () {
-		
+		GUI.skin = defaultSkin;
 		if(Loading.LOAD) {
 			if(Screen.width > 900)
 				GUI.skin.box.font = boxFont_Large;

@@ -98,7 +98,9 @@ public class Control : MonoBehaviour
 		canShoot = false;
 		Transform bullet = (Transform)Instantiate (fireBall, shotPoint.transform.position, Quaternion.LookRotation (Vector3.forward));
 		bullet.rigidbody.AddForce (transform.forward * fireSpeed);
-		GameStatus.Inst.ArrowCount--;
+		Energy e = FindObjectOfType(typeof(Energy)) as Energy;
+		if(e == null || !e.super_mode)
+			GameStatus.Inst.ArrowCount--;
 		if (GameStatus.Inst.ArrowCount == 0)
 			Invoke ("endLevel", 0.5f);
 		else

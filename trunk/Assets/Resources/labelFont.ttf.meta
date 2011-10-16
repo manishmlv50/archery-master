@@ -1,0 +1,21 @@
+fileFormatVersion: 1
+guid: 4df012ee53b0448508f950d9d23155be
+TrueTypeFontImporter:
+  importerVersion: 1
+  size: 38
+  case: -1
+  antiAlias: 1
+  includeFontData: 1
+  use2xBehaviour: 0
+  style: 1
+  fontNames:
+    name: Lucida Handwriting Italic
+    name: Lucida Handwriting kursiv
+    name: Lucida Handwriting Kursiv
+    name: Lucida Handwriting Cursiva
+    name: Lucida Handwriting Kursivoitu
+    name: Lucida Handwriting Italique
+    name: Lucida Handwriting Corsivo
+    name: Lucida Handwriting Cursief
+    name: "Lucida Handwriting It\xE1lico"
+    name: Arial
