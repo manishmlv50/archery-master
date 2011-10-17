@@ -37,6 +37,11 @@ public class Arrow : MonoBehaviour
 
 	void OnTriggerEnter (Collider c)
 	{
+		if(c.gameObject.name == "ReflectorWall"){
+			Debug.print("Entered reflector wall");
+			return;
+		}
+		
 		Target ti = c.gameObject.GetComponent<Target> ();
 		if (ti != null) {
 			ti.DoEffect (this);
