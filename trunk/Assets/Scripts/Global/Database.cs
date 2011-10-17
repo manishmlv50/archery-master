@@ -5,9 +5,9 @@ public class Database
 {
 
 
-	private static int[] _time = { 40, 50, 60 };
-	private static int[] _targetScore = { 500, 700, 2500 };
-	private static int[] _arrow = { 20, 25, 20 };
+	private static int[] _time = { 40, 50, 60, 30 };
+	private static int[] _targetScore = { 500, 700, 2500 , 20};
+	private static int[] _arrow = { 20, 25, 20, 5};
 
 	public static int GetTime (int level)
 	{
