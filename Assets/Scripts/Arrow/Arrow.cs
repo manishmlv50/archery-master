@@ -38,7 +38,7 @@ public class Arrow : MonoBehaviour
 	void OnTriggerEnter (Collider c)
 	{
 		if(c.gameObject.name == "ReflectorWall"){
-			Debug.print("Entered reflector wall");
+			//Debug.print("Entered reflector wall");
 			return;
 		}
 		

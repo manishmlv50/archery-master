@@ -16,11 +16,8 @@ public class ReflectorWall : MonoBehaviour {
 	void OnTriggerEnter (Collider c)
 	{
 		if(c.gameObject.name == "Fireball(Clone)"){
-			Debug.print("arrow hit");	
-			
-			c.rigidbody.velocity = -c.rigidbody.velocity;
-			//c.rigidbody.AddForce(-c.transform.forward * 5000);
-			//c.rigidbody.rotation = Quaternion.LookRotation(-Vector3.forward);
+			c.rigidbody.AddForce(-c.transform.forward * 10000);
+			//c.rigidbody.rotation = Quaternion.LookRotation(-Vector3.forward);	
 		}
 	}
 }
