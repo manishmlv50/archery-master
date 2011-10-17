@@ -18,8 +18,8 @@ public class DarknessTarget : Target {
 	override public void DoEffect(Arrow arrow)
 	{	
 		// Dim the lights to create a dark scene
-		LightGroup l = GameObject.FindObjectOfType(typeof(LightGroup)) as LightGroup;
-		l.Intensity = 0.1f;
+		LightControl l = GameObject.FindObjectOfType(typeof(LightControl)) as LightControl;
+		l.TurnDark();
 		createExplosion();
 		createSound();
 		
