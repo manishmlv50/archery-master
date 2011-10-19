@@ -3,11 +3,23 @@ using System.Collections;
 
 public class GUIControl : MonoBehaviour {
 	
-	public GUISkin skin;
-	public GUIStyle timeStyle;
+	public GUISkin skin_large;
+	public GUISkin skin_small;	
+	public GUIStyle timeStyle_large;
+	public GUIStyle timeStyle_small;
+	
+	private GUIStyle timeStyle;
 	
 	void OnGUI(){
-		GUI.skin = skin;
+		if(Screen.width > 900) {
+			GUI.skin = skin_large;
+			timeStyle = timeStyle_large;
+		}
+		else {
+			GUI.skin = skin_small;
+			timeStyle = timeStyle_small;
+		}
+		
 		GUI.Label(GUIManager.ScoreRect," Score:"+GameStatus.Inst.Score);
 		GUI.Label(GUIManager.TargetRect,"Target:"+GameStatus.Inst.TargetScore);
 			
