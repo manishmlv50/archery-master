@@ -2,7 +2,7 @@ using System;
 using UnityEngine;
 public class GUIManager
 {
-	private static Rect _scoreRect = new Rect(0.7f*Screen.width,0.04f*Screen.width,0.3f*Screen.width,0.05f*Screen.width);
+	private static Rect _scoreRect = new Rect(0.65f*Screen.width,0.04f*Screen.width,0.34f*Screen.width,0.05f*Screen.width);
 	public static Rect ScoreRect
 	{
 		get{
@@ -10,7 +10,7 @@ public class GUIManager
 		}
 	}
 	
-	private static Rect _targetRect = new Rect(0.7f*Screen.width,0.09f*Screen.width,0.3f*Screen.width,0.05f*Screen.width);
+	private static Rect _targetRect = new Rect(0.65f*Screen.width,0.09f*Screen.width,0.34f*Screen.width,0.05f*Screen.width);
 	public static Rect TargetRect
 	{
 		get{
@@ -18,7 +18,7 @@ public class GUIManager
 		}
 	}
 	
-	private static Rect _arrowRect = new Rect(0.7f*Screen.width,0.14f*Screen.width,0.3f*Screen.width,0.05f*Screen.width);
+	private static Rect _arrowRect = new Rect(0.65f*Screen.width,0.14f*Screen.width,0.34f*Screen.width,0.05f*Screen.width);
 	public static Rect ArrowRect
 	{
 		get{
