@@ -11,6 +11,7 @@ public class GUIControl : MonoBehaviour {
 	private GUIStyle timeStyle;
 	
 	void OnGUI(){
+		audio.volume = GameStatus.BGM;
 		if(Screen.width > 900) {
 			GUI.skin = skin_large;
 			timeStyle = timeStyle_large;

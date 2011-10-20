@@ -3,6 +3,7 @@ using UnityEngine;
 
 public class Pause: MonoBehaviour
 {
+	public Transform cam;
 	public GUISkin skin_large;
 	public GUISkin skin_small;
 	private bool show = false;
@@ -20,7 +21,7 @@ public class Pause: MonoBehaviour
 		if (GUI.Button (new Rect (0.87f*Screen.width, 5, 0.13f*Screen.width, 0.05f*Screen.height), "Pause")) {
 			show = !show;
 			Time.timeScale = 1-Time.timeScale;
-			AudioSource.PlayClipAtPoint(openPauseSound, new Vector3(0,18.3f,-33.6f), GameStatus.soundVol);
+			AudioSource.PlayClipAtPoint(openPauseSound, cam.position, GameStatus.soundVol);
 		}
 		
 		if(show){
@@ -29,20 +30,20 @@ public class Pause: MonoBehaviour
 			if(GUI.Button(new Rect(0.05f*Screen.width, 0.27f*Screen.height, 0.5f*Screen.width, 0.11f*Screen.height),"Resume")){
 				show = !show;
 				Time.timeScale = 1-Time.timeScale;
-				AudioSource.PlayClipAtPoint(confirmSound, new Vector3(0,18.3f,-33.6f), GameStatus.soundVol);
+				AudioSource.PlayClipAtPoint(confirmSound, cam.position, GameStatus.soundVol);
 			}
 			
 			if(GUI.Button(new Rect(0.05f*Screen.width, 0.42f*Screen.height, 0.5f*Screen.width, 0.11f*Screen.height),"Retry")){
 				Time.timeScale = 1-Time.timeScale;
 				Loading.LOAD = true;
-				AudioSource.PlayClipAtPoint(confirmSound, new Vector3(0,18.3f,-33.6f), GameStatus.soundVol);
+				AudioSource.PlayClipAtPoint(confirmSound, cam.position, GameStatus.soundVol);
 				Application.LoadLevel("Level");
 			}
 			
 			if(GUI.Button(new Rect(0.05f*Screen.width, 0.57f*Screen.height, 0.5f*Screen.width, 0.11f*Screen.height),"Main Menu")){
 				Time.timeScale = 1-Time.timeScale;
 				Loading.LOAD = true;
-				AudioSource.PlayClipAtPoint(confirmSound, new Vector3(0,18.3f,-33.6f), GameStatus.soundVol);
+				AudioSource.PlayClipAtPoint(confirmSound, cam.position, GameStatus.soundVol);
 				Application.LoadLevel("StartMenu");
 			}
 			GUI.EndGroup();

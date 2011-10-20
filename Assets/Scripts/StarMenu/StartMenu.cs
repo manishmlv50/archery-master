@@ -28,6 +28,7 @@ public class StartMenu : MonoBehaviour {
 	
 	// Use this for initialization
 	void Start () {
+		audio.volume = GameStatus.BGM;
 		float screenWidth = Screen.width;
 		float screenHeight = Screen.height;
 		
@@ -43,6 +44,7 @@ public class StartMenu : MonoBehaviour {
 	}
 		
 	void OnGUI(){
+		audio.volume = GameStatus.BGM;
 		GUI.depth = guiDepth;
 		GUI.DrawTexture(new Rect (0,0,Screen.width,Screen.height),background, ScaleMode.StretchToFill);
 		// if working, that means other buttons except the current ones couldn't work
