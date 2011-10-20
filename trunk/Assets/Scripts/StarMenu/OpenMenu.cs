@@ -21,7 +21,7 @@ public class OpenMenu : MonoBehaviour {
 	private int newGameIdx = 0;
 	private int continuteIdx = 0;
 	
-	public GUISkin defaultSkin;
+	public Texture2D boxBackgound;
 	public static int guiDepth = 1;
 
 	// Use this for initialization
@@ -38,7 +38,7 @@ public class OpenMenu : MonoBehaviour {
 	
 	// Update is called once per frame
 	void OnGUI () {
-		GUI.skin = defaultSkin;
+		GUI.skin.box.normal.background = boxBackgound;
 		if(Loading.LOAD) {
 			if(Screen.width > 900)
 				GUI.skin.box.font = boxFont_Large;
@@ -134,7 +134,7 @@ public class OpenMenu : MonoBehaviour {
 	void DoNewGame(Rect rect, string title) {
 		int buttonRow = 4;
 		float x = rect.x + 0.1f*rect.width;
-		float y = rect.height / buttonRow;
+		float y = 0.9f*rect.height / buttonRow;
 		float width = 0.8f * rect.width;
 		float height = 0.8f*y;
 		
@@ -167,7 +167,7 @@ public class OpenMenu : MonoBehaviour {
 	void DoContinue(Rect rect, string title) {
 		int buttonRow = 5;
 		float x = rect.x + 0.1f*rect.width;
-		float y = rect.height / buttonRow;
+		float y = 0.9f*rect.height / buttonRow;
 		float width = 0.8f * rect.width;
 		float height = 0.8f*y;
 		
@@ -199,7 +199,7 @@ public class OpenMenu : MonoBehaviour {
 	void DoSetting(Rect rect, string title) {
 		int buttonRow = 5;
 		float x = rect.x + 0.1f*rect.width;
-		float y = rect.height / buttonRow;
+		float y = 0.9f*rect.height / buttonRow;
 		float width = 0.8f * rect.width;
 		float height = 0.8f*y;
 		
@@ -230,7 +230,7 @@ public class OpenMenu : MonoBehaviour {
 	void DoSound(Rect rect, string title) {
 		int buttonRow = 4;
 		float x = rect.x + 0.1f*rect.width;
-		float y = rect.height / buttonRow;
+		float y = 0.9f*rect.height / buttonRow;
 		float width = 0.8f * rect.width;
 		float height = 0.8f*y;
 		
@@ -252,7 +252,7 @@ public class OpenMenu : MonoBehaviour {
 	void DoCtrl(Rect rect, string title) {
 		int buttonRow = 4;
 		float x = rect.x + 0.1f*rect.width;
-		float y = rect.height / buttonRow;
+		float y = 0.9f*rect.height / buttonRow;
 		float width = 0.8f * rect.width;
 		float height = 0.8f*y;
 		
@@ -298,7 +298,7 @@ public class OpenMenu : MonoBehaviour {
 	void DoLang(Rect rect, string title) {
 		int buttonRow = 3;
 		float x = rect.x + 0.1f*rect.width;
-		float y = rect.height / buttonRow;
+		float y = 0.9f*rect.height / buttonRow;
 		float width = 0.8f * rect.width;
 		float height = 0.8f*y;
 		
@@ -318,7 +318,7 @@ public class OpenMenu : MonoBehaviour {
 	void DoLevel(Rect rect, string title) {
 		int buttonRow = 3;
 		float x = rect.x + 0.1f*rect.width;
-		float y = rect.height / buttonRow;
+		float y = 0.9f*rect.height / buttonRow;
 		float width = 0.8f * rect.width;
 		float height = 0.8f*y;
 		
@@ -361,7 +361,7 @@ public class OpenMenu : MonoBehaviour {
 	void DoChallenge(Rect rect, string title) {
 		int buttonRow = 3;
 		float x = rect.x + 0.1f*rect.width;
-		float y = rect.height / buttonRow;
+		float y = 0.9f*rect.height / buttonRow;
 		float width = 0.8f * rect.width;
 		float height = 0.8f*y;
 		
