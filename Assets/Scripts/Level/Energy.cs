@@ -54,7 +54,7 @@ public class Energy : MonoBehaviour {
 			moveSpeed = GameStatus.Inst.MoveSpeed;
 			
 			AudioSource.PlayClipAtPoint(max_energy_sound, 
-			                            new Vector3(transform.position.x, 17.9f, -34), 
+			                            new Vector3(emitPoint.position.x, 17.9f, -34), 
 			                            GameStatus.soundVol);
 			
 			condition = (Transform)Instantiate(super_condition,emitPoint.transform.position,Quaternion.identity);
