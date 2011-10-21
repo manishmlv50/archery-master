@@ -45,16 +45,20 @@ public class TargetGeneration : MonoBehaviour {
 			t = darknessTarget;
 		
 		if(t != null){
-			Transform targetInst = (Transform)Instantiate(t,transform.position,Quaternion.LookRotation(Vector3.down));
+			
 			int speed = Database.GetTargetSpeed(GameStatus.Level,GameStatus.Inst.TimeSpend,ID);
 			if(speed == 0){
-				Debug.print("Warning! Please check the LevelsSpeed File. Level:"+GameStatus.Level+" Time:"+GameStatus.Inst.TimeSpend+" Id:"+ID);
+				Debug.LogWarning("Warning! Please check the LevelsSpeed File. Level:"+GameStatus.Level+" Time:"+GameStatus.Inst.TimeSpend+" Id:"+ID);
 				speed = defaultSpeed;
 			}
-			if(left)
-				targetInst.rigidbody.AddForce(Vector3.left*speed);	
-			else
+			if(left){
+				Transform targetInst = (Transform)Instantiate(t,transform.position,Quaternion.LookRotation(t.gameObject.GetComponent<Target>().leftFace));
 				targetInst.rigidbody.AddForce(Vector3.right*speed);
+			}
+			else{
+				Transform targetInst = (Transform)Instantiate(t,transform.position,Quaternion.LookRotation(t.gameObject.GetComponent<Target>().rightFace));
+				targetInst.rigidbody.AddForce(Vector3.left*speed);
+			}
 		}
 	}
 }

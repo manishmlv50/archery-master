@@ -3,9 +3,11 @@ using System.Collections;
 
 public abstract class Target: MonoBehaviour
 {	
-	public Targets TARGET_ID;
+	protected Targets TARGET_ID;
 	public Transform explosion;
 	public AudioClip destroySound;
+	public Vector3 leftFace = Vector3.down;
+	public Vector3 rightFace = Vector3.down;
 	
 	public void createSound()
 	{
