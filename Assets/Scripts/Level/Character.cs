@@ -39,8 +39,7 @@ public class Character : MonoBehaviour{
 		animation["walkright"].layer = 1;
 	}
 	
-	void Update () {
-		
+	void Update () {		
         float moveInput = MoveDirection * Time.deltaTime * GameStatus.Inst.MoveSpeed; 
         transform.position += new Vector3(moveInput, 0, 0);
 		

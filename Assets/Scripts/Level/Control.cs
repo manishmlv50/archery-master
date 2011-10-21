@@ -8,7 +8,6 @@ public class Control : MonoBehaviour
 
 	private Vector2 position;
 	private int finger;
-	private bool run;
 
 	public int fireSpeed = 5000;
 	public Transform shotPoint;
@@ -30,7 +29,7 @@ public class Control : MonoBehaviour
 
 	// Update is called once per frame
 	void Update ()
-	{	
+	{			
 		if (GameStatus.tilting) {
 			character.MoveDirection = -Input.acceleration.y * 6f;
 			character.MoveDirection = Mathf.Clamp (character.MoveDirection, -1, 1);
@@ -53,7 +52,7 @@ public class Control : MonoBehaviour
 					position = currentTouch.position - currentTouch.deltaPosition;
 					finger = currentTouch.fingerId;
 				}
-				if(canMove){
+				if(canMove && canShoot){
 					if (currentTouch.position.x > position.x)
 						character.MoveDirection = 1;
 					else
@@ -65,7 +64,7 @@ public class Control : MonoBehaviour
 		
 		
 		#if UNITY_EDITOR
-		if (Input.GetButton ("Horizontal") && canMove) {
+		if (Input.GetButton ("Horizontal") && canMove && canShoot) {
 			if (Input.GetAxis ("Horizontal") > 0) {
 				character.MoveDirection = 1;
 			} else if (Input.GetAxis ("Horizontal") < 0) {
@@ -96,6 +95,7 @@ public class Control : MonoBehaviour
 	public void ShootArrow ()
 	{
 		canShoot = false;
+		character.MoveDirection = 0;
 		Transform bullet = (Transform)Instantiate (fireBall, shotPoint.transform.position, Quaternion.LookRotation (Vector3.forward));
 		bullet.rigidbody.AddForce (transform.forward * fireSpeed);
 		Energy e = FindObjectOfType(typeof(Energy)) as Energy;
@@ -103,8 +103,8 @@ public class Control : MonoBehaviour
 			GameStatus.Inst.ArrowCount--;
 		if (GameStatus.Inst.ArrowCount == 0)
 			Invoke ("endLevel", 0.5f);
-		else
-			Invoke ("enableShoot", 0.3f);
+		else 
+			Invoke ("enableShoot", 0.3f);		
 	}
 
 	void endLevel ()
@@ -136,6 +136,5 @@ public class Control : MonoBehaviour
 		} else {
 			GameStatus.Inst.Tick ();
 		}
-	}
-	
+	}	
 }
