@@ -9,9 +9,7 @@ public abstract class Target: MonoBehaviour
 	
 	public void createSound()
 	{
-		AudioSource.PlayClipAtPoint(destroySound, 
-		                            new Vector3(transform.position.x, 18.83f, -33.66f),
-		                            1f);
+		AudioSource.PlayClipAtPoint(destroySound, Camera.mainCamera.transform.position, GameStatus.soundVol);
 	}
 	
 	public void createExplosion()
