@@ -1,7 +1,7 @@
 using System;
 using UnityEngine;
 
-public class Debug: MonoBehaviour
+public class Debuger: MonoBehaviour
 {
 	public static bool DEBUG = true;
 	public GUISkin skin_large;
