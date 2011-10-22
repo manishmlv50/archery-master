@@ -334,7 +334,7 @@ public class OpenMenu : MonoBehaviour {
 		}
 		
 		if( GUI.Button(new Rect(x+0.85f*width, 1f*y+rect.y, 0.15f*width, height), ">") ) {
-			if(GameStatus.Level < 4) GameStatus.Level++;
+			if(GameStatus.Level < 8) GameStatus.Level++;
 			AudioSource.PlayClipAtPoint(menuOpenSound, new Vector3(0,1,-10), GameStatus.soundVol);
 		}
 		
