@@ -5,7 +5,7 @@
 // single aggregated mesh so as to achieve multiple, independently
 // moving objects using a single draw call.
 //-----------------------------------------------------------------
-
+/*
 
 using UnityEngine;
 using System.Collections;
@@ -967,4 +967,4 @@ public class SpriteManager : MonoBehaviour
             }
         }
     }
-}
+}*/

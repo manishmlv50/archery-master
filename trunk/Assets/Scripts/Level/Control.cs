@@ -5,16 +5,16 @@ public class Control : MonoBehaviour
 {
 
 	private Character character;
-
+	private bool canShoot;
+	private bool canMove;
 	private Vector2 position;
 	private int finger;
 
 	public int fireSpeed = 5000;
 	public Transform shotPoint;
-	public Transform fireBall;
+	public Transform [] arrows;
 	
-	private bool canShoot;
-	private bool canMove;
+	
 
 	void Start ()
 	{
@@ -23,7 +23,16 @@ public class Control : MonoBehaviour
 		canMove = true;
 		finger = int.MinValue;
 		character = GameObject.FindObjectOfType (typeof(Character)) as Character;
-		new GameStatus (Database.GetTime (GameStatus.Level), Database.GetTargetScore (GameStatus.Level), Database.GetArrowCount (GameStatus.Level), Database.GetMoveSpeed (), Database.GetScoreBonus (), Database.GetComboBonus ());
+		new GameStatus (
+		                Database.GetTime (GameStatus.Level), 
+		                Database.GetTargetScore (GameStatus.Level), 
+		                Database.GetArrowCount (GameStatus.Level), 
+		                Database.GetMoveSpeed (), 
+		                Database.GetScoreBonus (), 
+		                Database.GetComboBonus (), 
+		                Database.GetHP(GameStatus.Level));
+		
+		
 		InvokeRepeating ("countDown", 1, 1);
 	}
 
@@ -64,7 +73,7 @@ public class Control : MonoBehaviour
 		
 		
 		#if UNITY_EDITOR
-		if (Input.GetButton ("Horizontal") && canMove) {
+		if (Input.GetButton ("Horizontal") && canMove && canShoot) {
 			if (Input.GetAxis ("Horizontal") > 0) {
 				character.MoveDirection = 1;
 			} else if (Input.GetAxis ("Horizontal") < 0) {
@@ -96,7 +105,7 @@ public class Control : MonoBehaviour
 	{
 		canShoot = false;
 		character.MoveDirection = 0;
-		Transform bullet = (Transform)Instantiate (fireBall, shotPoint.transform.position, Quaternion.LookRotation (Vector3.forward));
+		Transform bullet = (Transform)Instantiate (arrows[(int)GameStatus.Inst.Arrow], shotPoint.transform.position, Quaternion.LookRotation (Vector3.up));
 		bullet.rigidbody.AddForce (transform.forward * fireSpeed);
 		Energy e = FindObjectOfType(typeof(Energy)) as Energy;
 		if(e == null || !e.super_mode)
