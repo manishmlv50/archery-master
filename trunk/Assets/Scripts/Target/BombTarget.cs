@@ -37,7 +37,7 @@ public class BombTarget : Target {
 				t.DoEffect(arrow);
 			}
 		}
-		
+		Destroy(arrow.gameObject);
 		Destroy(gameObject);
 	}
 }
