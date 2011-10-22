@@ -8,6 +8,7 @@ public abstract class Target: MonoBehaviour
 	public AudioClip destroySound;
 	public Vector3 leftFace = Vector3.down;
 	public Vector3 rightFace = Vector3.down;
+	public int missPunish = 0;
 	
 	public void createSound()
 	{

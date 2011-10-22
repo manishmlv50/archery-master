@@ -6,8 +6,8 @@ public class Combo : MonoBehaviour {
 	// Use this for initialization
 
 	public int c;
+	public Color [] colors;
 	
-	private static Color [] colors= {Color.green,Color.yellow,Color.blue,Color.magenta};
 	void Start () {
 		TextMesh t = GetComponent<TextMesh>() as TextMesh;
 		t.text = getText(c);

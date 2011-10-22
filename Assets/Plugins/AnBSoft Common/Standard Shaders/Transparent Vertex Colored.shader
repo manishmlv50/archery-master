@@ -6,18 +6,20 @@ Properties {
 }
 
 Category {
-	Tags {"Queue"="Transparent" "IgnoreProjector"="True" "RenderType"="Transparent"}
+	Tags {"Queue"="Transparent" "IgnoreProjector"="True" "RenderType"="Transparent"  "LightMode" = "Vertex"}
 	ZWrite Off
 	Blend SrcAlpha OneMinusSrcAlpha 
 	SubShader {
+	
 		Material {
 			Diffuse [_Color]
 			Ambient [_Color]
 			Emission [_Emission]	
 		}
 		Pass {
+
 			ColorMaterial AmbientAndDiffuse
-			Lighting Off
+			Lighting On
 			Cull Off
         SetTexture [_MainTex] {
             Combine texture * primary, texture * primary

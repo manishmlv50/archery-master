@@ -24,6 +24,8 @@ public class GameStatus
 	public int Score{get;set;}
 	public int ArrowCount{get;set;}
 	public int TargetScore{get;set;}
+	public int HP{get;set;}
+	public Arrows Arrow{get;set;}
 	
 	public int Time{
 		get
@@ -50,17 +52,23 @@ public class GameStatus
 		}		
 	}
 	
-	public GameStatus(int time,int targetScore, int arrowCount, float moveSpeed, float scoreBonus, float comboBonus){
+	public GameStatus(int time,int targetScore, int arrowCount, float moveSpeed, float scoreBonus, float comboBonus, int hp){
 		_inst = this;
 		_totalTime = time;
 		_time = time;
 		TargetScore = targetScore;
+		
+		Arrow = Arrows.Normal;
+		//TODO: delete the line below
+		if(Level == 1)
+			Arrow = Arrows.Super;
 		
 		Score = 0;
 		ArrowCount = arrowCount;
 		MoveSpeed = moveSpeed;
 		ScoreBonus = scoreBonus;
 		ComboBonus = comboBonus;
+		HP = hp;
 	}
 	
 	public void Tick(){

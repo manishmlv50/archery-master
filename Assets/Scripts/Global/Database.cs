@@ -13,6 +13,13 @@ public class Database
 	{
 		return _time[level];
 	}
+	
+	public static int GetHP(int level)
+	{
+		if(level == 1)
+			return 1;
+		return 10;
+	}
 
 	public static int ScoreOfTarget (Targets target)
 	{
@@ -43,6 +50,8 @@ public class Database
 	{
 		return 1.8f;
 	}
+	
+	
 	
 	public static int GetTargetSpeed(int level, int timeSpend, int pointID)
 	{
