@@ -11,6 +11,7 @@ public class Levels : MonoBehaviour {
 //		6 : Targets.WallTarget
 //		7 : Targets.StrongTarget
 //		8 : Targets.DarknessTarget
+//      9 : Targets.ReflectorTarget
 	
 	public static int[,,] _targetsLevel = {
 		{// Level 1
@@ -18,7 +19,7 @@ public class Levels : MonoBehaviour {
 			{ 1, 2, 1, 1 }, 			// 0 sec
 			{ 2, 6, 0, 0 },             // 1 sec
 			{ 0, 0, 4, 0 }, 
-			{ 0, 1, 0, 0 }, 
+			{ 0, 9, 0, 0 }, 
 			{ 5, 0, 0, 0 }, 
 			{ 0, 6, 1, 0 },
 			{ 0, 0, 0, 7 }, 

@@ -1,11 +1,11 @@
 using UnityEngine;
 using System.Collections;
 
-public class ReflectorWall : MonoBehaviour {
+public class ReflectorWall : Target {
 
 	// Use this for initialization
 	void Start () {
-	
+		TARGET_ID = Targets.ReflectorTarget;
 	}
 	
 	// Update is called once per frame
@@ -13,11 +13,9 @@ public class ReflectorWall : MonoBehaviour {
 	
 	}
 	
-	void OnTriggerEnter (Collider c)
+	override public void DoEffect(Arrow arrow)
 	{
-		if(c.gameObject.name == "Fireball(Clone)"){
-			c.rigidbody.AddForce(-c.transform.forward * 10000);
-			//c.rigidbody.rotation = Quaternion.LookRotation(-Vector3.forward);	
-		}
+		createSound();
+		arrow.rigidbody.AddForce(-arrow.transform.forward * 7000);
 	}
 }

@@ -12,6 +12,7 @@ public class TargetGeneration : MonoBehaviour {
 	public Transform wallTarget;
 	public Transform strongTarget;
 	public Transform darknessTarget;
+	public Transform reflectorTarget;
 	
 	public bool left;
 	public int ID;
@@ -43,6 +44,8 @@ public class TargetGeneration : MonoBehaviour {
 			t = strongTarget;
 		else if(targetID == Targets.DarknessTarget)
 			t = darknessTarget;
+		else if(targetID == Targets.ReflectorTarget)
+			t = reflectorTarget;
 		
 		if(t != null){
 			

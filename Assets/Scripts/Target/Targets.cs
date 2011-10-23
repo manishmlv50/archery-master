@@ -8,6 +8,7 @@ public enum Targets{
 	WallTarget,
 	StrongTarget,
 	DarknessTarget,
+	ReflectorTarget,
 	Null
 }
 
