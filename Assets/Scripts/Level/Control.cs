@@ -54,7 +54,15 @@ public class Control : MonoBehaviour
 					finger = int.MinValue;
 				}
 			}
-			
+			else if(finger == currentTouch.fingerId && currentTouch.phase == TouchPhase.Stationary)
+			{
+				if(canMove && canShoot){
+					if (currentTouch.position.x > position.x)
+						character.MoveDirection = 1;
+					else
+						character.MoveDirection = -1;
+				}
+			}
 			else if (currentTouch.phase == TouchPhase.Moved) {
 				if(finger == int.MinValue)
 				{
