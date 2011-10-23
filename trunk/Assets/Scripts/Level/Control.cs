@@ -113,7 +113,7 @@ public class Control : MonoBehaviour
 	{
 		canShoot = false;
 		character.MoveDirection = 0;
-		Transform bullet = (Transform)Instantiate (arrows[(int)GameStatus.Inst.Arrow], shotPoint.transform.position, Quaternion.LookRotation (Vector3.up));
+		Transform bullet = (Transform)Instantiate (arrows[(int)GameStatus.Inst.Arrow], shotPoint.transform.position, Quaternion.LookRotation (Vector3.forward));
 		bullet.rigidbody.AddForce (transform.forward * fireSpeed);
 		Energy e = FindObjectOfType(typeof(Energy)) as Energy;
 		if(e == null || !e.super_mode)

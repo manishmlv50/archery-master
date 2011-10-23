@@ -75,6 +75,7 @@ public class Database
 				case 6 : return Targets.WallTarget;
 				case 7 : return Targets.StrongTarget;
 				case 8 : return Targets.DarknessTarget;
+				case 9 : return Targets.ReflectorTarget;
 				default : return Targets.Null;
 			}
 	}
