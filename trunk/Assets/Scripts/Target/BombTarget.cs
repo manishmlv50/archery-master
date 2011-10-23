@@ -4,6 +4,7 @@ using System.Collections;
 public class BombTarget : Target {
 	
 	public int damage_radius = 25;
+	private bool effected = false;
 	
 	// Use this for initialization
 	void Start () {
@@ -18,6 +19,9 @@ public class BombTarget : Target {
 	
 	override public void DoEffect(Arrow arrow)
 	{
+		if(effected )
+			return;
+		effected = true;
 		createExplosion();
 		createSound();
 		
@@ -25,17 +29,18 @@ public class BombTarget : Target {
 		GameStatus.Inst.EarnScore(arrow.Combo++, TARGET_ID);
 		
 		// Find game objects of NormalTarget type
-		Object[] gos = GameObject.FindObjectsOfType(typeof(NormalTarget));
-		foreach(Object go in gos)
-		{
-			NormalTarget t = go as NormalTarget;
+		// Check if the distance of the "BombTarget" and this "Target" is less than the damage_radius
+		
+		Object[] gos = GameObject.FindObjectsOfType(typeof(Target));
+		foreach(Object go in gos) {
+			Target t = go as Target;
 			
-			// Check if the distance of the "BombTarget" and this "Target" is less than the damage_radius
-			if(t!=null && Vector3.Distance(gameObject.transform.position,
-			                     t.transform.position) < damage_radius)
-			{
-				t.DoEffect(arrow);
+			if(t is WallTarget){
+				continue;
 			}
+			
+			if(Vector3.Distance(gameObject.transform.position, t.transform.position) < damage_radius)
+				t.DoEffect(arrow);
 		}
 		Destroy(arrow.gameObject);
 		Destroy(gameObject);
