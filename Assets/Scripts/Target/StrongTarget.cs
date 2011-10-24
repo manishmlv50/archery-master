@@ -31,8 +31,7 @@ public class StrongTarget : Target {
 		}
 		else if(hit_points < 50 && hit_points > 0){
 			renderer.material = secondMaterial;	
-		}
-		
-		Destroy(arrow.gameObject);
+			Destroy(arrow.gameObject);
+		}		
 	}
 }
