@@ -16,6 +16,6 @@ public class ReflectorWall : Target {
 	override public void DoEffect(Arrow arrow)
 	{
 		createSound();
-		arrow.rigidbody.AddForce(-arrow.transform.forward * 7000);
+		arrow.rigidbody.AddForce(-arrow.transform.forward * 8000);
 	}
 }

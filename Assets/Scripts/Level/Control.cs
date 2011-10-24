@@ -115,7 +115,7 @@ public class Control : MonoBehaviour
 	{
 		character.MoveDirection = 0;
 		character.animation.CrossFade("shoot");
-		Invoke ("doShoot", 0.3f);
+		Invoke ("doShoot", 0.25f);
 	}
 	
 	void endLevel ()

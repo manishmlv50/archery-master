@@ -39,7 +39,7 @@ public class Character : MonoBehaviour{
 		animation["right"].speed = 2f;
 		
 		animation["shoot"].layer = 1;
-		animation["shoot"].speed = 0.75f;
+		animation["shoot"].speed = 1.3f;
 	}
 	
 	void Update () {		

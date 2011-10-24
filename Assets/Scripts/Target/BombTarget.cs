@@ -38,8 +38,13 @@ public class BombTarget : Target {
 				continue;
 			}
 			
-			if(Vector3.Distance(gameObject.transform.position, t.transform.position) < damage_radius)
+			if(Vector3.Distance(gameObject.transform.position, t.transform.position) < damage_radius) {
+				StrongTarget s = t as StrongTarget;
+				if(s != null)
+					s.hit_points = -1;
+				
 				t.DoEffect(arrow);
+			}
 		}
 		Destroy(arrow.gameObject);
 		Destroy(gameObject);
