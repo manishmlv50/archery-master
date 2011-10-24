@@ -17,6 +17,9 @@ public class TimeTarget : Target{
 	
 	override public void DoEffect(Arrow arrow)
 	{
+		if(effected )
+			return;
+		effected = true;
 		createExplosion();
 		
 		GameStatus.Inst.EarnScore(arrow.Combo++, TARGET_ID);

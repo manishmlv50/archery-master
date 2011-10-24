@@ -17,6 +17,9 @@ public class ProjectileTarget : Target {
 	
 	override public void DoEffect(Arrow arrow)
 	{
+		if(effected )
+			return;
+		effected = true;
 		createExplosion();
 		createSound();
 		

@@ -11,6 +11,9 @@ public class NormalTarget  : Target
 	
 	override public void DoEffect(Arrow arrow)
 	{
+		if(effected )
+			return;
+		effected = true;
 		createSound();
 		GameStatus.Inst.EarnScore(arrow.Combo++, TARGET_ID);
 		Energy e = GameObject.FindObjectOfType(typeof(Energy)) as Energy;

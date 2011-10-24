@@ -17,6 +17,9 @@ public class DarknessTarget : Target {
 	
 	override public void DoEffect(Arrow arrow)
 	{	
+		if(effected )
+			return;
+		effected = true;
 		// Dim the lights to create a dark scene
 		LightControl l = GameObject.FindObjectOfType(typeof(LightControl)) as LightControl;
 		l.TurnDark();

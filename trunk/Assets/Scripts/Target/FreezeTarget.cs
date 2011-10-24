@@ -18,6 +18,9 @@ public class FreezeTarget : Target {
 	
 	override public void DoEffect(Arrow arrow)
 	{
+		if(effected )
+			return;
+		effected = true;
 		createExplosion();
 		createSound();
 		Control control = FindObjectOfType(typeof(Control)) as Control;
