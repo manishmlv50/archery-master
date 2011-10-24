@@ -14,12 +14,14 @@ public class WallTarget : Target {
 		
 	}
 	
-	override public void DoEffect(Arrow arrow)
-	{
+	override public void DoEffect(Arrow arrow)	{
 		createExplosion();
 		createSound();
 		
 		/* Don't Destroy the Wall Target, destroy the arrow */
 		Destroy(arrow.gameObject);
+		
+		if(arrow.rigidbody.velocity.z < 0)
+			Destroy(this.gameObject);
 	}
 }
