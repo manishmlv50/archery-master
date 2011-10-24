@@ -81,7 +81,7 @@ public class Control : MonoBehaviour
 		
 		
 		#if UNITY_EDITOR
-		if (Input.GetButton ("Horizontal") && canMove && canShoot) {
+		if (Input.GetButton ("Horizontal") && canMove) {
 			if (Input.GetAxis ("Horizontal") > 0) {
 				character.MoveDirection = 1;
 			} else if (Input.GetAxis ("Horizontal") < 0) {
@@ -113,17 +113,10 @@ public class Control : MonoBehaviour
 	{
 		canShoot = false;
 		character.MoveDirection = 0;
-		Transform bullet = (Transform)Instantiate (arrows[(int)GameStatus.Inst.Arrow], shotPoint.transform.position, Quaternion.LookRotation (Vector3.forward));
-		bullet.rigidbody.AddForce (transform.forward * fireSpeed);
-		Energy e = FindObjectOfType(typeof(Energy)) as Energy;
-		if(e == null || !e.super_mode)
-			GameStatus.Inst.ArrowCount--;
-		if (GameStatus.Inst.ArrowCount == 0)
-			Invoke ("endLevel", 0.5f);
-		else 
-			Invoke ("enableShoot", 0.3f);		
+		character.animation.CrossFade("shoot");
+		Invoke ("doShoot", 0.2f);
 	}
-
+	
 	void endLevel ()
 	{
 		if (GameStatus.Inst.ArrowCount > 0) {
@@ -137,6 +130,19 @@ public class Control : MonoBehaviour
 		}
 	}
 
+	void doShoot ()
+	{
+		Transform bullet = (Transform)Instantiate (arrows[(int)GameStatus.Inst.Arrow], shotPoint.transform.position, Quaternion.LookRotation (Vector3.forward));
+		bullet.rigidbody.AddForce (transform.forward * fireSpeed);
+		Energy e = FindObjectOfType(typeof(Energy)) as Energy;
+		if(e == null || !e.super_mode)
+			GameStatus.Inst.ArrowCount--;
+		if (GameStatus.Inst.ArrowCount == 0)
+			Invoke ("endLevel", 0.5f);
+		else
+			Invoke ("enableShoot", 0.4f);
+	}
+	
 	void enableShoot ()
 	{
 		canShoot = true;

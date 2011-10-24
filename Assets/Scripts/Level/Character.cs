@@ -18,14 +18,12 @@ public class Character : MonoBehaviour{
 			if(_moveDiretion == 0)
 			{
 				animation.CrossFade("idle");
-				animation["idle"].layer = 0;
 			}
 			else{
 				if(_moveDiretion < 0)
-					animation.CrossFade("walkleft");
+					animation.CrossFade("left");
 				else if(_moveDiretion > 0)
-					animation.CrossFade("walkright");
-				animation["idle"].layer = 1;
+					animation.CrossFade("right");
 			}	
 		}
 	}
@@ -33,10 +31,10 @@ public class Character : MonoBehaviour{
 	void Start()
 	{
 		_moveDiretion = 0;
-		animation.wrapMode = WrapMode.Loop;
 		animation["idle"].layer = 0;
-		animation["walkleft"].layer = 1;
-		animation["walkright"].layer = 1;
+		animation["left"].layer = 0;
+		animation["right"].layer = 0;
+		animation["shoot"].layer = 1;
 	}
 	
 	void Update () {		

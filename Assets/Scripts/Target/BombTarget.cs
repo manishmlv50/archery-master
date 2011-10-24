@@ -4,7 +4,6 @@ using System.Collections;
 public class BombTarget : Target {
 	
 	public int damage_radius = 25;
-	private bool effected = false;
 	
 	// Use this for initialization
 	void Start () {
