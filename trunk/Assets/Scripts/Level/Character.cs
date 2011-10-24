@@ -34,7 +34,12 @@ public class Character : MonoBehaviour{
 		animation["idle"].layer = 0;
 		animation["left"].layer = 0;
 		animation["right"].layer = 0;
+		
+		animation["left"].speed = 2f;
+		animation["right"].speed = 2f;
+		
 		animation["shoot"].layer = 1;
+		animation["shoot"].speed = 0.75f;
 	}
 	
 	void Update () {		

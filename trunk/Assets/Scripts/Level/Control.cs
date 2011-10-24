@@ -5,7 +5,6 @@ public class Control : MonoBehaviour
 {
 
 	private Character character;
-	private bool canShoot;
 	private bool canMove;
 	private Vector2 position;
 	private int finger;
@@ -19,7 +18,6 @@ public class Control : MonoBehaviour
 	void Start ()
 	{
 		position = Vector2.zero;
-		canShoot = true;
 		canMove = true;
 		finger = int.MinValue;
 		character = GameObject.FindObjectOfType (typeof(Character)) as Character;
@@ -38,15 +36,19 @@ public class Control : MonoBehaviour
 
 	// Update is called once per frame
 	void Update ()
-	{			
+	{	
+		if(character.animation.IsPlaying("shoot"))
+			return;
+		
 		if (GameStatus.tilting) {
 			character.MoveDirection = -Input.acceleration.y * 6f;
 			character.MoveDirection = Mathf.Clamp (character.MoveDirection, -1, 1);
 		}
 		
+		
 		foreach (Touch currentTouch in Input.touches) {
 			if (currentTouch.phase == TouchPhase.Ended || currentTouch.phase == TouchPhase.Canceled) {
-				if (currentTouch.fingerId != finger && canShoot){
+				if (currentTouch.fingerId != finger){
 					ShootArrow ();
 				}
 				else{
@@ -56,7 +58,7 @@ public class Control : MonoBehaviour
 			}
 			else if(finger == currentTouch.fingerId && currentTouch.phase == TouchPhase.Stationary)
 			{
-				if(canMove && canShoot){
+				if(canMove){
 					if (currentTouch.position.x > position.x)
 						character.MoveDirection = 1;
 					else
@@ -69,7 +71,7 @@ public class Control : MonoBehaviour
 					position = currentTouch.position - currentTouch.deltaPosition;
 					finger = currentTouch.fingerId;
 				}
-				if(canMove && canShoot){
+				if(canMove){
 					if (currentTouch.position.x > position.x)
 						character.MoveDirection = 1;
 					else
@@ -81,7 +83,7 @@ public class Control : MonoBehaviour
 		
 		
 		#if UNITY_EDITOR
-		if (Input.GetButton ("Horizontal") && canMove && canShoot) {
+		if (Input.GetButton ("Horizontal") && canMove) {
 			if (Input.GetAxis ("Horizontal") > 0) {
 				character.MoveDirection = 1;
 			} else if (Input.GetAxis ("Horizontal") < 0) {
@@ -91,7 +93,7 @@ public class Control : MonoBehaviour
 			character.MoveDirection = 0;
 		}
 		
-		if (Input.GetButtonDown ("Jump") && canShoot) {
+		if (Input.GetButtonDown ("Jump")) {
 			ShootArrow ();
 		}
 		#endif
@@ -111,17 +113,14 @@ public class Control : MonoBehaviour
 
 	public void ShootArrow ()
 	{
-		canShoot = false;
 		character.MoveDirection = 0;
 		character.animation.CrossFade("shoot");
-		Invoke ("doShoot", 0.2f);
+		Invoke ("doShoot", 0.3f);
 	}
 	
 	void endLevel ()
 	{
-		if (GameStatus.Inst.ArrowCount > 0) {
-			canShoot = true;
-		} else {
+		if (GameStatus.Inst.ArrowCount <= 0) {
 			if (GameStatus.Inst.Score >= GameStatus.Inst.TargetScore) {
 				Application.LoadLevel ("Statistic");
 			} else {
@@ -139,13 +138,6 @@ public class Control : MonoBehaviour
 			GameStatus.Inst.ArrowCount--;
 		if (GameStatus.Inst.ArrowCount == 0)
 			Invoke ("endLevel", 0.5f);
-		else
-			Invoke ("enableShoot", 0.4f);
-	}
-	
-	void enableShoot ()
-	{
-		canShoot = true;
 	}
 
 	void countDown ()
