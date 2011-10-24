@@ -8,8 +8,8 @@ public abstract class Target: MonoBehaviour
 	
 	public Transform explosion;
 	public AudioClip destroySound;
-	public Vector3 leftFace = Vector3.down;
-	public Vector3 rightFace = Vector3.down;
+	public Vector3 leftFace = Vector3.back;
+	public Vector3 rightFace = Vector3.back;
 	public int missPunish = 0;
 	
 	
