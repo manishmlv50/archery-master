@@ -6,7 +6,6 @@ public class NormalTarget  : Target
 	public void Start ()
 	{
 		TARGET_ID = Targets.NormalTarget;
-		this.missPunish = 1;
 	}
 	
 	override public void DoEffect(Arrow arrow)
