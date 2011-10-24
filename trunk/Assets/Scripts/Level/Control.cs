@@ -69,7 +69,7 @@ public class Control : MonoBehaviour
 					position = currentTouch.position - currentTouch.deltaPosition;
 					finger = currentTouch.fingerId;
 				}
-				if(canMove){
+				if(canMove && canShoot){
 					if (currentTouch.position.x > position.x)
 						character.MoveDirection = 1;
 					else
@@ -81,7 +81,7 @@ public class Control : MonoBehaviour
 		
 		
 		#if UNITY_EDITOR
-		if (Input.GetButton ("Horizontal") && canMove) {
+		if (Input.GetButton ("Horizontal") && canMove && canShoot) {
 			if (Input.GetAxis ("Horizontal") > 0) {
 				character.MoveDirection = 1;
 			} else if (Input.GetAxis ("Horizontal") < 0) {
