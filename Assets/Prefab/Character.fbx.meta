@@ -3,7 +3,7 @@ guid: d3386727bcbfe40aa9bb615acb34f9bf
 ModelImporter:
   importerVersion: 7
   meshes:
-    scaleFactor: 0.01
+    scaleFactor: 8
     useFileUnits: 1
     meshCompression: 0
     generateColliders: 0
@@ -21,6 +21,27 @@ ModelImporter:
     animationCompression: 1
     animationWrapMode: 0
     splitAnimations: 1
+    clips:
+      idle:
+        firstFrame: -20
+        lastFrame: -10
+        loop: 1
+        wrapMode: 0
+      shoot:
+        firstFrame: 1
+        lastFrame: 18
+        loop: 0
+        wrapMode: 1
+      left:
+        firstFrame: 21
+        lastFrame: 51
+        loop: 1
+        wrapMode: 2
+      right:
+        firstFrame: 61
+        lastFrame: 91
+        loop: 1
+        wrapMode: 2
   nodeInfo:
     Body:
     - 100000
@@ -162,3 +183,7 @@ AssetImporter:
     4300002: Knife1
     4300004: Body
     7400000: Take 001 //// Character
+    7400002: idle //// Character
+    7400004: shoot //// Character
+    7400006: left //// Character
+    7400008: right //// Character
