@@ -1,0 +1,164 @@
+fileFormatVersion: 1
+guid: d3386727bcbfe40aa9bb615acb34f9bf
+ModelImporter:
+  importerVersion: 7
+  meshes:
+    scaleFactor: 0.01
+    useFileUnits: 1
+    meshCompression: 0
+    generateColliders: 0
+    swapUVs: 0
+  tangentSpace:
+    normalImportMode: 0
+    tangentImportMode: 1
+    smoothingAngle: 60
+    splitTangents: 1
+  materials:
+    generation: 1
+  animations:
+    generation: 3
+    bakeAnimations: 0
+    animationCompression: 1
+    animationWrapMode: 0
+    splitAnimations: 1
+  nodeInfo:
+    Body:
+    - 100000
+    - 400000
+    - 13700000
+    Bow1:
+    - 100002
+    - 400002
+    - 13700002
+    //RootNode:
+    - 100004
+    - 400004
+    - 11100000
+    Wrist_Control_R:
+    - 100006
+    - 400006
+    Knife1:
+    - 100008
+    - 400008
+    - 13700004
+    Arm_Control_R:
+    - 100010
+    - 400010
+    Palm_Control_R:
+    - 100012
+    - 400012
+    Wrist_Control_L:
+    - 100014
+    - 400014
+    Elbow_Control_R:
+    - 100016
+    - 400016
+    Arm_Control_L:
+    - 100018
+    - 400018
+    Parm_Control_L:
+    - 100020
+    - 400020
+    Neck_Control:
+    - 100022
+    - 400022
+    Elbow_Control_L:
+    - 100024
+    - 400024
+    Spine1_Control:
+    - 100026
+    - 400026
+    Head_Contol:
+    - 100028
+    - 400028
+    Knee_Control_R:
+    - 100030
+    - 400030
+    Spine2_Control:
+    - 100032
+    - 400032
+    ikHandle2:
+    - 100034
+    - 400034
+    Hip_Control:
+    - 100036
+    - 400036
+    ikHandle1:
+    - 100038
+    - 400038
+    Knee_Control_L:
+    - 100040
+    - 400040
+    CONTROL_ALL:
+    - 100042
+    - 400042
+    ikHandle_Feet_R:
+    - 100044
+    - 400044
+    knee_R:
+    - 100046
+    - 400046
+    ikHandle_Feet_L:
+    - 100048
+    - 400048
+    Palm_R:
+    - 100050
+    - 400050
+    ancle_R:
+    - 100052
+    - 400052
+    elbow_R:
+    - 100054
+    - 400054
+    hip_R:
+    - 100056
+    - 400056
+    Palm_L:
+    - 100058
+    - 400058
+    Wrist_R:
+    - 100060
+    - 400060
+    elbow_L:
+    - 100062
+    - 400062
+    arm_R:
+    - 100064
+    - 400064
+    head:
+    - 100066
+    - 400066
+    Wrist_L:
+    - 100068
+    - 400068
+    spine2:
+    - 100070
+    - 400070
+    arm_L:
+    - 100072
+    - 400072
+    ancle_L:
+    - 100074
+    - 400074
+    neck:
+    - 100076
+    - 400076
+    hip_L:
+    - 100078
+    - 400078
+    spine1:
+    - 100080
+    - 400080
+    knee_L:
+    - 100082
+    - 400082
+    Skeleton1:
+    - 100084
+    - 400084
+AssetImporter:
+  importerVersion: 1
+  fileIDToRecycleName:
+    4300000: Bow1
+    4300002: Knife1
+    4300004: Body
+    7400000: Take 001 //// Character

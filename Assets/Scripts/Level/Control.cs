@@ -69,7 +69,7 @@ public class Control : MonoBehaviour
 					position = currentTouch.position - currentTouch.deltaPosition;
 					finger = currentTouch.fingerId;
 				}
-				if(canMove && canShoot){
+				if(canMove){
 					if (currentTouch.position.x > position.x)
 						character.MoveDirection = 1;
 					else
