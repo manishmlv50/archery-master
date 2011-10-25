@@ -6,14 +6,13 @@ using System.Collections;
 
 public class Energy : MonoBehaviour {
 	
-	public Transform super_wave;
-	public Transform super_condition;
-	public Transform emitPoint;	
+	//public Transform super_wave;
+	//public Transform super_condition;
+	//public Transform emitPoint;	
 	
 	public AudioClip max_energy_sound;
 	
-	private Transform condition;
-	private Character character;
+	//private Transform condition;
 	
 	public Texture texture;
 	
@@ -25,14 +24,13 @@ public class Energy : MonoBehaviour {
 	// Use this for initialization
 	void Start () {
 		curr_power = 0;
-		character = GameObject.FindObjectOfType (typeof(Character)) as Character;
 	}
 	
 	// Update is called once per frame
 	void Update () {	
-		if(character.Super)
+		if(Character.Inst.Super)
 		{
-			condition.position = emitPoint.transform.position;
+			//condition.position = emitPoint.transform.position;
 			curr_power -= Time.deltaTime * 50f; // During this time, the player will be superman.
 			curr_power = Mathf.Clamp(curr_power, 0, barWidth);
 			
@@ -40,26 +38,22 @@ public class Energy : MonoBehaviour {
 			
 			if(curr_power < 1) {
 				curr_power = 0;
-				character.Super = false;
+				Character.Inst.Super = false;
 				GameStatus.Inst.MoveSpeed = moveSpeed;
-				Destroy(condition.gameObject);
+				//Destroy(condition.gameObject);
 			}
 		}
  
 		/* Due to floating point imprecision it is not recommended to compare floats using the equal operator. 
 		 * Ex: 1.0 == 10.0 / 10.0 might not return true. */
-		if(Mathf.Approximately(curr_power , barWidth) && !character.Super)
+		if(Mathf.Approximately(curr_power , barWidth) && !Character.Inst.Super)
 		{
-			character.Super = true;
+			Character.Inst.Super = true;
 			moveSpeed = GameStatus.Inst.MoveSpeed;
+			AudioSource.PlayClipAtPoint(max_energy_sound, Character.Inst.transform.position,GameStatus.soundVol);
 			
-			AudioSource.PlayClipAtPoint(max_energy_sound, 
-			                            new Vector3(emitPoint.position.x, 17.9f, -34), 
-			                            GameStatus.soundVol);
-			
-			condition = (Transform)Instantiate(super_condition,emitPoint.transform.position,Quaternion.identity);
-			
-			StartCoroutine("delay");
+			//condition = (Transform)Instantiate(super_condition,emitPoint.transform.position,Quaternion.identity);
+			//StartCoroutine("delay");
 		}
 	}
 	
@@ -72,18 +66,18 @@ public class Energy : MonoBehaviour {
 	
 	public void addEnergy(int e)
 	{
-		if(character.Super)	// don't add energy during super mode
+		if(Character.Inst.Super)	// don't add energy during super mode
 			return;	
 		
 		curr_power = curr_power + e;
 		curr_power = Mathf.Clamp(curr_power, 0, barWidth);
 	}
 	
-	IEnumerator delay() {
+	/*IEnumerator delay() {
 		Transform wave = (Transform) Instantiate(super_wave, emitPoint.transform.position,Quaternion.identity);
 		yield return new WaitForSeconds(1f);
 		Destroy(wave.gameObject);
-	}
+	}*/
 }
 
  
