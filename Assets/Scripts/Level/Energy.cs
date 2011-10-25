@@ -31,7 +31,7 @@ public class Energy : MonoBehaviour {
 		if(Character.Inst.Super)
 		{
 			//condition.position = emitPoint.transform.position;
-			curr_power -= Time.deltaTime * 50f; // During this time, the player will be superman.
+			curr_power -= Time.deltaTime * 40f; // During this time, the player will be superman.
 			curr_power = Mathf.Clamp(curr_power, 0, barWidth);
 			
 			GameStatus.Inst.MoveSpeed = 30;

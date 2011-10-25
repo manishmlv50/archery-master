@@ -85,6 +85,7 @@ public class Character : MonoBehaviour{
 		
 		animation["leftk"].speed = 2f;
 		animation["rightk"].speed = 2f;
+		animation["shoot"].speed = 1.4f;
 		
 		Super = false;
 	}
