@@ -15,16 +15,7 @@ public class Wall : MonoBehaviour {
 		if(t != null){
 			PackedSprite ps = hpGameObject.GetComponent<PackedSprite>();
 			GameStatus.Inst.HP -= t.missPunish;
-			if(GameStatus.Inst.HP <= 0)
-		{
-			if (GameStatus.Inst.Score >= GameStatus.Inst.TargetScore) {
-				Application.LoadLevel ("Statistic");
-			} else {
-				Application.LoadLevel ("GameOver");
-			}
-		}
-		else
-			ps.PlayAnim(GameStatus.Inst.HP);
+			ps.PlayAnim(GameStatus.Inst.HP<0? 0:GameStatus.Inst.HP);
 		}
 		Destroy(c.gameObject);
 		

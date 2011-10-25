@@ -16,8 +16,6 @@ public class Database
 	
 	public static int GetHP(int level)
 	{
-		if(level == 1)
-			return 1;
 		return 10;
 	}
 

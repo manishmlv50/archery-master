@@ -3,15 +3,14 @@ using System.Collections;
 
 public class Control : MonoBehaviour
 {
-
-	private Character character;
 	private bool canMove;
 	private Vector2 position;
 	private int finger;
 
 	public int fireSpeed = 5000;
 	public Transform shotPoint;
-	public Transform [] arrows;
+	public Transform normalArrow;
+	public Transform superArrow;
 	
 	
 
@@ -19,30 +18,19 @@ public class Control : MonoBehaviour
 	{
 		position = Vector2.zero;
 		canMove = true;
-		finger = int.MinValue;
-		character = GameObject.FindObjectOfType (typeof(Character)) as Character;
-		new GameStatus (
-		                Database.GetTime (GameStatus.Level), 
-		                Database.GetTargetScore (GameStatus.Level), 
-		                Database.GetArrowCount (GameStatus.Level), 
-		                Database.GetMoveSpeed (), 
-		                Database.GetScoreBonus (), 
-		                Database.GetComboBonus (), 
-		                Database.GetHP(GameStatus.Level));
-		
-		
+		finger = int.MinValue; 
 		InvokeRepeating ("countDown", 1, 1);
 	}
 
 	// Update is called once per frame
 	void Update ()
 	{	
-		if(character.animation.IsPlaying("shoot"))
+		if(Character.Inst.animation.IsPlaying("shoot")||Character.Inst.animation.IsPlaying("cut"))
 			return;
 		
 		if (GameStatus.tilting) {
-			character.MoveDirection = -Input.acceleration.y * 6f;
-			character.MoveDirection = Mathf.Clamp (character.MoveDirection, -1, 1);
+			Character.Inst.MoveDirection = -Input.acceleration.y * 6f;
+			Character.Inst.MoveDirection = Mathf.Clamp (Character.Inst.MoveDirection, -1, 1);
 		}
 		
 		
@@ -52,7 +40,7 @@ public class Control : MonoBehaviour
 					ShootArrow ();
 				}
 				else{
-					character.MoveDirection = 0;
+					Character.Inst.MoveDirection = 0;
 					finger = int.MinValue;
 				}
 			}
@@ -60,9 +48,9 @@ public class Control : MonoBehaviour
 			{
 				if(canMove){
 					if (currentTouch.position.x > position.x)
-						character.MoveDirection = 1;
+						Character.Inst.MoveDirection = 1;
 					else
-						character.MoveDirection = -1;
+						Character.Inst.MoveDirection = -1;
 				}
 			}
 			else if (currentTouch.phase == TouchPhase.Moved) {
@@ -73,9 +61,9 @@ public class Control : MonoBehaviour
 				}
 				if(canMove){
 					if (currentTouch.position.x > position.x)
-						character.MoveDirection = 1;
+						Character.Inst.MoveDirection = 1;
 					else
-						character.MoveDirection = -1;
+						Character.Inst.MoveDirection = -1;
 				}
 			}
 		}
@@ -85,12 +73,12 @@ public class Control : MonoBehaviour
 		#if UNITY_EDITOR
 		if (Input.GetButton ("Horizontal") && canMove) {
 			if (Input.GetAxis ("Horizontal") > 0) {
-				character.MoveDirection = 1;
+				Character.Inst.MoveDirection = 1;
 			} else if (Input.GetAxis ("Horizontal") < 0) {
-				character.MoveDirection = -1;
+				Character.Inst.MoveDirection = -1;
 			}
 		} else if (Input.GetButtonUp ("Horizontal")) {
-			character.MoveDirection = 0;
+			Character.Inst.MoveDirection = 0;
 		}
 		
 		if (Input.GetButtonDown ("Jump")) {
@@ -101,7 +89,7 @@ public class Control : MonoBehaviour
 	
 	public void Freeze(float time)
 	{
-		character.MoveDirection = 0;
+		Character.Inst.MoveDirection = 0;
 		canMove = false;
 		Invoke("enableMove",time);
 	}
@@ -113,43 +101,39 @@ public class Control : MonoBehaviour
 
 	public void ShootArrow ()
 	{
-		character.MoveDirection = 0;
-		character.animation.CrossFade("shoot");
-		Invoke ("doShoot", 0.25f);
-	}
-	
-	void endLevel ()
-	{
-		if (GameStatus.Inst.ArrowCount <= 0) {
-			if (GameStatus.Inst.Score >= GameStatus.Inst.TargetScore) {
-				Application.LoadLevel ("Statistic");
-			} else {
-				Application.LoadLevel ("GameOver");
-			}
+		Character.Inst.MoveDirection = 0;
+		if(!Character.Inst.Super)
+		{	
+			Character.Inst.animation.CrossFade("shoot");
+			Invoke ("doNormalShoot", 0.25f);
+		}
+		else
+		{
+			Character.Inst.animation.CrossFade("cut");
+			Invoke ("doSuperShoot", 0.1f);
 		}
 	}
 
-	void doShoot ()
+	void doNormalShoot ()
 	{
-		Transform bullet = (Transform)Instantiate (arrows[(int)GameStatus.Inst.Arrow], shotPoint.transform.position, Quaternion.LookRotation (Vector3.forward));
+		Transform bullet = (Transform)Instantiate (normalArrow, shotPoint.transform.position, Quaternion.LookRotation (Vector3.forward));
 		bullet.rigidbody.AddForce (transform.forward * fireSpeed);
 		Energy e = FindObjectOfType(typeof(Energy)) as Energy;
-		if(e == null || !e.super_mode)
+		if(e == null || !Character.Inst.Super)
 			GameStatus.Inst.ArrowCount--;
-		if (GameStatus.Inst.ArrowCount == 0)
-			Invoke ("endLevel", 0.5f);
+	}
+	
+	void doSuperShoot ()
+	{
+		Transform bullet = (Transform)Instantiate (superArrow, shotPoint.transform.position, Quaternion.LookRotation (Vector3.forward));
+		bullet.rigidbody.AddForce (transform.forward * fireSpeed);
+		Energy e = FindObjectOfType(typeof(Energy)) as Energy;
+		if(e == null || !Character.Inst.Super)
+			GameStatus.Inst.ArrowCount--;
 	}
 
 	void countDown ()
 	{
-		if (GameStatus.Inst.Time == 0) {
-			if (GameStatus.Inst.Score >= GameStatus.Inst.TargetScore) {
-				Application.LoadLevel ("Statistic");
-			} else {
-				Application.LoadLevel ("GameOver");
-			}
-		} else {
-			GameStatus.Inst.Tick ();
-		}
+		GameStatus.Inst.Time--;
 	}	
 }
