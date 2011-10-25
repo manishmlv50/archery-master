@@ -61,9 +61,7 @@ public class Statistic : MonoBehaviour {
 		
 		GUI.Label(header,"Congratulations",headerStyle);
 		
-		int s = 9999;
-		if(GameStatus.Inst != null)
-			s = GameStatus.Inst.Score;
+		int s = GameStatus.report.score;
 		GUI.Label(score,"Score: "+s,scoreStyle);
 		
 		if(GUI.Button(buttonPosition,"Next",buttonStyle))

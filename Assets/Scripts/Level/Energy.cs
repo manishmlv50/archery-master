@@ -11,9 +11,9 @@ public class Energy : MonoBehaviour {
 	public Transform emitPoint;	
 	
 	public AudioClip max_energy_sound;
-	public bool super_mode = false;
 	
 	private Transform condition;
+	private Character character;
 	
 	public Texture texture;
 	
@@ -25,12 +25,12 @@ public class Energy : MonoBehaviour {
 	// Use this for initialization
 	void Start () {
 		curr_power = 0;
-		super_mode = false;
+		character = GameObject.FindObjectOfType (typeof(Character)) as Character;
 	}
 	
 	// Update is called once per frame
 	void Update () {	
-		if(super_mode)
+		if(character.Super)
 		{
 			condition.position = emitPoint.transform.position;
 			curr_power -= Time.deltaTime * 50f; // During this time, the player will be superman.
@@ -40,7 +40,7 @@ public class Energy : MonoBehaviour {
 			
 			if(curr_power < 1) {
 				curr_power = 0;
-				super_mode = false;	
+				character.Super = false;
 				GameStatus.Inst.MoveSpeed = moveSpeed;
 				Destroy(condition.gameObject);
 			}
@@ -48,9 +48,9 @@ public class Energy : MonoBehaviour {
  
 		/* Due to floating point imprecision it is not recommended to compare floats using the equal operator. 
 		 * Ex: 1.0 == 10.0 / 10.0 might not return true. */
-		if(Mathf.Approximately(curr_power , barWidth) && super_mode == false)
+		if(Mathf.Approximately(curr_power , barWidth) && !character.Super)
 		{
-			super_mode = true;
+			character.Super = true;
 			moveSpeed = GameStatus.Inst.MoveSpeed;
 			
 			AudioSource.PlayClipAtPoint(max_energy_sound, 
@@ -72,7 +72,7 @@ public class Energy : MonoBehaviour {
 	
 	public void addEnergy(int e)
 	{
-		if(super_mode)	// don't add energy during super mode
+		if(character.Super)	// don't add energy during super mode
 			return;	
 		
 		curr_power = curr_power + e;

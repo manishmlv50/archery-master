@@ -25,7 +25,7 @@ public class GUIControl : MonoBehaviour {
 		GUI.Label(GUIManager.TargetRect,"Target:"+GameStatus.Inst.TargetScore);
 			
 		Energy e = FindObjectOfType(typeof(Energy)) as Energy;
-		if(e != null && e.super_mode)
+		if(e != null && Character.Inst.Super)
 			GUI.Label(GUIManager.ArrowRect," Arrow:Max");
 		else
 			GUI.Label(GUIManager.ArrowRect," Arrow:"+GameStatus.Inst.ArrowCount);
