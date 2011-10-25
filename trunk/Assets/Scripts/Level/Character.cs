@@ -23,7 +23,6 @@ public class Character : MonoBehaviour{
 		{
 			_super = value;
 			if(!_super){
-				Debug.Log(_superEffect);
 				animation.CrossFade("idle");
 				_superEffect.renderer.enabled = false;
 			}
@@ -79,6 +78,8 @@ public class Character : MonoBehaviour{
 		
 		animation["shoot"].layer = 1;
 		animation["cut"].layer = 1;
+		
+		animation["cut"].speed = 0.8f;
 		
 		animation["left"].speed = 2f;
 		animation["right"].speed = 2f;
