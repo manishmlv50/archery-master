@@ -6,9 +6,9 @@ using System.Collections;
 
 public class Energy : MonoBehaviour {
 	
-	//public Transform super_wave;
+	public Transform super_wave;
 	//public Transform super_condition;
-	//public Transform emitPoint;	
+	public Transform emitPoint;	
 	
 	public AudioClip max_energy_sound;
 	
@@ -50,10 +50,12 @@ public class Energy : MonoBehaviour {
 		{
 			Character.Inst.Super = true;
 			moveSpeed = GameStatus.Inst.MoveSpeed;
-			AudioSource.PlayClipAtPoint(max_energy_sound, Character.Inst.transform.position,GameStatus.soundVol);
-			
+			Debug.Log(GameStatus.soundVol+" "+ max_energy_sound);
+			AudioSource.PlayClipAtPoint(max_energy_sound, 
+			                            new Vector3(emitPoint.position.x, 17.9f, -34), 
+			                            GameStatus.soundVol);
 			//condition = (Transform)Instantiate(super_condition,emitPoint.transform.position,Quaternion.identity);
-			//StartCoroutine("delay");
+			StartCoroutine("delay");
 		}
 	}
 	
@@ -73,11 +75,11 @@ public class Energy : MonoBehaviour {
 		curr_power = Mathf.Clamp(curr_power, 0, barWidth);
 	}
 	
-	/*IEnumerator delay() {
+	IEnumerator delay() {
 		Transform wave = (Transform) Instantiate(super_wave, emitPoint.transform.position,Quaternion.identity);
 		yield return new WaitForSeconds(1f);
 		Destroy(wave.gameObject);
-	}*/
+	}
 }
 
  
