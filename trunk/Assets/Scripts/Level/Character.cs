@@ -10,6 +10,7 @@ public class Character : MonoBehaviour{
 	public Transform right;
 	
 	private float _moveDiretion;
+	public GameObject _superEffect;
 	
 	private bool _super;
 	public bool Super
@@ -21,10 +22,15 @@ public class Character : MonoBehaviour{
 		set
 		{
 			_super = value;
-			if(!_super)
+			if(!_super){
+				Debug.Log(_superEffect);
 				animation.CrossFade("idle");
-			else
+				_superEffect.renderer.enabled = false;
+			}
+			else{
 				animation.CrossFade("idlek");
+				_superEffect.renderer.enabled = true;
+			}
 		}
 	}
 	public float MoveDirection {
@@ -62,6 +68,7 @@ public class Character : MonoBehaviour{
 		Inst = this;
 		
 		_moveDiretion = 0;
+		
 		animation["idle"].layer = 0;
 		animation["idlek"].layer = 0;
 		
