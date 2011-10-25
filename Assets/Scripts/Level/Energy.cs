@@ -50,9 +50,8 @@ public class Energy : MonoBehaviour {
 		{
 			Character.Inst.Super = true;
 			moveSpeed = GameStatus.Inst.MoveSpeed;
-			Debug.Log(GameStatus.soundVol+" "+ max_energy_sound);
 			AudioSource.PlayClipAtPoint(max_energy_sound, 
-			                            new Vector3(emitPoint.position.x, 17.9f, -34), 
+			                            Camera.mainCamera.transform.position, 
 			                            GameStatus.soundVol);
 			//condition = (Transform)Instantiate(super_condition,emitPoint.transform.position,Quaternion.identity);
 			StartCoroutine("delay");
