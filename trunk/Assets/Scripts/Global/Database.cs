@@ -6,8 +6,8 @@ public class Database
 
 
 	private static int[] _time = { 40, 50, 60, 60, 65, 70, 70, 80, 90 };
-	private static int[] _targetScore = { 500, 700, 2500, 3500, 4000, 3200, 7000, 8000, 9500 };
-	private static int[] _arrow = { 20, 25, 20, 30, 30, 35, 35, 40, 40 };
+	private static int[] _targetScore = { 500, 700, 2500, 3000, 4000, 3200, 6000, 8000, 9500 };
+	private static int[] _arrow = { 20, 25, 20, 30, 30, 30, 35, 40, 40 };
 
 	public static int GetTime (int level)
 	{
