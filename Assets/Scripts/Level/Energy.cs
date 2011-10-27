@@ -39,6 +39,7 @@ public class Energy : MonoBehaviour {
 			if(curr_power < 1) {
 				curr_power = 0;
 				Character.Inst.Super = false;
+				Arrow.DMG_AMOUNT = 25;
 				GameStatus.Inst.MoveSpeed = moveSpeed;
 				//Destroy(condition.gameObject);
 			}
@@ -49,6 +50,7 @@ public class Energy : MonoBehaviour {
 		if(Mathf.Approximately(curr_power , barWidth) && !Character.Inst.Super)
 		{
 			Character.Inst.Super = true;
+			Arrow.DMG_AMOUNT = 70;
 			moveSpeed = GameStatus.Inst.MoveSpeed;
 			AudioSource.PlayClipAtPoint(max_energy_sound, 
 			                            Camera.mainCamera.transform.position, 
