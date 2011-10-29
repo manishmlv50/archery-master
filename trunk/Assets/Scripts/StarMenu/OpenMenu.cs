@@ -353,7 +353,11 @@ public class OpenMenu : MonoBehaviour {
 			Loading.LOAD = true;
 			Start();
 			AudioSource.PlayClipAtPoint(confirmSound, new Vector3(0,1,-10), GameStatus.soundVol);
-			Application.LoadLevel("Level");
+			
+			if(GameStatus.Level > 4) 
+				Application.LoadLevel("Level_ruin");
+			else
+				Application.LoadLevel("Level");
 		}
 	}
 	
