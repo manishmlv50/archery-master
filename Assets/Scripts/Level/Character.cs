@@ -23,11 +23,11 @@ public class Character : MonoBehaviour{
 		{
 			_super = value;
 			if(!_super){
-				animation.CrossFade("idle");
+				animation.Play("idle");
 				_superEffect.renderer.enabled = false;
 			}
 			else{
-				animation.CrossFade("idlek");
+				animation.Play("idlek");
 				_superEffect.renderer.enabled = true;
 			}
 		}
@@ -41,9 +41,9 @@ public class Character : MonoBehaviour{
 			if(_moveDiretion == 0)
 			{
 				if(!_super)
-					animation.CrossFade("idle");
+					animation.Play("idle");
 				else
-					animation.CrossFade("idlek");
+					animation.Play("idlek");
 			}
 			else{
 				if(_moveDiretion < 0){
