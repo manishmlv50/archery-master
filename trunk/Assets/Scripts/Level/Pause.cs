@@ -37,7 +37,7 @@ public class Pause: MonoBehaviour
 				Time.timeScale = 1-Time.timeScale;
 				Loading.LOAD = true;
 				AudioSource.PlayClipAtPoint(confirmSound, cam.position, GameStatus.soundVol);
-				Application.LoadLevel("Level");
+				Application.LoadLevel("Level_ruin");
 			}
 			
 			if(GUI.Button(new Rect(0.05f*Screen.width, 0.57f*Screen.height, 0.5f*Screen.width, 0.11f*Screen.height),"Main Menu")){

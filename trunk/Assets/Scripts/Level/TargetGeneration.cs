@@ -19,6 +19,15 @@ public class TargetGeneration : MonoBehaviour {
 	private int defaultSpeed = 500;
 	
 	void Start () {
+		if(GameStatus.Level == 7 && ID == 0) {
+			Transform mirror1 = (Transform)Instantiate(reflectorTarget,
+			                                              new Vector3(15,6,40),
+			                                              Quaternion.identity);
+			Transform mirror2 = (Transform)Instantiate(reflectorTarget,
+			                                              new Vector3(-15,6,40),
+			                                              Quaternion.identity);
+		}
+			
 		InvokeRepeating("targetMethod",0.1f,1);   //3 times a secs?
 	}
 	
