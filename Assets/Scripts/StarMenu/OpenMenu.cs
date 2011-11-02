@@ -357,7 +357,7 @@ public class OpenMenu : MonoBehaviour {
 			if(GameStatus.Level > 4) 
 				Application.LoadLevel("Level_ruin");
 			else
-				Application.LoadLevel("Level");
+				Application.LoadLevel("Level_ruin");
 		}
 	}
 	
