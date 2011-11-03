@@ -16,6 +16,7 @@ public class Control : MonoBehaviour
 
 	void Start ()
 	{
+		Target.clearPool();
 		position = Vector2.zero;
 		canMove = true;
 		finger = int.MinValue; 
