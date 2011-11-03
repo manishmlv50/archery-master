@@ -17,12 +17,20 @@ public class Wall : MonoBehaviour {
 			GameStatus.Inst.HP -= t.missPunish;
 			ps.PlayAnim(GameStatus.Inst.HP<0? 0:GameStatus.Inst.HP);
 		}
-		Destroy(c.gameObject);
+		Target r = c.gameObject.GetComponent<Target>();
+		if(r != null)
+			r.recycle();
+		else
+			Destroy(c.gameObject);
 		
     }
 	
 	void OnTriggerEnter(Collider c){
-		Destroy(c.gameObject);
+		Target r = c.gameObject.GetComponent<Target>();
+		if(r != null)
+			r.recycle();
+		else
+			Destroy(c.gameObject);
 	}
 	
 	void Update () {

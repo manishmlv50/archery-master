@@ -27,7 +27,7 @@ public class StrongTarget : Target {
 			createSound();
 			// Earn Score for destroying the Bomb Target
 			GameStatus.Inst.EarnScore(arrow.Combo++, TARGET_ID);
-			Destroy(gameObject);
+			recycle();
 		}
 		else if(hit_points < 50 && hit_points > 0){
 			renderer.material = secondMaterial;	

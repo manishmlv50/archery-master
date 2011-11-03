@@ -18,7 +18,7 @@ public class NormalTarget  : Target
 		Energy e = GameObject.FindObjectOfType(typeof(Energy)) as Energy;
 		if(e != null)
 			e.addEnergy(20);
-		Destroy(this.gameObject);
+		recycle();
 	}
 }
 

@@ -28,6 +28,6 @@ public class TimeTarget : Target{
 		tt.createSound();
 		
 		GameStatus.Inst.IncreaseTime(EXTRA_TIME);
-		Destroy(gameObject);
+		recycle();
 	}
 }

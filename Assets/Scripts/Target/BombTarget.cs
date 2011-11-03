@@ -47,6 +47,6 @@ public class BombTarget : Target {
 			}
 		}
 		Destroy(arrow.gameObject);
-		Destroy(gameObject);
+		recycle();
 	}
 }
