@@ -21,6 +21,11 @@ public abstract class Target: MonoBehaviour
 		this.gameObject.active = false;
 	}
 	
+	public static void clearPool()
+	{
+		targetPool.Clear();
+	}
+	
 	public static Target allocateTarget(Targets id, Transform tf, Vector3 pos, bool left, int speed)
 	{
 		Debug.Log("pool size:"+targetPool.Count);
