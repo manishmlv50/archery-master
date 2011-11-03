@@ -26,6 +26,6 @@ public class ProjectileTarget : Target {
 		// Add extra ammo for destroying this target
 		GameStatus.Inst.ArrowCount += EXTRA_AMMO; //EarnScore(arrow.Combo++, TARGET_ID);
 		
-		Destroy(gameObject);
+		recycle();
 	}
 }

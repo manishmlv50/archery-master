@@ -63,14 +63,7 @@ public class TargetGeneration : MonoBehaviour {
 				Debug.LogWarning("Warning! Please check the LevelsSpeed File. Level:"+GameStatus.Level+" Time:"+GameStatus.Inst.TimeSpend+" Id:"+ID);
 				speed = defaultSpeed;
 			}
-			if(left){
-				Transform targetInst = (Transform)Instantiate(t,transform.position,Quaternion.LookRotation(t.gameObject.GetComponent<Target>().leftFace));
-				targetInst.rigidbody.AddForce(Vector3.right*speed);
-			}
-			else{
-				Transform targetInst = (Transform)Instantiate(t,transform.position,Quaternion.LookRotation(t.gameObject.GetComponent<Target>().rightFace));
-				targetInst.rigidbody.AddForce(Vector3.left*speed);
-			}
+			Target.allocateTarget(targetID,t,transform.position,left,speed);
 		}
 	}
 }

@@ -22,6 +22,6 @@ public class WallTarget : Target {
 		Destroy(arrow.gameObject);
 		
 		if(arrow.rigidbody.velocity.z < 0)
-			Destroy(this.gameObject);
+			recycle();
 	}
 }

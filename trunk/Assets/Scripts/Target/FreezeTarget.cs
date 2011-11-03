@@ -25,6 +25,6 @@ public class FreezeTarget : Target {
 		createSound();
 		Control control = FindObjectOfType(typeof(Control)) as Control;
 		control.Freeze(FREEZETIME);
-		Destroy(gameObject);
+		recycle();
 	}
 }

@@ -26,7 +26,7 @@ public class DarknessTarget : Target {
 		createExplosion();
 		createSound();
 		
-		Destroy(gameObject);
+		recycle();
 		Destroy(arrow.gameObject);
 	}
 	
