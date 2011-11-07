@@ -34,7 +34,7 @@ public class Control : MonoBehaviour
 			Character.Inst.MoveDirection = Mathf.Clamp (Character.Inst.MoveDirection, -1, 1);
 		}
 		
-		
+		else{
 		foreach (Touch currentTouch in Input.touches) {
 			if (currentTouch.phase == TouchPhase.Ended || currentTouch.phase == TouchPhase.Canceled) {
 				if (currentTouch.fingerId != finger){
@@ -67,6 +67,7 @@ public class Control : MonoBehaviour
 						Character.Inst.MoveDirection = -1;
 				}
 			}
+		}
 		}
 		
 		
