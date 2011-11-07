@@ -112,6 +112,7 @@ public class GameStatus : MonoBehaviour
 	
 	public void EarnScore(int combo,Targets targetId)
 	{
+		Debug.Log("Destroy taget:"+targetId);
 		Score += (int)(Database.ScoreOfTarget(targetId) * 
 		                          Mathf.Pow(ComboBonus,combo) *
 		                          ScoreBonus);

@@ -10,12 +10,6 @@ public class BombTarget : Target {
 		TARGET_ID = Targets.BombTarget;
 	}
 	
-	// Update is called once per frame
-	void Update () 
-	{
-		
-	}
-	
 	override public void DoEffect(Arrow arrow)
 	{
 		if(effected )
@@ -33,7 +27,8 @@ public class BombTarget : Target {
 		Object[] gos = GameObject.FindObjectsOfType(typeof(Target));
 		foreach(Object go in gos) {
 			Target t = go as Target;
-			
+			if(t.gameObject.active == false)
+				continue;
 			if(t is WallTarget){
 				continue;
 			}

@@ -50,7 +50,7 @@ public class StartMenu : MonoBehaviour {
 		// if working, that means other buttons except the current ones couldn't work
 		// ex: if we open setting window, then the button on the beginning start menu
 		// like New Game, Continue... can't work
-		working = Loading.LOAD | OpenMenu.showNewGame | OpenMenu.showContinue | 
+		working = Loading.LOAD!=null | OpenMenu.showNewGame | OpenMenu.showContinue | 
 			OpenMenu.showSetting | OpenMenu.tutorMode;
 		
 		// Adjust the arrangement according to diff resolutions
