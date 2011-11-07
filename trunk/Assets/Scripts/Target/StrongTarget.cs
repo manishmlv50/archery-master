@@ -5,7 +5,7 @@ public class StrongTarget : Target {
 	
 	public int hit_points = 50;
 	public Material secondMaterial;
-	public Material fitstMaterial;
+	public Material firstMaterial;
 	
 	// Use this for initialization
 	void Start () {
@@ -14,7 +14,7 @@ public class StrongTarget : Target {
 	
 	override public void Resume()
 	{
-		renderer.material = fitstMaterial;	
+		renderer.material = firstMaterial;	
 		effected = false;
 		hit_points = 50;
 	}
