@@ -5,16 +5,18 @@ public class StrongTarget : Target {
 	
 	public int hit_points = 50;
 	public Material secondMaterial;
+	public Material fitstMaterial;
 	
 	// Use this for initialization
 	void Start () {
 		TARGET_ID = Targets.StrongTarget;
 	}
 	
-	// Update is called once per frame
-	void Update () 
+	override public void Resume()
 	{
-		
+		renderer.material = fitstMaterial;	
+		effected = false;
+		hit_points = 50;
 	}
 	
 	override public void DoEffect(Arrow arrow)
@@ -23,6 +25,9 @@ public class StrongTarget : Target {
 		hit_points = hit_points - Arrow.DMG_AMOUNT;
 		
 		if(hit_points <= 0){
+			if(effected )
+				return;
+			effected = true;
 			createExplosion();
 			createSound();
 			// Earn Score for destroying the Bomb Target

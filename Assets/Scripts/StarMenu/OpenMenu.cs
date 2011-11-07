@@ -39,7 +39,7 @@ public class OpenMenu : MonoBehaviour {
 	// Update is called once per frame
 	void OnGUI () {
 		GUI.skin.box.normal.background = boxBackgound;
-		if(Loading.LOAD) {
+		if(Loading.LOAD != null) {
 			if(Screen.width > 900)
 				GUI.skin.box.font = boxFont_Large;
 			else
@@ -350,14 +350,13 @@ public class OpenMenu : MonoBehaviour {
 		}
 		
 		if( GUI.Button(new Rect(x+0.6f*width, 2f*y+rect.y, 0.4f*width, height), "OK") ) {
-			Loading.LOAD = true;
 			Start();
 			AudioSource.PlayClipAtPoint(confirmSound, new Vector3(0,1,-10), GameStatus.soundVol);
 			
 			if(GameStatus.Level > 4) 
-				Application.LoadLevel("Level_ruin");
+				Loading.LOAD = Application.LoadLevelAsync("Level_ruin");
 			else
-				Application.LoadLevel("Level_ruin");
+				Loading.LOAD = Application.LoadLevelAsync("Level_ruin");
 		}
 	}
 	
@@ -397,10 +396,10 @@ public class OpenMenu : MonoBehaviour {
 		}
 		
 		if( GUI.Button(new Rect(x+0.6f*width, 2f*y+rect.y, 0.4f*width, height), "OK") ) {
-			Loading.LOAD = true;
+			
 			Start();
 			AudioSource.PlayClipAtPoint(confirmSound, new Vector3(0,1,-10), GameStatus.soundVol);
-			Application.LoadLevel("Level");
+			Loading.LOAD = Application.LoadLevelAsync("Level");
 		}
 	}
 	

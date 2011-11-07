@@ -67,9 +67,8 @@ public class Statistic : MonoBehaviour {
 		if(GUI.Button(buttonPosition,"Next",buttonStyle))
 		{
 			GameStatus.Level++;
-			Loading.LOAD = true;
 			AudioSource.PlayClipAtPoint(confirmSound, new Vector3(0,1,-10), GameStatus.soundVol);
-			Application.LoadLevel("Level");
+			Loading.LOAD = Application.LoadLevelAsync("Level");
 		}
 		
 		if(GUI.Button(storePosition,"Store",buttonStyle))

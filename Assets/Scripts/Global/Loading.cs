@@ -6,16 +6,13 @@ public class Loading : MonoBehaviour {
 	public GUISkin skin_large;
 	public GUISkin skin_small;
 	
-	public static bool LOAD = false;
+	public static AsyncOperation LOAD = null;
 	public static int guiDepth = 0;
-	
-	private float percentageLoaded = 0;
 	
 	// Use this for initialization
 	void Start () {
-		LOAD = false;
+		LOAD = null;
 		guiDepth = 0;
-		percentageLoaded = 0;
 	}
 	
 	void OnGUI() {
@@ -29,11 +26,10 @@ public class Loading : MonoBehaviour {
 		}
 		
 		// if loading the other level, then pop up a message of "Loading.....%"
-		if(LOAD) {	
+		if(LOAD != null) {	
 			loadStyle.alignment = TextAnchor.MiddleCenter;
-			percentageLoaded = Application.GetStreamProgressForLevel("Level") * 100;
 			GUI.Box(new Rect(0.2f*Screen.width, 0.4f*Screen.height, 0.6f*Screen.width, 0.2f*Screen.height),
-		    	    "Loading..." + percentageLoaded.ToString() + "%", loadStyle);
+		    	    "Loading..." + (LOAD.progress*100).ToString() + "%", loadStyle);
 		}
 	}
 }

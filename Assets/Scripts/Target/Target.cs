@@ -4,6 +4,7 @@ using System.Collections.Generic;
 
 public abstract class Target: MonoBehaviour
 {	
+	private static Vector3 POOL_POSITION = new  Vector3(0,100,0);
 	protected Targets TARGET_ID;
 	protected bool effected = false;
 
@@ -18,7 +19,16 @@ public abstract class Target: MonoBehaviour
 	public void recycle()
 	{
 		targetPool[this] = true;
-		this.gameObject.active = false;
+		//gameObject.active = false;
+		transform.position = POOL_POSITION;
+		POOL_POSITION = POOL_POSITION + Vector3.right*15;
+		if(POOL_POSITION.x > 100)
+		{
+			POOL_POSITION.x = 0;
+			POOL_POSITION.z += 15;
+		}
+		rigidbody.velocity = Vector3.zero;
+		rigidbody.angularVelocity = Vector3.zero;
 	}
 	
 	public static void clearPool()
@@ -48,7 +58,6 @@ public abstract class Target: MonoBehaviour
 			result = targetInst.GetComponent<Target>();
 			targetPool.Add(result,false);
 		}
-		result.rigidbody.velocity = Vector3.zero;
 		result.transform.position = pos;
 		if(left){
 			result.transform.rotation = Quaternion.LookRotation(result.leftFace);
@@ -59,7 +68,7 @@ public abstract class Target: MonoBehaviour
 			result.transform.rotation = Quaternion.LookRotation(result.rightFace);
 			result.rigidbody.AddForce(Vector3.left*speed);
 		}
-		result.effected = false;
+		result.Resume();
 		return result;
 	}
 	
@@ -76,4 +85,8 @@ public abstract class Target: MonoBehaviour
 	}
 	
 	abstract public void DoEffect(Arrow arrow);
+	virtual public void Resume()
+	{
+		effected = false;
+	}
 }

@@ -65,9 +65,8 @@ public class GameOver : MonoBehaviour {
 		
 		if(GUI.Button(buttonPosition,"Retry",buttonStyle))
 		{
-			Loading.LOAD = true;
 			AudioSource.PlayClipAtPoint(confirmSound, new Vector3(0,1,-10), GameStatus.soundVol);
-			Application.LoadLevel("Level");
+			Loading.LOAD = Application.LoadLevelAsync("Level");
 		}
 		
 	}
