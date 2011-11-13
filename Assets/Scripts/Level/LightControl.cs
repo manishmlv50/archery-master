@@ -10,13 +10,17 @@ public class LightControl : MonoBehaviour {
 			Light light = (Light) o;
 			if(light.name.Equals("backgroudLight"))
 			{	
-				//intensity = light.intensity;
-				light.enabled = false;
+				if(GameStatus.Level == 8)
+					light.enabled = true;
+				else
+					light.enabled = false;
 			}
 			else if(light.name.Equals("light2"))
 			{
-				//intensity = light.intensity;
-				light.enabled = true;
+				if(GameStatus.Level == 8)
+					light.enabled = false;
+				else
+					light.enabled = true;
 			}
 		}
 		Invoke("back",DarknessTarget.DARK_TIME);
@@ -30,13 +34,18 @@ public class LightControl : MonoBehaviour {
 		Object[] os = GameObject.FindObjectsOfType(typeof(Light));
 		foreach(Object o in os){
 			Light light = (Light) o;
-			if(light.name.Equals("backgroudLight"))
-				//light.intensity = intensity;
-				light.enabled = true;
+			if(light.name.Equals("backgroudLight")) {
+				if(GameStatus.Level == 8)
+					light.enabled = false;
+				else
+					light.enabled = true;
+			}
 			else if(light.name.Equals("light2"))
 			{
-				//intensity = light.intensity;
-				light.enabled = false;
+				if(GameStatus.Level == 8)
+					light.enabled = true;
+				else
+					light.enabled = false;
 			}
 		}
 	}

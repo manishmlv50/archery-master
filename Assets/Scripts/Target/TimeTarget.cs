@@ -21,6 +21,9 @@ public class TimeTarget : Target{
 			return;
 		effected = true;
 		createExplosion();
+		Energy e = GameObject.FindObjectOfType(typeof(Energy)) as Energy;
+		if(e != null)
+			e.addEnergy(20);
 		
 		GameStatus.Inst.EarnScore(arrow.Combo++, TARGET_ID);
 		

@@ -79,14 +79,14 @@ public class Character : MonoBehaviour{
 		animation["shoot"].layer = 1;
 		animation["cut"].layer = 1;
 		
-		animation["cut"].speed = 0.8f;
+		animation["cut"].speed = 0.7f;
 		
 		animation["left"].speed = 2f;
 		animation["right"].speed = 2f;
 		
 		animation["leftk"].speed = 2f;
 		animation["rightk"].speed = 2f;
-		animation["shoot"].speed = 1.4f;
+		animation["shoot"].speed = 0.85f;
 		
 		Super = false;
 	}
