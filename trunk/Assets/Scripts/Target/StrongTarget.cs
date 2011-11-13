@@ -32,12 +32,12 @@ public class StrongTarget : Target {
 			createSound();
 			// Earn Score for destroying the Strong Target
 			GameStatus.Inst.EarnScore(arrow.Combo++, TARGET_ID);
-			recycle();
-		}
-		else if(hit_points < 50 && hit_points > 0){
 			Energy e = GameObject.FindObjectOfType(typeof(Energy)) as Energy;
 			if(e != null)
 				e.addEnergy(40);
+			recycle();
+		}
+		else if(hit_points < 50 && hit_points > 0){
 			renderer.material = secondMaterial;	
 			Destroy(arrow.gameObject);
 		}		
