@@ -22,9 +22,13 @@ public class ProjectileTarget : Target {
 		effected = true;
 		createExplosion();
 		createSound();
+		Energy e = GameObject.FindObjectOfType(typeof(Energy)) as Energy;
+		if(e != null)
+			e.addEnergy(20);
 		
 		// Add extra ammo for destroying this target
-		GameStatus.Inst.ArrowCount += EXTRA_AMMO; //EarnScore(arrow.Combo++, TARGET_ID);
+		GameStatus.Inst.ArrowCount += EXTRA_AMMO; 
+		GameStatus.Inst.EarnScore(arrow.Combo++, TARGET_ID);
 		
 		recycle();
 	}

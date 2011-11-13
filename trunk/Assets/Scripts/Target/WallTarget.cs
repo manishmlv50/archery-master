@@ -21,7 +21,10 @@ public class WallTarget : Target {
 		/* Don't Destroy the Wall Target, destroy the arrow */
 		Destroy(arrow.gameObject);
 		
-		if(arrow.rigidbody.velocity.z < 0)
+		if(arrow.rigidbody.velocity.z < 0) {
+			Energy e = GameObject.FindObjectOfType(typeof(Energy)) as Energy;
+			if(e != null) e.addEnergy(20);
 			recycle();
+		}
 	}
 }

@@ -24,8 +24,8 @@ public class DarknessTarget : Target {
 		LightControl l = GameObject.FindObjectOfType(typeof(LightControl)) as LightControl;
 		l.TurnDark();
 		createExplosion();
-		createSound();
 		
+		createSound();		
 		recycle();
 		Destroy(arrow.gameObject);
 	}
