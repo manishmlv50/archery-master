@@ -30,11 +30,14 @@ public class StrongTarget : Target {
 			effected = true;
 			createExplosion();
 			createSound();
-			// Earn Score for destroying the Bomb Target
+			// Earn Score for destroying the Strong Target
 			GameStatus.Inst.EarnScore(arrow.Combo++, TARGET_ID);
 			recycle();
 		}
 		else if(hit_points < 50 && hit_points > 0){
+			Energy e = GameObject.FindObjectOfType(typeof(Energy)) as Energy;
+			if(e != null)
+				e.addEnergy(40);
 			renderer.material = secondMaterial;	
 			Destroy(arrow.gameObject);
 		}		
