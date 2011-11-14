@@ -23,8 +23,8 @@ public class FreezeTarget : Target {
 		effected = true;
 		createExplosion();
 		createSound();
-		Control control = FindObjectOfType(typeof(Control)) as Control;
-		control.Freeze(FREEZETIME);
+		
+		Character.Inst.Freeze(FREEZETIME);
 		recycle();
 	}
 }

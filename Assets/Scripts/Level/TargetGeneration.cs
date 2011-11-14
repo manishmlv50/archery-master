@@ -27,8 +27,11 @@ public class TargetGeneration : MonoBehaviour {
 			                                              new Vector3(-15,6,40),
 			                                              Quaternion.identity);
 		}
-			
-		InvokeRepeating("targetMethod",0.1f,1);   //3 times a secs?
+	}
+	
+	public void begin()
+	{
+		InvokeRepeating("targetMethod",0.1f,1);
 	}
 	
 	void targetMethod(){
