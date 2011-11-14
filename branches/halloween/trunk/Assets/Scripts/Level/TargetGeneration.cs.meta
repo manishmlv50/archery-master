@@ -1,0 +1,9 @@
+fileFormatVersion: 1
+guid: f2f9c980a053b4f1bbb78afdd8e11da2
+MonoImporter:
+  importerVersion: 1
+  defaultReferences:
+    normalTarget: {fileID: 400000, guid: a21fca7ba45ae4cf5b2094f07205edc7, type: 2}
+    timeTarget: {fileID: 400000, guid: 00000000000000000000000000000000, type: 0}
+    bombTarget: {fileID: 400000, guid: ee1d1f6c181c0431292af15631aa9469, type: 2}
+    freezeTarget: {fileID: 400000, guid: 00000000000000000000000000000000, type: 0}
