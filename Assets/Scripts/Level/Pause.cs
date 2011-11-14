@@ -36,7 +36,7 @@ public class Pause: MonoBehaviour
 			if(GUI.Button(new Rect(0.05f*Screen.width, 0.42f*Screen.height, 0.5f*Screen.width, 0.11f*Screen.height),"Retry")){
 				Time.timeScale = 1-Time.timeScale;
 				AudioSource.PlayClipAtPoint(confirmSound, cam.position, GameStatus.soundVol);
-				Loading.LOAD = Application.LoadLevelAsync("Level_ruin");
+				Loading.LOAD = Application.LoadLevelAsync("Level");
 			}
 			
 			if(GUI.Button(new Rect(0.05f*Screen.width, 0.57f*Screen.height, 0.5f*Screen.width, 0.11f*Screen.height),"Main Menu")){

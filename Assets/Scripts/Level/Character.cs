@@ -5,6 +5,10 @@ public class Character : MonoBehaviour{
     
 	public static Character Inst{get;set;}
 	
+	public int fireSpeed = 5000;
+	public Transform shotPoint;
+	public Transform normalArrow;
+	public Transform superArrow;
 	
 	public Transform left;
 	public Transform right;
@@ -46,13 +50,13 @@ public class Character : MonoBehaviour{
 					animation.Play("idlek");
 			}
 			else{
-				if(_moveDiretion < 0){
+				if(_moveDiretion < 0 && CanMove){
 					if(!_super)
 						animation.CrossFade("left");
 					else
 						animation.CrossFade("leftk");
 				}
-				else if(_moveDiretion > 0){
+				else if(_moveDiretion > 0 && CanMove){
 					if(!_super)
 						animation.CrossFade("right");
 					else
@@ -62,11 +66,15 @@ public class Character : MonoBehaviour{
 		}
 	}
 	
+	public bool CanMove {get;set;}
+	public bool CanShoot {get;set;}
+	
 	void Start()
 	{
 		Inst = this;
 		
 		_moveDiretion = 0;
+		CanMove = true;
 		
 		animation["idle"].layer = 0;
 		animation["idlek"].layer = 0;
@@ -89,9 +97,13 @@ public class Character : MonoBehaviour{
 		animation["shoot"].speed = 0.85f;
 		
 		Super = false;
+		CanMove = false;
+		CanShoot = false;
 	}
 	
-	void Update () {		
+	void Update () {
+		if(!CanMove)
+			return;
         float moveInput = MoveDirection * Time.deltaTime * GameStatus.Inst.MoveSpeed; 
         transform.position += new Vector3(moveInput, 0, 0);
 		
@@ -102,7 +114,51 @@ public class Character : MonoBehaviour{
             float xPos = Mathf.Clamp(transform.position.x, l , r);
             transform.position = new Vector3(xPos, transform.position.y, transform.position.z);
         }
+	}
 	
+	public void Freeze(float time)
+	{
+		MoveDirection = 0;
+		CanMove = false;
+		Invoke("enableMove",time);
+	}
+	
+	void enableMove()
+	{
+		CanMove = true;
+	}
+	
+	public void ShootArrow ()
+	{
+		MoveDirection = 0;
+		if(!Character.Inst.Super)
+		{	
+			animation.CrossFade("shoot");
+			Invoke ("doNormalShoot", 0.25f);
+		}
+		else
+		{
+			animation.CrossFade("cut");
+			Invoke ("doSuperShoot", 0.1f);
+		}
+	}
 
+	void doNormalShoot ()
+	{
+		Transform bullet = (Transform)Instantiate (normalArrow, shotPoint.transform.position, Quaternion.LookRotation (Vector3.forward));
+		bullet.rigidbody.AddForce (transform.forward * fireSpeed);
+		Energy e = FindObjectOfType(typeof(Energy)) as Energy;
+		if(e == null || !Character.Inst.Super)
+			GameStatus.Inst.ArrowCount--;
+		
+	}
+	
+	void doSuperShoot ()
+	{
+		Transform bullet = (Transform)Instantiate (superArrow, shotPoint.transform.position, Quaternion.LookRotation (Vector3.forward));
+		bullet.rigidbody.AddForce (transform.forward * fireSpeed);
+		Energy e = FindObjectOfType(typeof(Energy)) as Energy;
+		if(e == null || !Character.Inst.Super)
+			GameStatus.Inst.ArrowCount--;
 	}
 }

@@ -354,9 +354,9 @@ public class OpenMenu : MonoBehaviour {
 			AudioSource.PlayClipAtPoint(confirmSound, new Vector3(0,1,-10), GameStatus.soundVol);
 			
 			if(GameStatus.Level > 4) 
-				Loading.LOAD = Application.LoadLevelAsync("Level_ruin");
+				Loading.LOAD = Application.LoadLevelAsync("Level");
 			else
-				Loading.LOAD = Application.LoadLevelAsync("Level_ruin");
+				Loading.LOAD = Application.LoadLevelAsync("Level");
 		}
 	}
 	
