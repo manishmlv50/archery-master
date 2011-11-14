@@ -1,0 +1,213 @@
+fileFormatVersion: 1
+guid: 9122da4344de541a086816861b568ad0
+ModelImporter:
+  importerVersion: 7
+  meshes:
+    scaleFactor: 8
+    useFileUnits: 1
+    meshCompression: 0
+    generateColliders: 0
+    swapUVs: 0
+  tangentSpace:
+    normalImportMode: 0
+    tangentImportMode: 1
+    smoothingAngle: 60
+    splitTangents: 1
+  materials:
+    generation: 1
+  animations:
+    generation: 3
+    bakeAnimations: 0
+    animationCompression: 1
+    animationWrapMode: 0
+    splitAnimations: 1
+    clips:
+      idle:
+        firstFrame: -20
+        lastFrame: -10
+        loop: 0
+        wrapMode: 0
+      idlek:
+        firstFrame: 190
+        lastFrame: 200
+        loop: 0
+        wrapMode: 0
+      shoot:
+        firstFrame: 1
+        lastFrame: 18
+        loop: 0
+        wrapMode: 1
+      cut:
+        firstFrame: 100
+        lastFrame: 110
+        loop: 1
+        wrapMode: 1
+      left:
+        firstFrame: 21
+        lastFrame: 51
+        loop: 1
+        wrapMode: 2
+      right:
+        firstFrame: 61
+        lastFrame: 91
+        loop: 1
+        wrapMode: 2
+      leftk:
+        firstFrame: 111
+        lastFrame: 141
+        loop: 1
+        wrapMode: 2
+      rightk:
+        firstFrame: 151
+        lastFrame: 181
+        loop: 1
+        wrapMode: 2
+  nodeInfo:
+    Knee_Control_R:
+    - 100000
+    - 400000
+    spine1:
+    - 100002
+    - 400002
+    ancle_L:
+    - 100004
+    - 400004
+    ikHandle_Feet_R:
+    - 100006
+    - 400006
+    Spine1_Control:
+    - 100008
+    - 400008
+    Wrist_R:
+    - 100010
+    - 400010
+    Skeleton1:
+    - 100012
+    - 400012
+    Palm_R:
+    - 100014
+    - 400014
+    ikHandle2:
+    - 100016
+    - 400016
+    Spine2_Control:
+    - 100018
+    - 400018
+    elbow_R:
+    - 100020
+    - 400020
+    neck:
+    - 100022
+    - 400022
+    Palm_L:
+    - 100024
+    - 400024
+    hip_R:
+    - 100026
+    - 400026
+    knee_R:
+    - 100028
+    - 400028
+    Neck_Control:
+    - 100030
+    - 400030
+    spine2:
+    - 100032
+    - 400032
+    ikHandle1:
+    - 100034
+    - 400034
+    CONTROL_ALL:
+    - 100036
+    - 400036
+    ancle_R:
+    - 100038
+    - 400038
+    Knee_Control_L:
+    - 100040
+    - 400040
+    arm_L:
+    - 100042
+    - 400042
+    Bow1:
+    - 100044
+    - 400044
+    - 13700000
+    Wrist_L:
+    - 100046
+    - 400046
+    knee_L:
+    - 100048
+    - 400048
+    head:
+    - 100050
+    - 400050
+    hip_L:
+    - 100052
+    - 400052
+    elbow_L:
+    - 100054
+    - 400054
+    Hip_Control:
+    - 100056
+    - 400056
+    arm_R:
+    - 100058
+    - 400058
+    //RootNode:
+    - 100060
+    - 400060
+    - 11100000
+    ikHandle_Feet_L:
+    - 100062
+    - 400062
+    Arm_Control_R:
+    - 100064
+    - 400064
+    Wrist_Control_R:
+    - 100066
+    - 400066
+    Palm_Control_R:
+    - 100068
+    - 400068
+    Wrist_Control_L:
+    - 100070
+    - 400070
+    Elbow_Control_R:
+    - 100072
+    - 400072
+    Arm_Control_L:
+    - 100074
+    - 400074
+    Parm_Control_L:
+    - 100076
+    - 400076
+    Elbow_Control_L:
+    - 100078
+    - 400078
+    Head_Contol:
+    - 100080
+    - 400080
+    Body:
+    - 100082
+    - 400082
+    - 13700002
+    Knife1:
+    - 100084
+    - 400084
+    - 13700004
+AssetImporter:
+  importerVersion: 1
+  fileIDToRecycleName:
+    4300000: Knife1
+    4300002: Body
+    4300004: Bow1
+    7400000: Take 001 //// ArcheryMasterExport1024
+    7400002: idle //// ArcheryMasterExport1024
+    7400004: idlek //// ArcheryMasterExport1024
+    7400006: shoot //// ArcheryMasterExport1024
+    7400008: cut //// ArcheryMasterExport1024
+    7400010: left //// ArcheryMasterExport1024
+    7400012: right //// ArcheryMasterExport1024
+    7400014: leftk //// ArcheryMasterExport1024
+    7400016: rightk //// ArcheryMasterExport1024
