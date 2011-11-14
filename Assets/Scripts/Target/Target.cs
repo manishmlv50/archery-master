@@ -4,11 +4,11 @@ using System.Collections.Generic;
 
 public abstract class Target: MonoBehaviour
 {	
-	private static Vector3 POOL_POSITION = new  Vector3(0,200,0);
+	private static Vector3 POOL_POSITION = new  Vector3(0,100,0);
 	protected Targets TARGET_ID;
 	protected bool effected = false;
 
-	//public Transform explosion;
+	public Transform explosion;
 	public AudioClip destroySound;
 	public Vector3 leftFace = Vector3.back;
 	public Vector3 rightFace = Vector3.back;
@@ -38,6 +38,7 @@ public abstract class Target: MonoBehaviour
 	
 	public static Target allocateTarget(Targets id, Transform tf, Vector3 pos, bool left, int speed)
 	{
+		Debug.Log("pool size:"+targetPool.Count);
 		Target result = null;
 		foreach(var keyvalue in targetPool)
 		{
@@ -78,8 +79,8 @@ public abstract class Target: MonoBehaviour
 	
 	public void createExplosion()
 	{
-		//if(explosion != null)
-		//	Instantiate(explosion, gameObject.transform.position, Quaternion.identity);
+		if(explosion != null)
+			Instantiate(explosion, gameObject.transform.position, Quaternion.identity);
 		
 	}
 	

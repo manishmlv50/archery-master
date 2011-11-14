@@ -3,8 +3,8 @@ using System.Collections;
 
 public class Loading : MonoBehaviour {
 	
-	public GUIStyle style_large;
-	public GUIStyle style_small;
+	public GUISkin skin_large;
+	public GUISkin skin_small;
 	
 	public static AsyncOperation LOAD = null;
 	public static int guiDepth = 0;
@@ -19,10 +19,10 @@ public class Loading : MonoBehaviour {
 		GUI.depth = guiDepth;
 		GUIStyle loadStyle;
 		if(Screen.width > 900) {
-			loadStyle = style_large;
+			loadStyle = new GUIStyle(skin_large.box);
 		}
 		else {
-			loadStyle = style_small;
+			loadStyle = new GUIStyle(skin_small.box);
 		}
 		
 		// if loading the other level, then pop up a message of "Loading.....%"

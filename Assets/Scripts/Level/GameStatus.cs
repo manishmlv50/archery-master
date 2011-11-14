@@ -112,6 +112,7 @@ public class GameStatus : MonoBehaviour
 	
 	public void EarnScore(int combo,Targets targetId)
 	{
+		Debug.Log("Destroy taget:"+targetId);
 		Score += (int)(Database.ScoreOfTarget(targetId) * 
 		                          Mathf.Pow(ComboBonus,combo) *
 		                          ScoreBonus);
@@ -121,10 +122,9 @@ public class GameStatus : MonoBehaviour
 	{
 		report.score = Score;
 		if (Score >= TargetScore) {
-			Level ++;
-			Application.LoadLevel ("Level");
+			Application.LoadLevel ("Statistic");
 		} else {
-			Application.LoadLevel ("Level");
+			Application.LoadLevel ("GameOver");
 		}
 	}
 
