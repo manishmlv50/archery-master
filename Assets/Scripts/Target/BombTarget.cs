@@ -3,7 +3,7 @@ using System.Collections;
 
 public class BombTarget : Target {
 	
-	public int damage_radius = 25;
+	public int damage_radius = 30;
 	
 	// Use this for initialization
 	void Start () {
@@ -26,7 +26,6 @@ public class BombTarget : Target {
 		
 		// Find game objects of NormalTarget type
 		// Check if the distance of the "BombTarget" and this "Target" is less than the damage_radius
-		
 		Object[] gos = GameObject.FindObjectsOfType(typeof(Target));
 		foreach(Object go in gos) {
 			Target t = go as Target;
