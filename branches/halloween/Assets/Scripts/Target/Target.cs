@@ -8,7 +8,7 @@ public abstract class Target: MonoBehaviour
 	protected Targets TARGET_ID;
 	protected bool effected = false;
 
-	//public Transform explosion;
+	public Transform explosion;
 	public AudioClip destroySound;
 	public Vector3 leftFace = Vector3.back;
 	public Vector3 rightFace = Vector3.back;
@@ -78,8 +78,8 @@ public abstract class Target: MonoBehaviour
 	
 	public void createExplosion()
 	{
-		//if(explosion != null)
-		//	Instantiate(explosion, gameObject.transform.position, Quaternion.identity);
+		if(explosion != null)
+			Instantiate(explosion, gameObject.transform.position, Quaternion.identity);
 		
 	}
 	
