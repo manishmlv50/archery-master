@@ -19,19 +19,19 @@ public class TargetGeneration : MonoBehaviour {
 	private int defaultSpeed = 500;
 	
 	void Start () {
-		if(GameStatus.Level == 7 && ID == 0) {
+		if(GameStatus.Level >= 7 && ID == 0) {
 			Transform mirror1 = (Transform)Instantiate(reflectorTarget,
-			                                              new Vector3(15,6,40),
+			                                              new Vector3(20,10,57),
 			                                              Quaternion.identity);
 			Transform mirror2 = (Transform)Instantiate(reflectorTarget,
-			                                              new Vector3(-15,6,40),
+			                                              new Vector3(-20,10,57),
 			                                              Quaternion.identity);
 		}
 	}
 	
 	public void begin()
 	{
-		InvokeRepeating("targetMethod",0.1f,1);
+		InvokeRepeating("targetMethod",0.2f,1);
 	}
 	
 	void targetMethod(){
