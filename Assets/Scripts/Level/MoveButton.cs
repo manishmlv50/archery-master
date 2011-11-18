@@ -18,6 +18,14 @@ public class MoveButton : UIButton {
 		if(left){
 			if(ptr.evt == POINTER_INFO.INPUT_EVENT.PRESS)
 				Character.Inst.MoveDirection = -1;
+				
+			float x = ptr.origPos.x;
+			if(ptr.evt == POINTER_INFO.INPUT_EVENT.DRAG) {
+				if((ptr.devicePos.x - x) <= 0)
+					Character.Inst.MoveDirection = -1;
+				else
+					Character.Inst.MoveDirection = 1;
+			}
 			if(ptr.evt == POINTER_INFO.INPUT_EVENT.TAP)
 				Character.Inst.MoveDirection = 0;
 			if(ptr.evt == POINTER_INFO.INPUT_EVENT.RELEASE)
@@ -29,6 +37,14 @@ public class MoveButton : UIButton {
 		{
 			if(ptr.evt == POINTER_INFO.INPUT_EVENT.PRESS)
 				Character.Inst.MoveDirection = 1;
+			
+			float x = ptr.origPos.x;
+			if(ptr.evt == POINTER_INFO.INPUT_EVENT.DRAG) {
+				if((ptr.devicePos.x - x) >= 0)
+					Character.Inst.MoveDirection = 1;
+				else
+					Character.Inst.MoveDirection = -1;
+			}
 			if(ptr.evt == POINTER_INFO.INPUT_EVENT.TAP)
 				Character.Inst.MoveDirection = 0;
 			if(ptr.evt == POINTER_INFO.INPUT_EVENT.RELEASE)
