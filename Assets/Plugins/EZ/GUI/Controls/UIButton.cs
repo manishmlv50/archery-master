@@ -233,7 +233,7 @@ public class UIButton : AutoSpriteControlBase
 	{
 		if (deleted)
 			return;
-
+	
 		if (!m_controlIsEnabled || IsHidden())
 		{
 			base.OnInput(ref ptr);
