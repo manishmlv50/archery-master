@@ -17,6 +17,10 @@ public class GameStatus : MonoBehaviour
 	public static bool tilting = false;
 	public static int Level { get;set;}
 	
+	public UIBistateInteractivePanel resultMenu;
+	public UIBistateInteractivePanel blackGround;
+	
+	
 	private static GameStatus _inst;
 	public static GameStatus Inst
 	{	
@@ -119,14 +123,79 @@ public class GameStatus : MonoBehaviour
 	
 	private void endLevel ()
 	{
+		GameObject.Find("ScoreNumber").GetComponent<SpriteText>().Text = "" + Score;
+		GameObject.Find("Time").GetComponent<SpriteText>().Hide(true);
+		
+		if(Score >= TargetScore+1000)
+		{
+			//3Star!
+			GameObject.Find("2Star").GetComponent<UIButton>().Hide(true);
+			GameObject.Find("1Star").GetComponent<UIButton>().Hide(true);
+			GameObject.Find("Failed").GetComponent<UIButton>().Hide(true);
+
+			
+		}else if(Score >= TargetScore + 500 && Score < TargetScore + 1000)
+		{
+			//2Star!
+			GameObject.Find("3Star").GetComponent<UIButton>().Hide(true);
+			GameObject.Find("1Star").GetComponent<UIButton>().Hide(true);
+			GameObject.Find("Failed").GetComponent<UIButton>().Hide(true);
+
+		}else if(Score >= TargetScore && Score < TargetScore + 500)
+		{
+			//1Star!
+			GameObject.Find("3Star").GetComponent<UIButton>().Hide(true);
+			GameObject.Find("2Star").GetComponent<UIButton>().Hide(true);
+			GameObject.Find("Failed").GetComponent<UIButton>().Hide(true);
+	
+		}else
+		{
+			//Failed!
+			GameObject.Find("3Star").GetComponent<UIButton>().Hide(true);
+			GameObject.Find("2Star").GetComponent<UIButton>().Hide(true);
+			GameObject.Find("Next").GetComponent<UIButton>().Hide(true);
+			GameObject.Find("1Star").GetComponent<UIButton>().Hide(true);
+			GameObject.Find("ScoreNumber").GetComponent<SpriteText>().Hide(true);
+			GameObject.Find("ScoreLabel").GetComponent<SpriteText>().Hide(true);
+		}
+		
+		
+		
 		report.score = Score;
+		
+		blackGround.Reveal();
+		resultMenu.Reveal();
+		
+		
+		/*
+		
 		if (Score >= TargetScore) {
 			Level ++;
 			Application.LoadLevel ("Level");
 		} else {
 			Application.LoadLevel ("Level");
-		}
+		}	
+		*/
 	}
+	
+	void LevelChoose()
+	{
+		
+	}
+	
+	void NextLevel()
+	{
+		Level++;
+		Application.LoadLevel("Level");
+	}
+	
+	void Retry()
+	{
+		Application.LoadLevel("Level");
+	}
+	
+	
+
 
 
 }
