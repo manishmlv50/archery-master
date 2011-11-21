@@ -5,11 +5,13 @@ public class ShootButton : UIButton {
 
 	void Start () {
 		base.Start();
-		inputDelegate = action;
+		this.AddInputDelegate(action);
 	}
 	
 	void action(ref POINTER_INFO ptr)
 	{
+		if(ptr.evt == POINTER_INFO.INPUT_EVENT.NO_CHANGE)
+			return;
 		if(!Character.Inst.CanShoot)
 			return;
 		if(Character.Inst.animation.IsPlaying("shoot")||Character.Inst.animation.IsPlaying("cut"))
