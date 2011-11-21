@@ -6,10 +6,12 @@ public class MoveButton : UIButton {
 	// Use this for initialization
 	
 	private static bool press = false;
-	private static int direction = 0;
+	private static float direction = 0;
 	void Start () {
 		base.Start();
 		AddInputDelegate(action);
+		if(GameStatus.tilting)
+			Destroy(this);
 	}
 	
 	void action(ref POINTER_INFO ptr)
@@ -32,14 +34,15 @@ public class MoveButton : UIButton {
 		Character.Inst.MoveDirection = direction;
 	}
 	
-	int getDragDirection(Vector3 touch)
+	float getDragDirection(Vector3 touch)
 	{
+		int slow = 20;
 		Vector3 p = Camera.allCameras[1].WorldToScreenPoint(transform.position);
-		if(touch.x - p.x > 10)
+		if(touch.x - p.x > slow)
 			return 1;
-		else if(touch.x - p.x < -10)
+		else if(touch.x - p.x < -slow)
 			return -1;
 		else
-			return 0;
+			return (touch.x - p.x)/slow;
 	}
 }
