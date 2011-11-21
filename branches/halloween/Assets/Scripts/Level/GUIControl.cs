@@ -7,7 +7,7 @@ public class GUIControl : MonoBehaviour {
 	public SpriteText DisplayArrow;
 	public SpriteText DisplayLevel;
 	public SpriteText DisplayTime;
-	
+	public SpriteText DisplayTargetScore;
 	void Update(){
 
 		Energy e = FindObjectOfType(typeof(Energy)) as Energy;
@@ -17,13 +17,13 @@ public class GUIControl : MonoBehaviour {
 		else
 			DisplayArrow.Text = "Arrow: " + GameStatus.Inst.ArrowCount;
 		
-		DisplayScore.Text = "Score:  " + GameStatus.Inst.Score;
+		DisplayScore.Text = "Score: " + GameStatus.Inst.Score;
 		
 		DisplayLevel.Text = "Level " + (GameStatus.Level + 1);
 		
 		DisplayTime.Text = GameStatus.Inst.Time.ToString();
 	
-
+		DisplayTargetScore.Text = "Target Score: " + GameStatus.Inst.TargetScore.ToString();
 		
 		
 		
