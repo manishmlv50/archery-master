@@ -27,11 +27,11 @@ public class Character : MonoBehaviour{
 		{
 			_super = value;
 			if(!_super){
-				animation.Play("idle");
+				animation.CrossFade("idle");
 				_superEffect.renderer.enabled = false;
 			}
 			else{
-				animation.Play("idlek");
+				animation.CrossFade("idlek");
 				_superEffect.renderer.enabled = true;
 			}
 		}
@@ -45,9 +45,9 @@ public class Character : MonoBehaviour{
 			if(_moveDiretion == 0)
 			{
 				if(!_super)
-					animation.Play("idle");
+					animation.CrossFade("idle");
 				else
-					animation.Play("idlek");
+					animation.CrossFade("idlek");
 			}
 			else{
 				if(_moveDiretion < 0 && CanMove){
@@ -84,8 +84,8 @@ public class Character : MonoBehaviour{
 		animation["leftk"].layer = 0;
 		animation["rightk"].layer = 0;
 		
-		animation["shoot"].layer = 1;
-		animation["cut"].layer = 1;
+		animation["shoot"].layer = 0;
+		animation["cut"].layer = 0;
 		
 		animation["cut"].speed = 0.7f;
 		
@@ -126,20 +126,22 @@ public class Character : MonoBehaviour{
 	void enableMove()
 	{
 		CanMove = true;
+		MoveDirection = 0;
 	}
 	
 	public void ShootArrow ()
 	{
 		MoveDirection = 0;
+		CanMove = false;
 		if(!Character.Inst.Super)
 		{	
 			animation.CrossFade("shoot");
-			Invoke ("doNormalShoot", 0.25f);
+			Invoke ("doNormalShoot", 0.3f);
 		}
 		else
 		{
 			animation.CrossFade("cut");
-			Invoke ("doSuperShoot", 0.1f);
+			Invoke ("doSuperShoot", 0.2f);
 		}
 	}
 
@@ -150,6 +152,7 @@ public class Character : MonoBehaviour{
 		Energy e = FindObjectOfType(typeof(Energy)) as Energy;
 		if(e == null || !Character.Inst.Super)
 			GameStatus.Inst.ArrowCount--;
+		Invoke ("enableMove", 0.3f);
 		
 	}
 	
@@ -160,5 +163,6 @@ public class Character : MonoBehaviour{
 		Energy e = FindObjectOfType(typeof(Energy)) as Energy;
 		if(e == null || !Character.Inst.Super)
 			GameStatus.Inst.ArrowCount--;
+		Invoke ("enableMove", 0.2f);
 	}
 }
