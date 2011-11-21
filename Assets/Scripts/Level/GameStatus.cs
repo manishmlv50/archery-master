@@ -19,7 +19,7 @@ public class GameStatus : MonoBehaviour
 	
 	public UIBistateInteractivePanel resultMenu;
 	public UIBistateInteractivePanel blackGround;
-	
+	public UIBistateInteractivePanel pauseMenu;
 	
 	private static GameStatus _inst;
 	public static GameStatus Inst
@@ -194,8 +194,19 @@ public class GameStatus : MonoBehaviour
 		Application.LoadLevel("Level");
 	}
 	
+	void Resume()
+	{
+		pauseMenu.Hide();
+		blackGround.Hide();
+		UnityEngine.Time.timeScale = 1;
+	}
 	
-
+	void Pause()
+	{
+		pauseMenu.Reveal();
+		blackGround.Reveal();
+		UnityEngine.Time.timeScale = 0;
+	}
 
 
 }

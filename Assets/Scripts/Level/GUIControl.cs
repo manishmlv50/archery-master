@@ -37,6 +37,8 @@ public class GUIControl : MonoBehaviour {
 		DisplayLevel.Text = "Level " + (GameStatus.Level + 1);
 		
 		DisplayTime.Text = GameStatus.Inst.Time.ToString();
+	
+		
 		
 /*
 		GUI.Label(GUIManager.ScoreRect," Score:"+GameStatus.Inst.Score);
