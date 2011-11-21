@@ -6,6 +6,8 @@ public class ShootButton : UIButton {
 	void Start () {
 		base.Start();
 		this.AddInputDelegate(action);
+		if(GameStatus.tilting)
+			Destroy(this);
 	}
 	
 	void action(ref POINTER_INFO ptr)

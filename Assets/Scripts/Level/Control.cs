@@ -18,13 +18,16 @@ public class Control : MonoBehaviour
 
 	// Update is called once per frame
 	void Update ()
-	{	
-		if(Character.Inst.animation.IsPlaying("shoot")||Character.Inst.animation.IsPlaying("cut"))
-			return;
-		
+	{			
 		if (GameStatus.tilting) {
 			Character.Inst.MoveDirection = -Input.acceleration.y * 6f;
 			Character.Inst.MoveDirection = Mathf.Clamp (Character.Inst.MoveDirection, -1, 1);
+			
+			foreach(Touch t in Input.touches)
+			{
+				if(t.phase == TouchPhase.Ended)
+					Character.Inst.ShootArrow();
+			}
 		}
 		
 		#if UNITY_EDITOR
