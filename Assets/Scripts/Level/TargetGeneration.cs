@@ -34,6 +34,11 @@ public class TargetGeneration : MonoBehaviour {
 		InvokeRepeating("targetMethod",0.2f,1);
 	}
 	
+	public void end()
+	{
+		CancelInvoke("targetMethod");
+	}
+	
 	void targetMethod(){
 		
 		Targets targetID = Database.GetTarget(GameStatus.Level,GameStatus.Inst.TimeSpend,ID);

@@ -28,8 +28,10 @@ public class Loading : MonoBehaviour {
 		// if loading the other level, then pop up a message of "Loading.....%"
 		if(LOAD != null) {	
 			loadStyle.alignment = TextAnchor.MiddleCenter;
+			//GUI.Box(new Rect(0.2f*Screen.width, 0.4f*Screen.height, 0.6f*Screen.width, 0.2f*Screen.height),
+		    //	    "Loading..." + (LOAD.progress*100).ToString() + "%", loadStyle);
 			GUI.Box(new Rect(0.2f*Screen.width, 0.4f*Screen.height, 0.6f*Screen.width, 0.2f*Screen.height),
-		    	    "Loading..." + (LOAD.progress*100).ToString() + "%", loadStyle);
+		    	    "Loading...", loadStyle);
 		}
 	}
 }

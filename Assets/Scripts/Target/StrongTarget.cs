@@ -4,8 +4,6 @@ using System.Collections;
 public class StrongTarget : Target {
 	
 	public int hit_points = 50;
-	public Material secondMaterial;
-	public Material firstMaterial;
 	
 	// Use this for initialization
 	void Start () {
@@ -14,7 +12,9 @@ public class StrongTarget : Target {
 	
 	override public void Resume()
 	{
-		renderer.material = firstMaterial;	
+		PackedSprite ps = GetComponent<PackedSprite>();
+		if(ps != null)
+			ps.PlayAnim(0);
 		effected = false;
 		hit_points = 50;
 	}
@@ -38,7 +38,9 @@ public class StrongTarget : Target {
 			recycle();
 		}
 		else if(hit_points < 50 && hit_points > 0){
-			renderer.material = secondMaterial;	
+			PackedSprite ps = GetComponent<PackedSprite>();
+			if(ps != null)
+				ps.PlayAnim(1);
 			Destroy(arrow.gameObject);
 		}		
 	}

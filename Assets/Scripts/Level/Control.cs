@@ -15,6 +15,11 @@ public class Control : MonoBehaviour
 	{
 		InvokeRepeating ("countDown", 0.5f, 1);
 	}
+	
+	public void end()
+	{
+		CancelInvoke("countDown");
+	}
 
 	// Update is called once per frame
 	void Update ()
