@@ -182,7 +182,7 @@ public class GameStatus : MonoBehaviour
 	
 	void LevelChoose()
 	{
-		
+		Application.LoadLevel("StartMenu");
 	}
 	
 	void NextLevel()
