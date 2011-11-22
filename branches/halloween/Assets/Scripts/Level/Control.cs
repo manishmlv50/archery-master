@@ -7,8 +7,8 @@ public class Control : MonoBehaviour
 	
 	void Start ()
 	{
-		Target.clearPool();
 		Inst = this;
+		Target.clearPool();
 	}
 	
 	public void begin()

@@ -182,17 +182,20 @@ public class GameStatus : MonoBehaviour
 	
 	void LevelChoose()
 	{
+		UnityEngine.Time.timeScale = 1;
 		Application.LoadLevel("StartMenu");
 	}
 	
 	void NextLevel()
 	{
 		Level++;
+		UnityEngine.Time.timeScale = 1;
 		Application.LoadLevel("Level");
 	}
 	
 	void Retry()
 	{
+		UnityEngine.Time.timeScale = 1;
 		Application.LoadLevel("Level");
 	}
 	
