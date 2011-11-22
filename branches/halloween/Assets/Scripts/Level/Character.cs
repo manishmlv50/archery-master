@@ -131,6 +131,8 @@ public class Character : MonoBehaviour{
 	
 	public void ShootArrow ()
 	{
+		if(!CanShoot)
+			return;
 		MoveDirection = 0;
 		CanMove = false;
 		if(!Character.Inst.Super)
