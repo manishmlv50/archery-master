@@ -124,7 +124,7 @@ public class GameStatus : MonoBehaviour
 	private void endLevel ()
 	{
 		GameObject.Find("ScoreNumber").GetComponent<SpriteText>().Text = "" + Score;
-		GameObject.Find("Time").GetComponent<SpriteText>().Hide(true);
+		//GameObject.Find("Time").GetComponent<SpriteText>().Hide(true);
 		
 		if(Score >= TargetScore+1000)
 		{
@@ -167,15 +167,17 @@ public class GameStatus : MonoBehaviour
 		resultMenu.Reveal();
 		
 		
-		/*
-		
-		if (Score >= TargetScore) {
-			Level ++;
-			Application.LoadLevel ("Level");
-		} else {
-			Application.LoadLevel ("Level");
-		}	
-		*/
+		Control.Inst.end();
+		foreach(GameObject go in GameObject.FindGameObjectsWithTag("TargetGen"))
+		{
+			TargetGeneration tg = go.GetComponent<TargetGeneration>();
+			if(tg != null)
+				tg.end();
+		}
+		if(Character.Inst != null){
+			Character.Inst.CanMove = false;
+			Character.Inst.CanShoot = false;
+		}
 	}
 	
 	void LevelChoose()
