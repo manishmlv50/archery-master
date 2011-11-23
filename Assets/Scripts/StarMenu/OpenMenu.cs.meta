@@ -1,2 +1,14 @@
 fileFormatVersion: 1
 guid: 5edf46a1757944e20826436e7f00c462
+MonoImporter:
+  importerVersion: 1
+  defaultReferences:
+    confirmSound: {}
+    menuOpenSound: {}
+    menuCloseSound: {}
+    buttonFont_Large: {}
+    buttonFont_Small: {}
+    boxFont_Large: {}
+    boxFont_Small: {}
+    boxBackgound: {}
+    tutorPic: {fileID: 2800000, guid: 255915701a92d6844a230d7c63b9bb9e, type: 1}
