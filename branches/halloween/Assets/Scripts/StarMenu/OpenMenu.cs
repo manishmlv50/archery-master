@@ -23,6 +23,9 @@ public class OpenMenu : MonoBehaviour {
 	
 	public Texture2D boxBackgound;
 	public static int guiDepth = 1;
+	
+	public Texture[] tutorPic;
+	private int tutorPicid = 0;
 
 	// Use this for initialization
 	void Start () {
@@ -126,6 +129,10 @@ public class OpenMenu : MonoBehaviour {
 				          "Setting");
 				break;
 			}
+		}
+		
+		if(tutorMode) {
+				DoTutorial(new Rect(0.5f*Screen.width-251, 0.5f*Screen.height-177, 502, 354),"Tutorial");
 		}
 		
 	}
@@ -401,6 +408,43 @@ public class OpenMenu : MonoBehaviour {
 			AudioSource.PlayClipAtPoint(confirmSound, new Vector3(0,1,-10), GameStatus.soundVol);
 			Loading.LOAD = Application.LoadLevelAsync("Level");
 		}
+	}
+	
+	void DoTutorial(Rect rect, string title) {
+		GUI.Box(rect, title);
+		Rect picRect = new Rect(rect.x+50, rect.y+70, rect.width-100, rect.height-120);
+		GUI.DrawTexture(picRect,this.tutorPic[tutorPicid]); 
+		
+		Debug.Log(picRect.width);
+		Debug.Log(picRect.height);
+		
+		if( GUI.Button(new Rect(picRect.x+picRect.width-120f, picRect.y+picRect.height-50f, 50f, 40f), "<")) {
+			AudioSource.PlayClipAtPoint(menuOpenSound, new Vector3(0,1,-10), GameStatus.soundVol);
+			
+			tutorPicid--;
+			if(tutorPicid == -1) {
+				tutorPicid = 12;
+			}
+		}
+
+		if( GUI.Button(new Rect(picRect.x+picRect.width-60f, picRect.y+picRect.height-50f, 50f, 40f), ">"))  {
+			AudioSource.PlayClipAtPoint(menuOpenSound, new Vector3(0,1,-10), GameStatus.soundVol);
+			
+			tutorPicid++;
+			if(tutorPicid == tutorPic.Length) {
+				tutorPicid = 0;
+			}
+		}
+		
+		if( GUI.Button(new Rect(picRect.x+10f, picRect.y+picRect.height-50f, 70f, 40f), "back"))  {
+			AudioSource.PlayClipAtPoint(menuOpenSound, new Vector3(0,1,-10), GameStatus.soundVol);
+			
+			tutorPicid = 0;
+			tutorMode = false;
+		}
+		
+
+		
 	}
 	
 	// Function of slide bar

@@ -75,7 +75,7 @@ public class StartMenu : MonoBehaviour {
 			}
 			
 			if( GUI.Button(tutorialRect,"Tutorial",menuStyle_Large) && !working ) {
-				//OpenMenu.tutorMode = true;
+				OpenMenu.tutorMode = true;
 				AudioSource.PlayClipAtPoint(confirmSound, new Vector3(0,1,-10), GameStatus.soundVol);
 			}
 		}
@@ -99,7 +99,7 @@ public class StartMenu : MonoBehaviour {
 			}
 			
 			if( GUI.Button(tutorialRect,"Tutorial",menuStyle_Small) && !working ) {
-				//OpenMenu.tutorMode = true;
+				OpenMenu.tutorMode = true;
 				AudioSource.PlayClipAtPoint(confirmSound, new Vector3(0,1,-10), GameStatus.soundVol);
 			}
 		}
@@ -123,7 +123,7 @@ public class StartMenu : MonoBehaviour {
 			}
 			
 			if( GUI.Button(tutorialRect,"Tutorial",menuStyle_Mid) && !working ) {
-				//OpenMenu.tutorMode = true;
+				OpenMenu.tutorMode = true;
 				AudioSource.PlayClipAtPoint(confirmSound, new Vector3(0,1,-10), GameStatus.soundVol);
 			}
 		}
