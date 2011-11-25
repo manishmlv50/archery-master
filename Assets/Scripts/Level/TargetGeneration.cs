@@ -21,17 +21,17 @@ public class TargetGeneration : MonoBehaviour {
 	void Start () {
 		if(GameStatus.Level >= 7 && ID == 0) {
 			Transform mirror1 = (Transform)Instantiate(reflectorTarget,
-			                                              new Vector3(20,10,57),
+			                                              new Vector3(20,14,57),
 			                                              Quaternion.identity);
 			Transform mirror2 = (Transform)Instantiate(reflectorTarget,
-			                                              new Vector3(-20,10,57),
+			                                              new Vector3(-20,14,57),
 			                                              Quaternion.identity);
 		}
 	}
 	
 	public void begin()
 	{
-		InvokeRepeating("targetMethod",0.4f,1);
+		InvokeRepeating("targetMethod",0.4f, 1f);
 	}
 	
 	public void end()
