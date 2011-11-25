@@ -31,7 +31,7 @@ public class TargetGeneration : MonoBehaviour {
 	
 	public void begin()
 	{
-		InvokeRepeating("targetMethod",0.2f,1);
+		InvokeRepeating("targetMethod",0.4f,1);
 	}
 	
 	public void end()
