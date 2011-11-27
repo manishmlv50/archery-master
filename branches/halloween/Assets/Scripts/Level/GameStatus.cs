@@ -66,7 +66,8 @@ public class GameStatus : MonoBehaviour
 		{
 			_hp = value;
 			if(_hp <= 0){
-				endLevel();
+				
+				Invoke("endLevel",0.5f);
 			}
 		}
 	}
@@ -95,6 +96,9 @@ public class GameStatus : MonoBehaviour
 	}
 	
 	void Start(){
+		
+		
+
 		_inst = this;
 			
 		_totalTime = Database.GetTime (GameStatus.Level);
@@ -106,6 +110,16 @@ public class GameStatus : MonoBehaviour
 		ScoreBonus = Database.GetScoreBonus ();
 		ComboBonus = Database.GetComboBonus ();
 		HP = Database.GetHP(GameStatus.Level);
+		
+		
+		
+		
+		print("Progress: " +PlayerPrefs.GetInt("GameProgress")); 
+		
+		if(PlayerPrefs.GetInt("Level" + Level + "High") > 50)
+			print("Level"+Level+"High: " + PlayerPrefs.GetInt("Level" + Level + "High"));
+		
+		
 	}
 	
 	public void IncreaseTime(int time)
@@ -140,13 +154,18 @@ public class GameStatus : MonoBehaviour
 			GameObject.Find("3Star").GetComponent<UIButton>().Hide(true);
 			GameObject.Find("1Star").GetComponent<UIButton>().Hide(true);
 			GameObject.Find("Failed").GetComponent<UIButton>().Hide(true);
-
+			
+			
+			
+			
 		}else if(Score >= TargetScore && Score < TargetScore + 500)
 		{
 			//1Star!
 			GameObject.Find("3Star").GetComponent<UIButton>().Hide(true);
 			GameObject.Find("2Star").GetComponent<UIButton>().Hide(true);
 			GameObject.Find("Failed").GetComponent<UIButton>().Hide(true);
+			
+
 	
 		}else
 		{
@@ -160,8 +179,28 @@ public class GameStatus : MonoBehaviour
 		}
 		
 		
+		if(Score >= TargetScore)
+		{
+			if(PlayerPrefs.GetInt("GameProgress") < (Level + 1))
+			{
+				PlayerPrefs.SetInt("GameProgress",Level+1);
+			}
+			
+		}
+		
 		
 		report.score = Score;
+		
+		if(Score > PlayerPrefs.GetInt("Level" + Level + "High"))
+		{
+			PlayerPrefs.SetInt("Level" + Level + "High",Score);
+			print("Score: " + Score);
+
+		}
+		
+		print("Level" + Level + "High: " + PlayerPrefs.GetInt("Level" + Level + "High"));
+		print("Score: " + Score);
+		
 		
 		blackGround.Reveal();
 		resultMenu.Reveal();
@@ -183,14 +222,20 @@ public class GameStatus : MonoBehaviour
 	void LevelChoose()
 	{
 		UnityEngine.Time.timeScale = 1;
-		Application.LoadLevel("StartMenu");
+		Application.LoadLevel("LevelSelection");
 	}
 	
 	void NextLevel()
 	{
 		Level++;
 		UnityEngine.Time.timeScale = 1;
+		
+		
+		
 		Application.LoadLevel("Level");
+		
+		
+		
 	}
 	
 	void Retry()
