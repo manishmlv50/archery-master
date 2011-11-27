@@ -60,7 +60,8 @@ public class StartMenu : MonoBehaviour {
 			
 			
 			if( GUI.Button(newGameRect,"New Game",menuStyle_Large) && !working) {
-				OpenMenu.showNewGame = true;
+				//OpenMenu.showNewGame = true;
+				Application.LoadLevel("LevelSelection");
 				AudioSource.PlayClipAtPoint(menuOpenSound, new Vector3(0,1,-10), GameStatus.soundVol);
 			}
 			
