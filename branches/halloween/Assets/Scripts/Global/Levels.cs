@@ -132,10 +132,10 @@ public class Levels : MonoBehaviour {
 			{ 0, 0, 0, 0 }, 
 			{ 0, 0, 0, 0 }, 
 			{ 0, 0, 0, 0 },	            // 10 sec
-			{ 0, 1, 0, 1 },             
+			{ 0, 0, 0, 0 },             
 			{ 0, 1, 0, 1 },             // shoot the the bomb after the go away from freze
 			{ 0, 7, 2, 1 },
-			{ 0, 1, 0, 1 },
+			{ 0, 1, 0, 0 },
 			{ 0, 1, 2, 1 },
 			{ 0, 1, 3, 1 },			
 			{ 0, 0, 0, 0 },
@@ -183,10 +183,10 @@ public class Levels : MonoBehaviour {
 			{ 0, 1, 2, 5 },             // can't shoot the first bomb, shoot the later one
 			{ 6, 0, 1, 0 },             // 60 sec
 			{ 6, 0, 0, 0 },
-			{ 6, 0, 1, 0 },
-			{ 0, 0, 2, 0 },
-			{ 6, 0, 1, 0 },
-			{ 0, 0, 0, 0 },
+			{ 0, 0, 1, 0 },
+			{ 6, 0, 2, 0 },
+			{ 0, 0, 1, 0 },
+			{ 6, 0, 0, 0 },
 			{ 0, 0, 0, 0 },
 			{ 0, 0, 0, 0 },
 			{ 6, 9, 2, 0 },             // use reflection to destroy the wall then shoot the bomb
